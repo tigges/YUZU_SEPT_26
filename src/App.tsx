@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import {
   BOOKING_URL,
   GOOGLE_REVIEWS_URL,
+  MAPS_DIRECTIONS_URL,
   MAPS_EMBED_URL,
   PRICE_LIST_URL,
   contact,
@@ -88,6 +89,16 @@ export default function App() {
     }
   }, [lightbox])
 
+  const goTo = (href: string) => (event: { preventDefault: () => void }) => {
+    if (!href.startsWith('#')) return
+    event.preventDefault()
+    setMenuOpen(false)
+    const id = href.slice(1)
+    window.setTimeout(() => {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }, 50)
+  }
+
   return (
     <>
       <a className="skip" href="#gallery">
@@ -95,7 +106,7 @@ export default function App() {
       </a>
       <header className={`header${menuOpen ? ' open' : ''}`}>
         <div className="wrap header-inner">
-          <a className="logo" href="#top" onClick={() => setMenuOpen(false)}>
+          <a className="logo" href="#top" onClick={goTo('#top')}>
             <span className="logo-word">YUZU</span>
             <span className="logo-sub">Hair &amp; Beauty</span>
           </a>
@@ -109,7 +120,7 @@ export default function App() {
           </button>
           <nav className="nav" aria-label="Primary">
             {nav.map((item) => (
-              <a key={item.href} href={item.href} onClick={() => setMenuOpen(false)}>
+              <a key={item.href} href={item.href} onClick={goTo(item.href)}>
                 {item.label}
               </a>
             ))}
@@ -177,7 +188,13 @@ export default function App() {
                 </button>
               ))}
             </div>
-            <SocialLinks />
+            <div className="follow">
+              <span className="eyebrow">Follow along</span>
+              <a className="handle" href={social.instagram} target="_blank" rel="noreferrer">
+                @yuzuhairandbeauty
+              </a>
+              <SocialLinks />
+            </div>
           </div>
         </section>
 
@@ -373,13 +390,23 @@ export default function App() {
                 </ul>
               </div>
             </div>
-            <iframe
-              className="map"
-              title="Map of Yuzu Hair at Dickens Yard, Ealing"
-              src={MAPS_EMBED_URL}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
+            <div className="map-panel">
+              <iframe
+                className="map"
+                title="Map of Yuzu Hair at Dickens Yard, Ealing"
+                src={MAPS_EMBED_URL}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+              <a
+                className="btn btn-ink map-fallback"
+                href={MAPS_DIRECTIONS_URL}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Get directions
+              </a>
+            </div>
           </div>
         </section>
       </main>
