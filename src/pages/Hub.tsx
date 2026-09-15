@@ -18,8 +18,8 @@ export default function Hub() {
           <p className="eyebrow">Dickens Yard · Ealing</p>
           <h1>Pick a direction for the new site.</h1>
           <p>
-            Wireframe first — drag the page order, with off-site links and sub-pages in a second
-            column. A news ticker and a take-home shelf sit on the page; drag a block below the footer
+            Wireframe first — drag the page order, or use → / ← to move a section into the
+            sub-page column. A news ticker and a take-home shelf sit on the page; drag a block below the footer
             to archive it. Then eleven design looks and a Links desk. The current
             site is{' '}
             <a href={LIVE_SITE_URL} target="_blank" rel="noreferrer">
