@@ -135,6 +135,14 @@ function Sketch({ id }: { id: WireId }) {
       </div>
     )
   }
+  if (id === 'upload') {
+    return (
+      <div className="wf-sketch wf-upload">
+        <span>Share your look — tag us or send a photo</span>
+        <span className="wf-pill">Upload a photo</span>
+      </div>
+    )
+  }
   if (id === 'reviews') {
     return (
       <div className="wf-sketch wf-cards">
@@ -601,8 +609,9 @@ export default function Wireframe() {
           archives a section or removes a link · grey = archived
         </p>
         <p className="wf-note">
-          Default sketch matches the current layout: Book on the title, hero, and carousel; no
-          trust strip; price list nested under services. Unused link chips stay in the tray.
+          Default sketch matches the current layout: Book on the title, hero, and carousel; a
+          customer photo-upload banner after the gallery; price list nested under services. Unused
+          link chips stay in the tray.
         </p>
 
         <section className="wf-tray" aria-label="Links">

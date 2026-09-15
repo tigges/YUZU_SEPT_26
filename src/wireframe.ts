@@ -22,6 +22,7 @@ export type WireId =
   | 'hours'
   | 'patch'
   | 'gallery'
+  | 'upload'
   | 'reviews'
   | 'services'
   | 'prices'
@@ -104,6 +105,7 @@ export const WIRE_CATALOG: WireMeta[] = [
   { id: 'hours', title: 'Opening hours', hint: 'Tue–Fri 10–8 · Sat 9–6 · Sun/Mon closed' },
   { id: 'patch', title: 'Patch-test notice', hint: 'Links out to the colour policy PDF' },
   { id: 'gallery', title: 'Customer gallery', hint: 'Client looks / Instagram results' },
+  { id: 'upload', title: 'Customer photo upload', hint: 'Banner inviting clients to send or tag photos for the gallery' },
   { id: 'reviews', title: 'Review gallery', hint: 'Google quotes + 4.5 rating' },
   { id: 'services', title: 'Services', hint: 'Cut, colour, highlights — price list nests under this' },
   { id: 'prices', title: 'Price list', hint: 'In-page menu (Earthy) or a band that opens the PDF (Wix)' },
@@ -148,6 +150,7 @@ const DEFAULT_LINKS: LinkPlacement[] = [
   { id: 'offers-page-1', link: 'offers-page', on: 'carousel' },
   { id: 'patch-pdf-2', link: 'patch-pdf', on: 'patch' },
   { id: 'instagram-1', link: 'instagram', on: 'gallery' },
+  { id: 'instagram-2', link: 'instagram', on: 'upload' },
   { id: 'maps-1', link: 'maps', on: 'reviews' },
   { id: 'offers-page-2', link: 'offers-page', on: 'offers' },
   { id: 'join-page-1', link: 'join-page', on: 'careers' },
@@ -167,6 +170,7 @@ const LIVE_ORDER: WireId[] = [
   'hours',
   'patch',
   'gallery',
+  'upload',
   'reviews',
   'services',
   'shop',
