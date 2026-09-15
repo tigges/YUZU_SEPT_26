@@ -25,6 +25,22 @@ export const versions = [
     preview: asset('assets/gallery/1.jpg'),
     previewAlt: 'Copper and rose colour with textured fringe',
   },
+  {
+    id: 'gold',
+    name: 'Gold',
+    kicker: 'Version 4',
+    summary: 'From YUZU_CLEAN: charcoal, cream, and yuzu gold. Fraunces headlines, calm wireframe filled with real Ealing content.',
+    preview: asset('assets/gallery/2.jpg'),
+    previewAlt: 'Long sleek dark hair, freshly styled in salon',
+  },
+  {
+    id: 'sanctuary',
+    name: 'Sanctuary',
+    kicker: 'Version 5',
+    summary: 'From YUZU_V4_CURSOR: forest green, sharp gold, photo hero, hours strip, and Instagram results in five cards.',
+    preview: asset('assets/v4/hero.jpg'),
+    previewAlt: 'Brunette waves, photographed in salon',
+  },
 ] as const
 
 export type VersionId = (typeof versions)[number]['id']

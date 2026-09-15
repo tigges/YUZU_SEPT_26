@@ -290,3 +290,21 @@ export const instagram = {
     },
   ],
 }
+
+export const v4Assets = {
+  hero: asset('assets/v4/hero.jpg'),
+  wordmark: asset('assets/v4/wordmark.png'),
+  looks: [
+    { src: asset('assets/v4/look-1.jpg'), title: 'Copper & Rose', subtitle: 'Vivid colour' },
+    { src: asset('assets/v4/look-2.jpg'), title: 'Vivid red bob', subtitle: 'Colour + cut' },
+    { src: asset('assets/v4/ig-3.jpg'), title: 'Salon atmosphere', subtitle: 'Dickens Yard' },
+    { src: asset('assets/v4/look-3.jpg'), title: 'Soft layers', subtitle: 'Textured styling' },
+    { src: asset('assets/v4/ig-2.jpg'), title: 'Editorial detail', subtitle: 'Precision finish' },
+  ],
+  servicesMedia: [
+    { src: asset('assets/v4/service-colour.jpg'), label: 'Colour' },
+    { src: asset('assets/v4/service-cut.jpg'), label: 'Cut & styling' },
+    { src: asset('assets/v4/service-salon.png'), label: 'Salon finish' },
+  ],
+  reviewPhotos: [asset('assets/v4/review-1.jpg'), asset('assets/v4/review-2.jpg'), asset('assets/v4/ig-4.jpg')],
+}

@@ -8,6 +8,8 @@ Live: https://tigges.github.io/YUZU_SEPT_26/
 - `?v=earthy` parchment / olive site
 - `?v=instagram` built from [@yuzuhairandbeauty](https://www.instagram.com/yuzuhairandbeauty/)
 - `?v=studio` white, photography-led
+- `?v=gold` charcoal / cream / yuzu gold from [YUZU_CLEAN](https://github.com/tigges/YUZU_CLEAN)
+- `?v=sanctuary` forest / gold “Sanctuary” prototype from [YUZU_V4_CURSOR](https://github.com/tigges/-YUZU_V4_CURSOR)
 
 ## Run locally
 

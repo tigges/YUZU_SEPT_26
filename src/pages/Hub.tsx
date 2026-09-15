@@ -16,7 +16,7 @@ export default function Hub() {
           <p className="eyebrow">Dickens Yard · Ealing</p>
           <h1>Pick a direction for the new site.</h1>
           <p>
-            Three complete versions of Yuzu Hair &amp; Beauty. The live salon still books through
+            Five complete versions of Yuzu Hair &amp; Beauty. The live salon still books through
             Phorest; this gallery is for choosing a look.
           </p>
         </div>

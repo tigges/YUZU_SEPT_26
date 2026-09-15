@@ -2,6 +2,8 @@ import Earthy from './pages/Earthy'
 import Hub from './pages/Hub'
 import Instagram from './pages/Instagram'
 import Studio from './pages/Studio'
+import Gold from './pages/Gold'
+import Sanctuary from './pages/Sanctuary'
 import { readVersionParam } from './versions'
 
 export default function App() {
@@ -11,5 +13,7 @@ export default function App() {
   if (version === 'earthy') return <Earthy />
   if (version === 'instagram') return <Instagram />
   if (version === 'studio') return <Studio />
+  if (version === 'gold') return <Gold />
+  if (version === 'sanctuary') return <Sanctuary />
   return <Hub />
 }

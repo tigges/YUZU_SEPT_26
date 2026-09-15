@@ -42,7 +42,12 @@ Pulled from the live profile (not the login wall):
 
 Version 2 (`?v=instagram`) uses those downloaded posts, the wordmark, and the sage/blossom language. Version 3 (`?v=studio`) is the opposite: white, coral Book, editorial client looks.
 
-The homepage is now a version gallery. Earthy is `?v=earthy`.
+## Other repos
+
+- **[YUZU_CLEAN](https://github.com/tigges/YUZU_CLEAN)** — Next.js wireframe, no photos, dummy address. Ported as **Gold** (`?v=gold`) with Dickens Yard facts and our gallery.
+- **[YUZU_V4_CURSOR](https://github.com/tigges/-YUZU_V4_CURSOR)** — `main` is empty; the real prototype is on `cursor/wordpress-git-integration-3576`. Ported as **Sanctuary** (`?v=sanctuary`) with its hero, salon photos, and hours strip.
+
+The homepage is a version gallery. Earthy is `?v=earthy`.
 
 ## Stack
 
