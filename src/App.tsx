@@ -147,7 +147,7 @@ export default function App() {
         <section className="hero" aria-label="Welcome">
           <div className="hero-media">
             <img
-              src="/assets/brand/leaves.jpg"
+              src={`${import.meta.env.BASE_URL}assets/brand/leaves.jpg`}
               alt="Tropical foliage in warm light, the atmosphere of the salon"
             />
           </div>
@@ -241,7 +241,7 @@ export default function App() {
                 </p>
               </div>
               <div className="portrait">
-                <img src="/assets/brand/portrait-left.png" alt="" />
+                <img src={`${import.meta.env.BASE_URL}assets/brand/portrait-left.png`} alt="" />
               </div>
             </div>
             <div>
@@ -341,7 +341,7 @@ export default function App() {
                     <h3>{offer.title}</h3>
                     <p>{offer.detail}</p>
                   </div>
-                  <img className="leaf" src="/assets/brand/leaf.png" alt="" />
+                  <img className="leaf" src={`${import.meta.env.BASE_URL}assets/brand/leaf.png`} alt="" />
                 </article>
               ))}
             </div>
