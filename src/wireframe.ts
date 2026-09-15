@@ -1,107 +1,147 @@
+import {
+  BOOKING_URL,
+  JOIN_TEAM_URL,
+  LIVE_SITE_URL,
+  MAPS_DIRECTIONS_URL,
+  OFFERS_PAGE_URL,
+  PATCH_TEST_PDF_URL,
+  PRICE_LIST_URL,
+  TERMS_URL,
+  social,
+} from './data'
+
 export type WireId =
   | 'header'
+  | 'ticker'
   | 'hero'
   | 'hours'
   | 'patch'
   | 'gallery'
   | 'reviews'
   | 'services'
-  | 'prices'
+  | 'shop'
   | 'offers'
   | 'careers'
   | 'contact'
-  | 'map'
   | 'social'
   | 'footer'
+  | 'stylists'
+  | 'vouchers'
+  | 'faq'
 
 export type WireMeta = {
   id: WireId
   title: string
   hint: string
-  nestUnder?: WireId
 }
 
 export type WireState = {
   order: WireId[]
-  nest: Partial<Record<WireId, WireId[]>>
+}
+
+export type DestKind = 'offsite' | 'subpage'
+
+export type WireDest = {
+  id: string
+  from: WireId
+  kind: DestKind
+  title: string
+  detail: string
+  href: string
 }
 
 export const WIRE_CATALOG: WireMeta[] = [
   { id: 'header', title: 'Logo + menu', hint: 'Wordmark, page links, Book' },
+  { id: 'ticker', title: 'News ticker', hint: 'Slim bar under the header: offer, hours, patch test' },
   { id: 'hero', title: 'Hero + CTA', hint: 'Headline, short story, Book on Phorest' },
   { id: 'hours', title: 'Opening hours', hint: 'Tue–Fri 10–8 · Sat 9–6 · Sun/Mon closed' },
-  { id: 'patch', title: 'Patch-test notice', hint: 'Required before colour — PDF' },
+  { id: 'patch', title: 'Patch-test notice', hint: 'Links out to the colour policy PDF' },
   { id: 'gallery', title: 'Customer gallery', hint: 'Client looks / Instagram results' },
   { id: 'reviews', title: 'Review gallery', hint: 'Google quotes + 4.5 rating' },
-  { id: 'services', title: 'Services', hint: 'Cut, colour, highlights, treatments' },
-  {
-    id: 'prices',
-    title: 'Price list',
-    hint: 'PDF / sub-page of Services',
-    nestUnder: 'services',
-  },
-  { id: 'offers', title: 'Offers', hint: 'Weekday colour deals — webpage, not a PDF' },
+  { id: 'services', title: 'Services', hint: 'Cut, colour, highlights — price list is a sub-page' },
+  { id: 'shop', title: 'Take it home', hint: 'Retail at the desk after the appointment — no cart' },
+  { id: 'offers', title: 'Offers', hint: 'Weekday colour deals on a sub-page' },
   { id: 'careers', title: 'Join the Yuzu team', hint: 'Senior stylists, stylists, models' },
   { id: 'contact', title: 'Contact', hint: 'Dickens Yard, phone, email, Book' },
-  { id: 'map', title: 'Map', hint: 'Google listing / directions', nestUnder: 'contact' },
   { id: 'social', title: 'Social bar', hint: 'Current site, Instagram, TikTok, Facebook' },
-  { id: 'footer', title: 'Footer', hint: 'T&Cs, copyright, current site' },
+  { id: 'footer', title: 'Footer', hint: 'T&Cs and copyright — blocks below this are archived' },
+  { id: 'stylists', title: 'Meet the stylists', hint: 'Faces and first names, not a recruiting ad' },
+  { id: 'vouchers', title: 'Gift vouchers', hint: 'Treat someone — book as a gift on Phorest' },
+  { id: 'faq', title: 'First visit', hint: 'Patch test, parking, Dickens Yard, what to bring' },
 ]
 
+export const WIRE_DESTINATIONS: WireDest[] = [
+  { id: 'book-header', from: 'header', kind: 'offsite', title: 'Phorest', detail: 'Book from the menu', href: BOOKING_URL },
+  { id: 'ticker-offers', from: 'ticker', kind: 'subpage', title: 'Offers page', detail: 'Ticker can point at the current deal', href: OFFERS_PAGE_URL },
+  { id: 'book-hero', from: 'hero', kind: 'offsite', title: 'Phorest', detail: 'Hero Book CTA', href: BOOKING_URL },
+  { id: 'patch-pdf', from: 'patch', kind: 'subpage', title: 'Patch-test PDF', detail: 'Mandatory colour policy', href: PATCH_TEST_PDF_URL },
+  { id: 'ig-gallery', from: 'gallery', kind: 'offsite', title: 'Instagram', detail: 'Portfolio / results', href: social.instagram },
+  { id: 'reviews-maps', from: 'reviews', kind: 'offsite', title: 'Google reviews', detail: 'Maps listing', href: MAPS_DIRECTIONS_URL },
+  { id: 'prices', from: 'services', kind: 'subpage', title: 'Price list', detail: 'PDF / services sub-page', href: PRICE_LIST_URL },
+  { id: 'offers-page', from: 'offers', kind: 'subpage', title: 'Offers page', detail: 'Live Wix offers (not a PDF)', href: OFFERS_PAGE_URL },
+  { id: 'careers-mail', from: 'careers', kind: 'offsite', title: 'Email CV', detail: 'Join the team', href: JOIN_TEAM_URL },
+  { id: 'maps', from: 'contact', kind: 'offsite', title: 'Google Maps', detail: 'Listing, reviews, directions', href: MAPS_DIRECTIONS_URL },
+  { id: 'book-contact', from: 'contact', kind: 'offsite', title: 'Phorest', detail: 'Book from contact', href: BOOKING_URL },
+  { id: 'site', from: 'social', kind: 'offsite', title: 'Current site', detail: 'yuzuhairandbeauty.london', href: LIVE_SITE_URL },
+  { id: 'ig', from: 'social', kind: 'offsite', title: 'Instagram', detail: '@yuzuhairandbeauty', href: social.instagram },
+  { id: 'tiktok', from: 'social', kind: 'offsite', title: 'TikTok', detail: '@yuzuhairandbeauty.est16', href: social.tiktok },
+  { id: 'fb', from: 'social', kind: 'offsite', title: 'Facebook', detail: 'YUZU Hair and Beauty', href: social.facebook },
+  { id: 'terms', from: 'footer', kind: 'subpage', title: 'Terms & conditions', detail: 'Webpage, not a PDF', href: TERMS_URL },
+  { id: 'voucher-book', from: 'vouchers', kind: 'offsite', title: 'Phorest', detail: 'Buy or redeem a gift visit', href: BOOKING_URL },
+  { id: 'faq-patch', from: 'faq', kind: 'subpage', title: 'Patch-test PDF', detail: 'First-visit colour rule', href: PATCH_TEST_PDF_URL },
+  { id: 'faq-maps', from: 'faq', kind: 'offsite', title: 'Google Maps', detail: 'How to find Dickens Yard', href: MAPS_DIRECTIONS_URL },
+]
+
+const LIVE_ORDER: WireId[] = [
+  'header',
+  'ticker',
+  'hero',
+  'hours',
+  'patch',
+  'gallery',
+  'reviews',
+  'services',
+  'shop',
+  'offers',
+  'careers',
+  'contact',
+  'social',
+  'footer',
+]
+
+const ARCHIVE_ORDER: WireId[] = ['stylists', 'vouchers', 'faq']
+
 export const DEFAULT_WIRE: WireState = {
-  order: [
-    'header',
-    'hero',
-    'hours',
-    'patch',
-    'gallery',
-    'reviews',
-    'services',
-    'offers',
-    'careers',
-    'contact',
-    'social',
-    'footer',
-  ],
-  nest: {
-    services: ['prices'],
-    contact: ['map'],
-  },
+  order: [...LIVE_ORDER, ...ARCHIVE_ORDER],
 }
 
-const STORAGE_KEY = 'yuzu-wireframe-v1'
-
+const STORAGE_KEY = 'yuzu-wireframe-v3'
 const IDS = new Set(WIRE_CATALOG.map((item) => item.id))
 
 export function metaFor(id: WireId) {
   return WIRE_CATALOG.find((item) => item.id === id)!
 }
 
-export function nestedSet(nest: WireState['nest']) {
-  return new Set(Object.values(nest).flat())
+export function destsFor(id: WireId) {
+  return WIRE_DESTINATIONS.filter((item) => item.from === id)
+}
+
+export function splitWire(order: WireId[]) {
+  const cut = order.indexOf('footer')
+  if (cut < 0) return { live: order, archived: [] as WireId[] }
+  return { live: order.slice(0, cut + 1), archived: order.slice(cut + 1) }
+}
+
+export function isArchived(order: WireId[], id: WireId) {
+  return splitWire(order).archived.includes(id)
 }
 
 export function normalizeWire(input: WireState): WireState {
-  const nest: WireState['nest'] = {}
-  for (const [parent, kids] of Object.entries(input.nest)) {
-    if (!IDS.has(parent as WireId)) continue
-    const clean = (kids ?? []).filter((id) => IDS.has(id) && id !== parent)
-    if (clean.length) nest[parent as WireId] = clean
-  }
-  const nested = nestedSet(nest)
-  const order = input.order.filter((id) => IDS.has(id) && !nested.has(id))
-  const have = new Set([...order, ...nested])
+  const order = input.order.filter((id) => IDS.has(id))
   for (const id of IDS) {
-    if (!have.has(id)) {
-      const home = WIRE_CATALOG.find((item) => item.id === id)?.nestUnder
-      if (home) {
-        nest[home] = [...(nest[home] ?? []), id]
-      } else {
-        order.push(id)
-      }
-    }
+    if (!order.includes(id)) order.push(id)
   }
-  return { order, nest }
+  return { order }
 }
 
 export function loadWire(): WireState {
@@ -118,69 +158,21 @@ export function saveWire(state: WireState) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(normalizeWire(state)))
 }
 
-function strip(state: WireState, id: WireId): WireState {
-  const order = state.order.filter((item) => item !== id)
-  const nest: WireState['nest'] = {}
-  for (const [parent, kids] of Object.entries(state.nest)) {
-    const next = (kids ?? []).filter((item) => item !== id)
-    if (next.length) nest[parent as WireId] = next
-  }
-  return { order, nest }
-}
-
-export function moveWire(state: WireState, fromId: WireId, toId: WireId, place: 'before' | 'after' | 'into') {
+export function moveWire(state: WireState, fromId: WireId, toId: WireId, place: 'before' | 'after') {
   if (fromId === toId) return state
-  const fromMeta = metaFor(fromId)
-  let next = strip(state, fromId)
-
-  if (place === 'into') {
-    const parent = toId
-    if (fromMeta.nestUnder === parent) {
-      next = {
-        ...next,
-        nest: { ...next.nest, [parent]: [...(next.nest[parent] ?? []), fromId] },
-      }
-      return normalizeWire(next)
-    }
-    place = 'after'
-  }
-
-  const parentOfTo = Object.entries(next.nest).find(([, kids]) => kids?.includes(toId))?.[0] as WireId | undefined
-  if (parentOfTo && fromMeta.nestUnder === parentOfTo) {
-    const kids = [...(next.nest[parentOfTo] ?? [])]
-    const index = kids.indexOf(toId)
-    kids.splice(place === 'after' ? index + 1 : index, 0, fromId)
-    next = { ...next, nest: { ...next.nest, [parentOfTo]: kids } }
-    return normalizeWire(next)
-  }
-
-  const index = next.order.indexOf(parentOfTo ?? toId)
-  if (index < 0) {
-    next = { ...next, order: [...next.order, fromId] }
-    return normalizeWire(next)
-  }
-  next.order.splice(place === 'after' ? index + 1 : index, 0, fromId)
-  return normalizeWire(next)
+  const order = state.order.filter((id) => id !== fromId)
+  const index = order.indexOf(toId)
+  if (index < 0) return normalizeWire({ order: [...order, fromId] })
+  order.splice(place === 'after' ? index + 1 : index, 0, fromId)
+  return normalizeWire({ order })
 }
 
 export function nudgeWire(state: WireState, id: WireId, dir: -1 | 1) {
-  const parent = Object.entries(state.nest).find(([, kids]) => kids?.includes(id))?.[0] as WireId | undefined
-  if (parent) {
-    const kids = [...(state.nest[parent] ?? [])]
-    const index = kids.indexOf(id)
-    const nextIndex = index + dir
-    if (nextIndex < 0 || nextIndex >= kids.length) {
-      return moveWire(state, id, parent, dir < 0 ? 'before' : 'after')
-    }
-    kids.splice(index, 1)
-    kids.splice(nextIndex, 0, id)
-    return normalizeWire({ ...state, nest: { ...state.nest, [parent]: kids } })
-  }
   const index = state.order.indexOf(id)
   const nextIndex = index + dir
   if (index < 0 || nextIndex < 0 || nextIndex >= state.order.length) return state
   const order = [...state.order]
   const [item] = order.splice(index, 1)
   order.splice(nextIndex, 0, item)
-  return normalizeWire({ ...state, order })
+  return normalizeWire({ order })
 }

@@ -18,7 +18,9 @@ export default function Hub() {
           <p className="eyebrow">Dickens Yard · Ealing</p>
           <h1>Pick a direction for the new site.</h1>
           <p>
-            Eleven design looks, a Links desk, and a Wireframe you can reorder. The current
+            Wireframe first — drag the page order, with off-site links and sub-pages in a second
+            column. A news ticker and a take-home shelf sit on the page; drag a block below the footer
+            to archive it. Then eleven design looks and a Links desk. The current
             site is{' '}
             <a href={LIVE_SITE_URL} target="_blank" rel="noreferrer">
               yuzuhairandbeauty.london
@@ -64,7 +66,7 @@ export default function Hub() {
             is 2,952 followers and 776 posts, with highlights for Offers and Portfolio Hair. The
             grid mixes blossom-toned weekday offers, in-salon colour (blonde layers, copper
             balayage), and personality reels — behind the scenes, neighbours at Dickens Yard, and
-            a 10-year community party. Version 2 is built from that feed, not guessed.
+            a 10-year community party. The Instagram version is built from that feed, not guessed.
           </p>
           <p>
             Empty scaffolds —{' '}
