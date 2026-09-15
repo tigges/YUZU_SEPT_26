@@ -59,7 +59,7 @@ export const WIRE_CATALOG: WireMeta[] = [
   { id: 'gallery', title: 'Customer gallery', hint: 'Client looks / Instagram results' },
   { id: 'reviews', title: 'Review gallery', hint: 'Google quotes + 4.5 rating' },
   { id: 'services', title: 'Services', hint: 'Cut, colour, highlights — price list is a sub-page' },
-  { id: 'shop', title: 'Shop teaser', hint: 'A few products at the desk — ask in salon, no cart' },
+  { id: 'shop', title: 'Take it home', hint: 'Retail at the desk after the appointment — no cart' },
   { id: 'offers', title: 'Offers', hint: 'Weekday colour deals on a sub-page' },
   { id: 'careers', title: 'Join the Yuzu team', hint: 'Senior stylists, stylists, models' },
   { id: 'contact', title: 'Contact', hint: 'Dickens Yard, phone, email, Book' },

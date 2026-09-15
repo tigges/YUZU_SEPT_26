@@ -1909,6 +1909,31 @@ body[data-theme='wireframe'] {
 
 .wf-ticker {
   min-height: 42px;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  flex-wrap: nowrap;
+}
+
+.wf-ticker-label {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  padding: 0 12px;
+  background: #2a2926;
+  color: #f6f4ee;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.wf-ticker-track {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 12px;
   overflow: hidden;
   white-space: nowrap;
   font-size: 0.82rem;
@@ -1918,6 +1943,60 @@ body[data-theme='wireframe'] {
 
 .wf-ticker-dot {
   color: #8f8778;
+}
+
+.wf-shelf {
+  align-items: center;
+  gap: 16px;
+  min-height: 72px;
+}
+
+.wf-bottles {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  padding: 4px 8px 0;
+}
+
+.wf-bottles i {
+  display: block;
+  width: 18px;
+  background: #d4cec3;
+  border: 1px solid #c4bdb0;
+  border-radius: 2px 2px 0 0;
+}
+
+.wf-bottles i:nth-child(1) {
+  height: 36px;
+}
+
+.wf-bottles i:nth-child(2) {
+  height: 44px;
+}
+
+.wf-bottles i:nth-child(3) {
+  height: 28px;
+}
+
+.wf-shelf-copy {
+  display: grid;
+  gap: 2px;
+}
+
+.wf-shelf-copy strong {
+  font-size: 0.88rem;
+}
+
+.wf-shelf-copy span {
+  font-size: 0.8rem;
+  color: #6f6a60;
+}
+
+.wf-note {
+  margin: 0 0 1.2rem;
+  font-size: 0.86rem;
+  color: #6f6a60;
+  max-width: 72ch;
 }
 
 .wf-archived-flag {

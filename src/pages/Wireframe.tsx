@@ -30,13 +30,16 @@ function Sketch({ id }: { id: WireId }) {
   if (id === 'ticker') {
     return (
       <div className="wf-sketch wf-ticker">
-        <span>Colour Tuesdays 50%</span>
-        <span className="wf-ticker-dot">·</span>
-        <span>Patch tests for colour</span>
-        <span className="wf-ticker-dot">·</span>
-        <span>Sat 9–6</span>
-        <span className="wf-ticker-dot">·</span>
-        <span>Book →</span>
+        <span className="wf-ticker-label">Today</span>
+        <span className="wf-ticker-track">
+          <span>Colour Tuesdays 50%</span>
+          <span className="wf-ticker-dot">·</span>
+          <span>Patch tests for colour</span>
+          <span className="wf-ticker-dot">·</span>
+          <span>Sat 9–6</span>
+          <span className="wf-ticker-dot">·</span>
+          <span>Book →</span>
+        </span>
       </div>
     )
   }
@@ -91,16 +94,22 @@ function Sketch({ id }: { id: WireId }) {
         <span>Cut &amp; styling</span>
         <span>Colour</span>
         <span>Highlights</span>
-        <span>Price list →</span>
+        <span>Treatments</span>
       </div>
     )
   }
   if (id === 'shop') {
     return (
-      <div className="wf-sketch wf-cards wf-shop">
-        <span>Colour-care at home</span>
-        <span>Olaplex / bond</span>
-        <span>Ask in salon →</span>
+      <div className="wf-sketch wf-shelf">
+        <div className="wf-bottles" aria-hidden="true">
+          <i />
+          <i />
+          <i />
+        </div>
+        <div className="wf-shelf-copy">
+          <strong>Take it home</strong>
+          <span>Nashi, K2.0, and colour-care at the desk. Ask when you visit — no cart on the site.</span>
+        </div>
       </div>
     )
   }
@@ -109,7 +118,7 @@ function Sketch({ id }: { id: WireId }) {
       <div className="wf-sketch wf-cards">
         <span>Colour Tuesdays 50%</span>
         <span>Smooth Wednesdays 25%</span>
-        <span>See all offers →</span>
+        <span>Thursday colour 50%</span>
       </div>
     )
   }
@@ -340,6 +349,11 @@ export default function Wireframe() {
         <p className="wf-legend">
           <span className="wf-sat-kind">Off-site</span> leaves the site ·{' '}
           <span className="wf-sat-kind sub">Sub-page</span> stays on Yuzu · grey = archived
+        </p>
+        <p className="wf-note">
+          Keep the live page short: ticker, hero, gallery, reviews, services, take-home shelf, one
+          offer path, visit, Book. Join the team, meet the stylists, vouchers, and first-visit can
+          live below the footer until you want them.
         </p>
 
         <div className="wf-board">

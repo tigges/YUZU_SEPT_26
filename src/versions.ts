@@ -6,7 +6,7 @@ export const versions = [
     name: 'Wireframe',
     kicker: 'Version 1',
     summary:
-      'Page order you can drag. Off-site links and sub-pages sit in a second column. A news ticker and shop teaser are on the page; anything below the footer is archived.',
+      'Page order you can drag. Off-site links and sub-pages sit in a second column. News ticker and a take-home shelf are on the page; anything below the footer is archived.',
     preview: asset('assets/brand/leaves.jpg'),
     previewAlt: 'Wireframe layout blocks',
     sketch: true,
