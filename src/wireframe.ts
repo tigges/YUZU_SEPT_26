@@ -19,7 +19,6 @@ export type WireId =
   | 'hero'
   | 'carousel'
   | 'welcome'
-  | 'trust'
   | 'hours'
   | 'patch'
   | 'gallery'
@@ -102,7 +101,6 @@ export const WIRE_CATALOG: WireMeta[] = [
   { id: 'hero', title: 'Hero + CTA', hint: 'Headline, short story, Book on Phorest' },
   { id: 'carousel', title: 'Hero carousel', hint: 'Rotates hero + Book, offers, patch test, and a new-customer cut' },
   { id: 'welcome', title: 'Welcome', hint: 'Salon story — Wix, Editorial, Quiet, Gold intro' },
-  { id: 'trust', title: 'Trust strip', hint: 'Google rating and short proofs — Gold, Convert' },
   { id: 'hours', title: 'Opening hours', hint: 'Tue–Fri 10–8 · Sat 9–6 · Sun/Mon closed' },
   { id: 'patch', title: 'Patch-test notice', hint: 'Links out to the colour policy PDF' },
   { id: 'gallery', title: 'Customer gallery', hint: 'Client looks / Instagram results' },
@@ -144,16 +142,21 @@ export const LINK_CATALOG: LinkMeta[] = [
 
 const DEFAULT_LINKS: LinkPlacement[] = [
   { id: 'phorest-1', link: 'phorest', on: 'header' },
+  { id: 'patch-pdf-1', link: 'patch-pdf', on: 'ticker' },
+  { id: 'phorest-2', link: 'phorest', on: 'hero' },
+  { id: 'phorest-3', link: 'phorest', on: 'carousel' },
+  { id: 'offers-page-1', link: 'offers-page', on: 'carousel' },
+  { id: 'patch-pdf-2', link: 'patch-pdf', on: 'patch' },
   { id: 'instagram-1', link: 'instagram', on: 'gallery' },
-  { id: 'maps-1', link: 'maps', on: 'contact' },
+  { id: 'maps-1', link: 'maps', on: 'reviews' },
+  { id: 'offers-page-2', link: 'offers-page', on: 'offers' },
+  { id: 'join-page-1', link: 'join-page', on: 'careers' },
+  { id: 'join-mail-1', link: 'join-mail', on: 'careers' },
+  { id: 'maps-2', link: 'maps', on: 'contact' },
   { id: 'email-1', link: 'email', on: 'contact' },
   { id: 'phone-1', link: 'phone', on: 'contact' },
   { id: 'whatsapp-1', link: 'whatsapp', on: 'chat' },
-  { id: 'patch-pdf-1', link: 'patch-pdf', on: 'patch' },
-  { id: 'offers-page-1', link: 'offers-page', on: 'offers' },
   { id: 'terms-1', link: 'terms', on: 'footer' },
-  { id: 'join-page-1', link: 'join-page', on: 'careers' },
-  { id: 'join-mail-1', link: 'join-mail', on: 'careers' },
 ]
 
 const LIVE_ORDER: WireId[] = [
@@ -161,7 +164,6 @@ const LIVE_ORDER: WireId[] = [
   'ticker',
   'hero',
   'carousel',
-  'trust',
   'hours',
   'patch',
   'gallery',
@@ -186,7 +188,7 @@ export const DEFAULT_WIRE: WireState = {
   links: [...DEFAULT_LINKS],
 }
 
-const STORAGE_KEY = 'yuzu-wireframe-v7'
+const STORAGE_KEY = 'yuzu-wireframe-v8'
 const IDS = new Set(WIRE_CATALOG.map((item) => item.id))
 const LINK_IDS = new Set(LINK_CATALOG.map((item) => item.id))
 
@@ -370,6 +372,22 @@ export function popSubpage(state: WireState, id: WireId): WireState {
   } else {
     order.splice(parentIndex + 1, 0, id)
   }
+  return normalizeWire({ ...state, order, subpages })
+}
+
+export function canArchive(state: WireState, id: WireId) {
+  if (isWireChrome(id)) return false
+  if (state.subpages.some((item) => item.id === id)) return true
+  return state.order.includes(id) && !isArchived(state.order, id)
+}
+
+export function archiveWire(state: WireState, id: WireId): WireState {
+  if (!canArchive(state, id)) return state
+  const subpages = state.subpages.filter((item) => item.id !== id)
+  const without = state.order.filter((item) => item !== id)
+  const cut = without.indexOf('footer')
+  const order = [...without]
+  order.splice(cut >= 0 ? cut + 1 : order.length, 0, id)
   return normalizeWire({ ...state, order, subpages })
 }
 

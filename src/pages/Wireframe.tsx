@@ -8,6 +8,8 @@ import {
   type LinkPlacement,
   type WireId,
   type WireState,
+  archiveWire,
+  canArchive,
   canPushSubpage,
   childrenOf,
   linkMetaFor,
@@ -106,15 +108,6 @@ function Sketch({ id }: { id: WireId }) {
           <i className="short" />
         </div>
         <span className="wf-portrait" aria-hidden="true" />
-      </div>
-    )
-  }
-  if (id === 'trust') {
-    return (
-      <div className="wf-sketch wf-trust">
-        <span>★★★★★ 4.5 Google</span>
-        <span>New clients welcome</span>
-        <span>Unhurried consultations</span>
       </div>
     )
   }
@@ -360,10 +353,12 @@ function LinkChip({
 function SectionSatellite({
   id,
   onRestore,
+  onArchive,
   dropOver,
 }: {
   id: WireId
   onRestore: (id: WireId) => void
+  onArchive: (id: WireId) => void
   dropOver: boolean
 }) {
   const item = metaFor(id)
@@ -371,9 +366,14 @@ function SectionSatellite({
     <div className={`wf-sat wf-sat-section${dropOver ? ' over-host' : ''}`} data-wf-host={id}>
       <div className="wf-sat-row">
         <span className="wf-sat-kind sub">Sub-page</span>
-        <button type="button" className="wf-sat-back" aria-label={`Move ${item.title} back to the main page`} onClick={() => onRestore(id)}>
-          ←
-        </button>
+        <div className="wf-sat-tools">
+          <button type="button" className="wf-sat-back" aria-label={`Move ${item.title} back to the main page`} onClick={() => onRestore(id)}>
+            ←
+          </button>
+          <button type="button" className="wf-sat-back" aria-label={`Archive ${item.title}`} onClick={() => onArchive(id)}>
+            ×
+          </button>
+        </div>
       </div>
       <strong>{item.title}</strong>
       <span>{item.hint}</span>
@@ -459,6 +459,7 @@ export default function Wireframe() {
     const reorderOver = over?.kind === 'reorder' && over.id === id
     const hostOver = over?.kind === 'host' && over.id === id
     const showPush = canPushSubpage(state, id)
+    const showArchive = canArchive(state, id)
     return (
       <div className={`wf-row${archived ? ' archived' : ''}`} key={id}>
         <article
@@ -503,6 +504,13 @@ export default function Wireframe() {
               <button type="button" aria-label={`Move ${item.title} down`} onClick={() => setState((s) => nudgeWire(s, id, 1))}>
                 ↓
               </button>
+              {showArchive ? (
+                <button type="button" aria-label={`Archive ${item.title}`} onClick={() => setState((s) => archiveWire(s, id))}>
+                  ×
+                </button>
+              ) : (
+                <span className="wf-nudge-gap" />
+              )}
             </div>
           </header>
           <Sketch id={id} />
@@ -517,6 +525,7 @@ export default function Wireframe() {
                     id={child}
                     dropOver={draggingLink && over?.kind === 'host' && over.id === child}
                     onRestore={(next) => setState((s) => popSubpage(s, next))}
+                    onArchive={(next) => setState((s) => archiveWire(s, next))}
                   />
                   {linksOn(state, child).map((placement) => (
                     <LinkChip
@@ -580,20 +589,19 @@ export default function Wireframe() {
 
       <main className="wf-wrap">
         <p className="wf-lead">
-          Left column is the homepage. → nests a section as a sub-page; ← brings it back. Header,
-          ticker, and footer stay as chrome. Links live in the tray: drag Phorest (or any other
-          chip) onto a block or a nested sub-page to place it. Drag again to put the same link in
-          a second place. × takes it off that block. Drag a page section below the footer to
-          archive it.
+          Left column is the homepage. → nests a section as a sub-page; ← brings it back. × on a
+          section or sub-page sends it to the archive at the bottom. Header, ticker, and footer
+          stay as chrome. Links live in the tray: drag onto a block or nested sub-page; drag again
+          to put the same link in a second place. × on a link chip takes it off that block.
         </p>
         <p className="wf-legend">
           <span className="wf-sat-kind">Off-site</span> leaves the site ·{' '}
           <span className="wf-sat-kind sub">Existing page / sub-page</span> stays on Yuzu · ×
-          removes a link · grey = archived
+          archives a section or removes a link · grey = archived
         </p>
         <p className="wf-note">
-          Book starts on the title bar. Drop it on the hero as well if you want booking in both
-          places. Unused chips stay in the tray — they are not lost.
+          Default sketch matches the current layout: Book on the title, hero, and carousel; no
+          trust strip; price list nested under services. Unused link chips stay in the tray.
         </p>
 
         <section className="wf-tray" aria-label="Links">
