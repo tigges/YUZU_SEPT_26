@@ -1,6 +1,5 @@
 import Auto from './pages/Auto'
 import Clean from './pages/Clean'
-import Wix from './pages/Wix'
 import Convert from './pages/Convert'
 import Earthy from './pages/Earthy'
 import Editorial from './pages/Editorial'
@@ -10,10 +9,12 @@ import Instagram from './pages/Instagram'
 import Links from './pages/Links'
 import Midnight from './pages/Midnight'
 import Quiet from './pages/Quiet'
+import Round from './pages/Round'
 import Sanctuary from './pages/Sanctuary'
 import Simple from './pages/Simple'
 import Studio from './pages/Studio'
 import Wireframe from './pages/Wireframe'
+import Wix from './pages/Wix'
 import { readVersionParam } from './versions'
 
 export default function App() {
@@ -31,6 +32,7 @@ export default function App() {
   if (version === 'convert') return <Convert />
   if (version === 'simple') return <Simple />
   if (version === 'clean') return <Clean />
+  if (version === 'round') return <Round />
   if (version === 'wix') return <Wix />
   if (version === 'auto') return <Auto />
   if (version === 'links') return <Links />

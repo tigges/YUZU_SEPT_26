@@ -119,7 +119,7 @@ function CleanSocial() {
   )
 }
 
-export default function Clean() {
+export default function Clean({ variant = 'clean' }: { variant?: 'clean' | 'round' }) {
   const [menuOpen, setMenuOpen] = useState(false)
 
   const goTo = (href: string) => (event: { preventDefault: () => void }) => {
@@ -132,8 +132,8 @@ export default function Clean() {
   }
 
   return (
-    <div className="clean">
-      <VersionBar current="clean" />
+    <div className={variant === 'round' ? 'clean clean-round' : 'clean'}>
+      <VersionBar current={variant} />
       <header className={`clean-header${menuOpen ? ' open' : ''}`}>
         <div className="clean-inner clean-header-inner">
           <a className="clean-logo" href="#top" onClick={goTo('#top')}>

@@ -18,10 +18,9 @@ export default function Hub() {
           <p className="eyebrow">Dickens Yard · Ealing</p>
           <h1>Pick a direction for the new site.</h1>
           <p>
-            Wireframe first — drag the page order, or use → / ← to move a section into the
-            sub-page column. A news ticker and a take-home shelf sit on the page; drag a block below the footer
-            to archive it. Then a Wix homepage clone, a v1-clean clone, the design looks, and a Links desk. The current
-            site is{' '}
+            Earthy first, then Sanctuary, Clean, Round, and Studio. Wireframe is a layout sketch —
+            drag the page order, or use → / ← to nest a section as a sub-page. Then the Wix
+            homepage clone, the rest of the looks, and a Links desk. The current site is{' '}
             <a href={LIVE_SITE_URL} target="_blank" rel="noreferrer">
               yuzuhairandbeauty.london
             </a>

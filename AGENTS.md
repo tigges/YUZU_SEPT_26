@@ -37,8 +37,8 @@ The user tests the **live GitHub Pages site** after merge to `main`. Do not scre
 
 | Repo | Gallery | Notes |
 | --- | --- | --- |
-| This repo (`YUZU_SEPT_26`) | **Wix**, **v1-clean**, **Earthy**, **Instagram**, **Studio** | Live Wix clone, Cloudways `/v1-clean/` clone, parchment, IG-led, white studio |
-| [YUZU_CLEAN](https://github.com/tigges/YUZU_CLEAN) | **Gold** (`?v=gold`) | Next.js wireframe filled with Dickens Yard facts. **v1-clean** (`?v=clean`) is the WordPress preview clone |
+| This repo (`YUZU_SEPT_26`) | **Earthy**, **Sanctuary**, **Clean**, **Round**, **Studio**, **Wix**, **Instagram** | Parchment, forest/gold, WordPress `/v1-clean/` clone, rounded Clean, white studio, live Wix clone, IG-led |
+| [YUZU_CLEAN](https://github.com/tigges/YUZU_CLEAN) | **Gold** (`?v=gold`) | Next.js wireframe filled with Dickens Yard facts. **Clean** (`?v=clean`) is the WordPress preview clone; **Round** (`?v=round`) is that layout with rounded boxes |
 | [-YUZU_V4_CURSOR](https://github.com/tigges/-YUZU_V4_CURSOR) | **Sanctuary** (`?v=sanctuary`) | Real prototype on `cursor/wordpress-git-integration-3576`, not `main` |
 | [YUZU-HAIR-CLONE](https://github.com/tigges/YUZU-HAIR-CLONE) | **Editorial**, **Midnight**, **Quiet**, **Convert** (`v1`–`v4`) | Extra IG stills in `public/assets/archive-ig/` |
 | [YUZU-V2](https://github.com/tigges/YUZU-V2) | **Simple** (`?v=simple`) | Site was on `cursor/yuzu-website-simplification-8eb7`; `main` is README-only |

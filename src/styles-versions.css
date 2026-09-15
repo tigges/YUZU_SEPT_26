@@ -2198,3 +2198,29 @@ body[data-theme='sanctuary'] {
     text-align: center;
   }
 }
+
+/* Round — Clean with rounded boxes */
+.clean-round .clean-hero,
+.clean-round .clean-hero img {
+  border-radius: 0 0 28px 28px;
+}
+
+.clean-round .clean-gallery img,
+.clean-round .clean-review-grid article,
+.clean-round .clean-review-grid img,
+.clean-round .clean-services,
+.clean-round .clean-services li,
+.clean-round .clean-offers,
+.clean-round .clean-offers img,
+.clean-round .clean-visit-grid,
+.clean-round .clean-review-body a {
+  border-radius: 22px;
+}
+
+.clean-round .clean-review-grid article {
+  overflow: hidden;
+}
+
+.clean-round .clean-review-grid img {
+  border-radius: 22px 22px 0 0;
+}

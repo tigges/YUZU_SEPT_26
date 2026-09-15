@@ -1,5 +1,6 @@
 import {
   BOOKING_URL,
+  JOIN_TEAM_PAGE_URL,
   JOIN_TEAM_URL,
   LIVE_SITE_URL,
   MAPS_DIRECTIONS_URL,
@@ -7,6 +8,7 @@ import {
   PATCH_TEST_PDF_URL,
   PRICE_LIST_URL,
   TERMS_URL,
+  contact,
   social,
 } from './data'
 
@@ -14,20 +16,32 @@ export type WireId =
   | 'header'
   | 'ticker'
   | 'hero'
+  | 'welcome'
+  | 'trust'
   | 'hours'
   | 'patch'
   | 'gallery'
   | 'reviews'
   | 'services'
+  | 'prices'
   | 'shop'
   | 'offers'
   | 'careers'
+  | 'follow'
   | 'contact'
+  | 'form'
+  | 'map'
   | 'social'
   | 'footer'
   | 'stylists'
   | 'vouchers'
   | 'faq'
+
+const CHROME = new Set<WireId>(['header', 'ticker', 'footer'])
+
+export function isWireChrome(id: WireId) {
+  return CHROME.has(id)
+}
 
 export type WireMeta = {
   id: WireId
@@ -57,18 +71,24 @@ export type WireDest = {
 }
 
 export const WIRE_CATALOG: WireMeta[] = [
-  { id: 'header', title: 'Logo + menu', hint: 'Wordmark, page links, Book' },
+  { id: 'header', title: 'Logo + menu', hint: 'Wordmark, page links, Book — stays on every page' },
   { id: 'ticker', title: 'News ticker', hint: 'Slim bar under the header: offer, hours, patch test' },
   { id: 'hero', title: 'Hero + CTA', hint: 'Headline, short story, Book on Phorest' },
+  { id: 'welcome', title: 'Welcome', hint: 'Salon story — Wix, Editorial, Quiet, Gold intro' },
+  { id: 'trust', title: 'Trust strip', hint: 'Google rating and short proofs — Gold, Convert' },
   { id: 'hours', title: 'Opening hours', hint: 'Tue–Fri 10–8 · Sat 9–6 · Sun/Mon closed' },
   { id: 'patch', title: 'Patch-test notice', hint: 'Links out to the colour policy PDF' },
   { id: 'gallery', title: 'Customer gallery', hint: 'Client looks / Instagram results' },
   { id: 'reviews', title: 'Review gallery', hint: 'Google quotes + 4.5 rating' },
-  { id: 'services', title: 'Services', hint: 'Cut, colour, highlights — price list is a sub-page' },
+  { id: 'services', title: 'Services', hint: 'Cut, colour, highlights — prices can sit beside this' },
+  { id: 'prices', title: 'Price list', hint: 'In-page menu (Earthy) or a band that opens the PDF (Wix)' },
   { id: 'shop', title: 'Take it home', hint: 'Retail at the desk after the appointment — no cart' },
   { id: 'offers', title: 'Offers', hint: 'Weekday colour deals on a sub-page' },
   { id: 'careers', title: 'Join the Yuzu team', hint: 'Senior stylists, stylists, models' },
+  { id: 'follow', title: 'Follow us', hint: 'Instagram handle / feed — Wix, Clean, Instagram, Sanctuary' },
   { id: 'contact', title: 'Contact', hint: 'Dickens Yard, phone, email, Book' },
+  { id: 'form', title: 'Enquiry form', hint: 'Name, email, message — Wix contact form' },
+  { id: 'map', title: 'Map', hint: 'Full-width map — Wix, Earthy, Clean visit, Gold, Auto' },
   { id: 'social', title: 'Social bar', hint: 'Current site, Instagram, TikTok, Facebook' },
   { id: 'footer', title: 'Footer', hint: 'T&Cs and copyright — blocks below this are archived' },
   { id: 'stylists', title: 'Meet the stylists', hint: 'Faces and first names, not a recruiting ad' },
@@ -80,14 +100,29 @@ export const WIRE_DESTINATIONS: WireDest[] = [
   { id: 'book-header', from: 'header', kind: 'offsite', title: 'Phorest', detail: 'Book from the menu', href: BOOKING_URL },
   { id: 'ticker-offers', from: 'ticker', kind: 'subpage', title: 'Offers page', detail: 'Ticker can point at the current deal', href: OFFERS_PAGE_URL },
   { id: 'book-hero', from: 'hero', kind: 'offsite', title: 'Phorest', detail: 'Hero Book CTA', href: BOOKING_URL },
+  { id: 'book-welcome', from: 'welcome', kind: 'offsite', title: 'Phorest', detail: 'Book from the story', href: BOOKING_URL },
+  { id: 'ig-welcome', from: 'welcome', kind: 'offsite', title: 'Instagram', detail: 'Daily work', href: social.instagram },
+  { id: 'trust-reviews', from: 'trust', kind: 'offsite', title: 'Google reviews', detail: '4.5 on Maps', href: MAPS_DIRECTIONS_URL },
   { id: 'patch-pdf', from: 'patch', kind: 'subpage', title: 'Patch-test PDF', detail: 'Mandatory colour policy', href: PATCH_TEST_PDF_URL },
   { id: 'ig-gallery', from: 'gallery', kind: 'offsite', title: 'Instagram', detail: 'Portfolio / results', href: social.instagram },
   { id: 'reviews-maps', from: 'reviews', kind: 'offsite', title: 'Google reviews', detail: 'Maps listing', href: MAPS_DIRECTIONS_URL },
-  { id: 'prices', from: 'services', kind: 'subpage', title: 'Price list', detail: 'PDF / services sub-page', href: PRICE_LIST_URL },
+  { id: 'services-prices', from: 'services', kind: 'subpage', title: 'Price list PDF', detail: 'Full 2025 menu', href: PRICE_LIST_URL },
+  { id: 'prices-pdf', from: 'prices', kind: 'subpage', title: 'Price list PDF', detail: 'Download / print', href: PRICE_LIST_URL },
+  { id: 'prices-book', from: 'prices', kind: 'offsite', title: 'Phorest', detail: 'Book from the menu', href: BOOKING_URL },
   { id: 'offers-page', from: 'offers', kind: 'subpage', title: 'Offers page', detail: 'Live Wix offers (not a PDF)', href: OFFERS_PAGE_URL },
+  { id: 'careers-page', from: 'careers', kind: 'subpage', title: 'Join webpage', detail: 'Roles on the current site', href: JOIN_TEAM_PAGE_URL },
   { id: 'careers-mail', from: 'careers', kind: 'offsite', title: 'Email CV', detail: 'Join the team', href: JOIN_TEAM_URL },
-  { id: 'maps', from: 'contact', kind: 'offsite', title: 'Google Maps', detail: 'Listing, reviews, directions', href: MAPS_DIRECTIONS_URL },
+  { id: 'follow-ig', from: 'follow', kind: 'offsite', title: 'Instagram', detail: '@yuzuhairandbeauty', href: social.instagram },
+  { id: 'follow-tiktok', from: 'follow', kind: 'offsite', title: 'TikTok', detail: '@yuzuhairandbeauty.est16', href: social.tiktok },
+  { id: 'follow-fb', from: 'follow', kind: 'offsite', title: 'Facebook', detail: 'YUZU Hair and Beauty', href: social.facebook },
+  { id: 'maps-contact', from: 'contact', kind: 'offsite', title: 'Google Maps', detail: 'Listing, reviews, directions', href: MAPS_DIRECTIONS_URL },
   { id: 'book-contact', from: 'contact', kind: 'offsite', title: 'Phorest', detail: 'Book from contact', href: BOOKING_URL },
+  { id: 'contact-email', from: 'contact', kind: 'offsite', title: 'Email', detail: contact.email, href: social.email },
+  { id: 'contact-phone', from: 'contact', kind: 'offsite', title: 'Call', detail: contact.phone, href: contact.phoneHref },
+  { id: 'form-email', from: 'form', kind: 'offsite', title: 'Email', detail: 'Form can mail the salon', href: social.email },
+  { id: 'form-phone', from: 'form', kind: 'offsite', title: 'Call', detail: contact.phone, href: contact.phoneHref },
+  { id: 'form-book', from: 'form', kind: 'offsite', title: 'Phorest', detail: 'Book instead of writing', href: BOOKING_URL },
+  { id: 'map-directions', from: 'map', kind: 'offsite', title: 'Google Maps', detail: 'Directions to Dickens Yard', href: MAPS_DIRECTIONS_URL },
   { id: 'site', from: 'social', kind: 'offsite', title: 'Current site', detail: 'yuzuhairandbeauty.london', href: LIVE_SITE_URL },
   { id: 'ig', from: 'social', kind: 'offsite', title: 'Instagram', detail: '@yuzuhairandbeauty', href: social.instagram },
   { id: 'tiktok', from: 'social', kind: 'offsite', title: 'TikTok', detail: '@yuzuhairandbeauty.est16', href: social.tiktok },
@@ -102,27 +137,34 @@ const LIVE_ORDER: WireId[] = [
   'header',
   'ticker',
   'hero',
+  'welcome',
+  'trust',
   'hours',
   'patch',
   'gallery',
   'reviews',
   'services',
+  'prices',
   'shop',
   'offers',
   'careers',
+  'follow',
   'contact',
+  'form',
+  'map',
   'social',
   'footer',
 ]
 
 const ARCHIVE_ORDER: WireId[] = ['stylists', 'vouchers', 'faq']
+const DEFAULT_ORDER: WireId[] = [...LIVE_ORDER, ...ARCHIVE_ORDER]
 
 export const DEFAULT_WIRE: WireState = {
-  order: [...LIVE_ORDER, ...ARCHIVE_ORDER],
+  order: [...DEFAULT_ORDER],
   subpages: [],
 }
 
-const STORAGE_KEY = 'yuzu-wireframe-v4'
+const STORAGE_KEY = 'yuzu-wireframe-v5'
 const IDS = new Set(WIRE_CATALOG.map((item) => item.id))
 
 export function metaFor(id: WireId) {
@@ -148,7 +190,7 @@ export function childrenOf(state: WireState, parent: WireId) {
 }
 
 export function canPushSubpage(state: WireState, id: WireId) {
-  if (id === 'header' || id === 'footer') return false
+  if (isWireChrome(id)) return false
   if (state.subpages.some((item) => item.id === id)) return false
   return parentForPush(state, id) !== null
 }
@@ -156,10 +198,41 @@ export function canPushSubpage(state: WireState, id: WireId) {
 function parentForPush(state: WireState, id: WireId): WireId | null {
   const { live } = splitWire(state.order)
   const index = live.indexOf(id)
-  if (index > 0) return live[index - 1]
-  const main = live.filter((item) => item !== id && item !== 'footer')
-  if (index === 0) return main.includes('header') ? 'header' : main[0] ?? null
-  return main[main.length - 1] ?? (live.includes('header') ? 'header' : null)
+  if (index > 0) {
+    for (let i = index - 1; i >= 0; i--) {
+      const parent = live[i]
+      if (parent !== 'ticker') return parent
+    }
+  }
+  const main = live.filter((item) => item !== id && item !== 'footer' && item !== 'ticker')
+  return main[main.length - 1] ?? (live.includes('header') ? 'header' : main[0] ?? null)
+}
+
+function insertMissing(order: WireId[], skip: Set<WireId>) {
+  const next = [...order]
+  const present = new Set(next)
+  for (const id of DEFAULT_ORDER) {
+    if (present.has(id) || skip.has(id)) continue
+    const defaultIndex = DEFAULT_ORDER.indexOf(id)
+    let placed = false
+    for (let i = defaultIndex - 1; i >= 0; i--) {
+      const at = next.indexOf(DEFAULT_ORDER[i])
+      if (at >= 0) {
+        next.splice(at + 1, 0, id)
+        placed = true
+        break
+      }
+    }
+    if (!placed) next.unshift(id)
+    present.add(id)
+  }
+  for (const id of IDS) {
+    if (!present.has(id) && !skip.has(id)) {
+      next.push(id)
+      present.add(id)
+    }
+  }
+  return next
 }
 
 export function normalizeWire(input: WireState): WireState {
@@ -167,16 +240,16 @@ export function normalizeWire(input: WireState): WireState {
   const subpages: WireSubpage[] = []
   for (const item of input.subpages ?? []) {
     if (!IDS.has(item.id) || !IDS.has(item.parent)) continue
-    if (item.id === item.parent || item.id === 'header' || item.id === 'footer') continue
+    if (item.id === item.parent || isWireChrome(item.id)) continue
     if (seen.has(item.id)) continue
     seen.add(item.id)
     subpages.push({ id: item.id, parent: item.parent })
   }
 
-  const order = (input.order ?? []).filter((id) => IDS.has(id) && !seen.has(id))
-  for (const id of IDS) {
-    if (!order.includes(id) && !seen.has(id)) order.push(id)
-  }
+  const order = insertMissing(
+    (input.order ?? []).filter((id) => IDS.has(id) && !seen.has(id)),
+    seen,
+  )
   if (!order.includes('header')) order.unshift('header')
   if (!order.includes('footer')) {
     const cut = splitWire(order).live.length
@@ -185,7 +258,7 @@ export function normalizeWire(input: WireState): WireState {
 
   const inOrder = new Set(order)
   for (const item of subpages) {
-    if (!inOrder.has(item.parent) || seen.has(item.parent)) {
+    if (!inOrder.has(item.parent) || seen.has(item.parent) || item.parent === 'ticker') {
       item.parent = parentForPush({ order, subpages: [] }, item.id) ?? 'header'
     }
   }
@@ -195,7 +268,10 @@ export function normalizeWire(input: WireState): WireState {
 
 export function loadWire(): WireState {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY) ?? localStorage.getItem('yuzu-wireframe-v3')
+    const raw =
+      localStorage.getItem(STORAGE_KEY) ??
+      localStorage.getItem('yuzu-wireframe-v4') ??
+      localStorage.getItem('yuzu-wireframe-v3')
     if (!raw) return DEFAULT_WIRE
     return normalizeWire(JSON.parse(raw) as WireState)
   } catch {
