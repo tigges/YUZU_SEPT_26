@@ -47,7 +47,7 @@ export const versions = [
     name: 'Wireframe',
     kicker: 'Layout sketch',
     summary:
-      'Page order you can drag. Hero carousel and WhatsApp sit on the page; price list nests under services. → / ← nest a section as a sub-page. Archive is below the footer.',
+      'Page order you can drag. Links live in a tray: drop Phorest on the title bar and the hero if you want booking in both places. × removes a link from a block.',
     preview: asset('assets/brand/leaves.jpg'),
     previewAlt: 'Wireframe layout blocks',
     sketch: true,
