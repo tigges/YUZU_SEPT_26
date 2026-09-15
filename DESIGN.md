@@ -40,7 +40,7 @@ Pulled from the live profile (not the login wall):
 - Profile mark: serif YUZU / HAIR on pale sage
 - Recent grid: blossom and pink weekday-offer graphics; personality reels (BTS, team, neighbours, 10-year party, tagged “Asian beauty spots in London”); in-salon carousels of blonde layers and copper balayage
 
-Version 2 (`?v=instagram`) uses those downloaded posts, the wordmark, and the sage/blossom language. Version 3 (`?v=studio`) is the opposite: white, coral Book, editorial client looks.
+Version 3 (`?v=instagram`) uses those downloaded posts, the wordmark, and the sage/blossom language. Version 4 (`?v=studio`) is the opposite: white, coral Book, editorial client looks.
 
 ## Other repos (mapped on the gallery)
 
@@ -51,7 +51,7 @@ Version 2 (`?v=instagram`) uses those downloaded posts, the wordmark, and the sa
 - **[YUZU_AUTO](https://github.com/tigges/YUZU_AUTO)** — warm Manrope/Playfair landing. **Auto** (`?v=auto`), with Dickens Yard facts instead of Covent Garden / Unsplash.
 - **[YUZU_V3](https://github.com/tigges/YUZU_V3)** and **[YUZU_CUSROR_V7](https://github.com/tigges/YUZU_CUSROR_V7)** — README-only. Not in the grid.
 
-The homepage is a version gallery. Earthy is `?v=earthy`. **Links** (`?v=links`) is a desk of live URLs and PDFs (price list + patch testing). T&Cs and offers are Wix pages — there is no offers PDF. **Wireframe** (`?v=wireframe`) is a draggable page-order sketch.
+The homepage is a version gallery. **Wireframe** (`?v=wireframe`) is Version 1: a draggable page-order sketch, with off-site links (Phorest, Maps, socials) and sub-pages (price list, patch-test PDF, T&Cs, offers) in a second column, joined by dotted lines. Earthy is `?v=earthy`. **Links** (`?v=links`) is a desk of live URLs and PDFs (price list + patch testing). T&Cs and offers are Wix pages — there is no offers PDF.
 
 ## Canonical URLs
 
