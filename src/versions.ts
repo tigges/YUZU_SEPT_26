@@ -52,9 +52,18 @@ export const versions = [
     previewAlt: 'Copper balayage photographed in the salon',
   },
   {
+    id: 'clean',
+    name: 'Clean',
+    kicker: 'Version 7',
+    summary:
+      'v1-clean rebuilt with the YUZU wordmark, line-art portrait, client looks, and weekday offer graphics.',
+    preview: asset('assets/clean/look-red.jpg'),
+    previewAlt: 'Vivid red bob with a blunt fringe',
+  },
+  {
     id: 'gold',
     name: 'Gold',
-    kicker: 'Version 7',
+    kicker: 'Version 8',
     summary: 'From YUZU_CLEAN: charcoal, cream, and yuzu gold. Fraunces headlines, calm wireframe filled with real Ealing content.',
     preview: asset('assets/gallery/2.jpg'),
     previewAlt: 'Long sleek dark hair, freshly styled in salon',
@@ -62,7 +71,7 @@ export const versions = [
   {
     id: 'sanctuary',
     name: 'Sanctuary',
-    kicker: 'Version 8',
+    kicker: 'Version 9',
     summary: 'From YUZU_V4_CURSOR: forest green, sharp gold, photo hero, hours strip, and Instagram results in five cards.',
     preview: asset('assets/v4/hero.jpg'),
     previewAlt: 'Brunette waves, photographed in salon',
@@ -70,7 +79,7 @@ export const versions = [
   {
     id: 'editorial',
     name: 'Editorial',
-    kicker: 'Version 9',
+    kicker: 'Version 10',
     summary: 'From YUZU-HAIR-CLONE v1: cream, gold, Playfair, split hero, patch-test notice, and a sticky Book button.',
     preview: asset('assets/gallery/1.jpg'),
     previewAlt: 'Copper and rose colour with textured fringe',
@@ -78,7 +87,7 @@ export const versions = [
   {
     id: 'midnight',
     name: 'Midnight',
-    kicker: 'Version 10',
+    kicker: 'Version 11',
     summary: 'From HAIR-CLONE v2 Midnight Edition: charcoal, champagne gold, and a high-contrast booking hero.',
     preview: asset('assets/gallery/2.jpg'),
     previewAlt: 'Long sleek dark hair, freshly styled in salon',
@@ -86,7 +95,7 @@ export const versions = [
   {
     id: 'quiet',
     name: 'Quiet',
-    kicker: 'Version 11',
+    kicker: 'Version 12',
     summary: 'From HAIR-CLONE v3: cream and sage, photo-and-copy split, and a calm one-page layout.',
     preview: asset('assets/gallery/3.jpg'),
     previewAlt: 'Deep teal bob with a soft, healthy finish',
@@ -94,7 +103,7 @@ export const versions = [
   {
     id: 'auto',
     name: 'Auto',
-    kicker: 'Version 12',
+    kicker: 'Version 13',
     summary: 'From YUZU_AUTO: warm landing, hours card, and Manrope + Playfair — filled with Dickens Yard facts, not dummy copy.',
     preview: asset('assets/gallery/5.jpg'),
     previewAlt: 'Vivid red bob with a blunt fringe',
@@ -102,7 +111,7 @@ export const versions = [
   {
     id: 'links',
     name: 'Links',
-    kicker: 'Version 13',
+    kicker: 'Version 14',
     summary:
       'Current site (yuzuhairandbeauty.london), Phorest, Google Maps, Instagram, TikTok, Facebook, 2025 price list, patch-test PDF, and T&Cs. Offers are a webpage, not a PDF.',
     preview: asset('assets/instagram/00.jpg'),

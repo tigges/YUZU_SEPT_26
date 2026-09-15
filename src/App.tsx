@@ -1,4 +1,5 @@
 import Auto from './pages/Auto'
+import Clean from './pages/Clean'
 import Convert from './pages/Convert'
 import Earthy from './pages/Earthy'
 import Editorial from './pages/Editorial'
@@ -28,6 +29,7 @@ export default function App() {
   if (version === 'quiet') return <Quiet />
   if (version === 'convert') return <Convert />
   if (version === 'simple') return <Simple />
+  if (version === 'clean') return <Clean />
   if (version === 'auto') return <Auto />
   if (version === 'links') return <Links />
   if (version === 'wireframe') return <Wireframe />

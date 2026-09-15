@@ -44,7 +44,7 @@ Version 4 (`?v=instagram`) uses those downloaded posts, the wordmark, and the sa
 
 ## Other repos (mapped on the gallery)
 
-- **[YUZU_CLEAN](https://github.com/tigges/YUZU_CLEAN)** — Next.js wireframe. **Gold** (`?v=gold`).
+- **[YUZU_CLEAN](https://github.com/tigges/YUZU_CLEAN)** — Next.js wireframe. **Gold** (`?v=gold`). **Clean** (`?v=clean`) is a v1-clean rebuild with the real wordmark, client looks, and weekday offer graphics.
 - **[-YUZU_V4_CURSOR](https://github.com/tigges/-YUZU_V4_CURSOR)** — prototype on `cursor/wordpress-git-integration-3576`. **Sanctuary** (`?v=sanctuary`).
 - **[YUZU-HAIR-CLONE](https://github.com/tigges/YUZU-HAIR-CLONE)** — `v1` **Editorial**, `v2` **Midnight**, `v3` **Quiet**, `v4` **Convert**. Extra Instagram stills in `public/assets/archive-ig/`.
 - **[YUZU-V2](https://github.com/tigges/YUZU-V2)** — forest/gold simplification on `cursor/yuzu-website-simplification-8eb7`. **Simple** (`?v=simple`).
