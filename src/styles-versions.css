@@ -1527,7 +1527,6 @@ body[data-theme='sanctuary'] {
 }
 
 @media (max-width: 900px) {
-  .hub-grid,
   .ig-profile,
   .ig-work-grid,
   .ig-visit-grid,
@@ -1545,6 +1544,10 @@ body[data-theme='sanctuary'] {
   .sanct-social-inner,
   .sanct-join-inner {
     grid-template-columns: 1fr;
+  }
+
+  .hub-grid {
+    grid-template-columns: 1fr 1fr;
   }
 
   .gold-social ul {

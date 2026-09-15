@@ -4,12 +4,20 @@ A version gallery for Yuzu Hair at Dickens Yard, Ealing.
 
 Live: https://tigges.github.io/YUZU_SEPT_26/
 
-- Home: version gallery
+- Home: version gallery (eleven looks)
 - `?v=earthy` parchment / olive site
 - `?v=instagram` built from [@yuzuhairandbeauty](https://www.instagram.com/yuzuhairandbeauty/)
 - `?v=studio` white, photography-led
 - `?v=gold` charcoal / cream / yuzu gold from [YUZU_CLEAN](https://github.com/tigges/YUZU_CLEAN)
 - `?v=sanctuary` forest / gold “Sanctuary” prototype from [YUZU_V4_CURSOR](https://github.com/tigges/-YUZU_V4_CURSOR)
+- `?v=editorial` cream / gold split hero from [YUZU-HAIR-CLONE](https://github.com/tigges/YUZU-HAIR-CLONE) v1
+- `?v=midnight` dark champagne “Midnight Edition” from HAIR-CLONE v2
+- `?v=quiet` cream / sage from HAIR-CLONE v3
+- `?v=convert` forest-green booking landing from HAIR-CLONE v4
+- `?v=simple` forest / gold from [YUZU-V2](https://github.com/tigges/YUZU-V2)
+- `?v=auto` warm landing from [YUZU_AUTO](https://github.com/tigges/YUZU_AUTO), with real Dickens Yard content
+
+[YUZU_V3](https://github.com/tigges/YUZU_V3) and [YUZU_CUSROR_V7](https://github.com/tigges/YUZU_CUSROR_V7) are README-only and are not in the gallery.
 
 ## Run locally
 

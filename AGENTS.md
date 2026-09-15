@@ -21,8 +21,15 @@ The user tests the **live GitHub Pages site** after merge to `main`. Do not scre
 
 ## Other Yuzu repos already checked
 
-- **[YUZU_CUSROR_V7](https://github.com/tigges/YUZU_CUSROR_V7)** (also described as V6): empty. `main` is a README; the only other branch is an `AGENTS.md` saying there is no app. GitHub Pages 404s. Do not add a gallery version from this repo until it contains a design.
-- **[YUZU_CLEAN](https://github.com/tigges/YUZU_CLEAN)** → gallery **Gold** (`?v=gold`)
-- **[-YUZU_V4_CURSOR](https://github.com/tigges/-YUZU_V4_CURSOR)** → gallery **Sanctuary** (`?v=sanctuary`); assets were on `cursor/wordpress-git-integration-3576`, not `main`
+| Repo | Gallery | Notes |
+| --- | --- | --- |
+| This repo (`YUZU_SEPT_26`) | **Earthy**, **Instagram**, **Studio** | Original parchment site, IG-led, white studio |
+| [YUZU_CLEAN](https://github.com/tigges/YUZU_CLEAN) | **Gold** (`?v=gold`) | Next.js wireframe filled with Dickens Yard facts |
+| [-YUZU_V4_CURSOR](https://github.com/tigges/-YUZU_V4_CURSOR) | **Sanctuary** (`?v=sanctuary`) | Real prototype on `cursor/wordpress-git-integration-3576`, not `main` |
+| [YUZU-HAIR-CLONE](https://github.com/tigges/YUZU-HAIR-CLONE) | **Editorial**, **Midnight**, **Quiet**, **Convert** (`v1`–`v4`) | Extra IG stills in `public/assets/archive-ig/` |
+| [YUZU-V2](https://github.com/tigges/YUZU-V2) | **Simple** (`?v=simple`) | Site was on `cursor/yuzu-website-simplification-8eb7`; `main` is README-only |
+| [YUZU_AUTO](https://github.com/tigges/YUZU_AUTO) | **Auto** (`?v=auto`) | Keep the warm landing look; replace Covent Garden / Unsplash / dummy hours with Dickens Yard |
+| [YUZU_V3](https://github.com/tigges/YUZU_V3) | — | README-only (`main`). No design or assets to port |
+| [YUZU_CUSROR_V7](https://github.com/tigges/YUZU_CUSROR_V7) | — | README-only (renamed from V6). Pages 404s. Do not add a version until it contains a design |
 
-Related repos with actual HTML (not yet ported): [YUZU-HAIR-CLONE](https://github.com/tigges/YUZU-HAIR-CLONE) (`v1`–`v4`, including a dark “Midnight Edition”), [YUZU-V2](https://github.com/tigges/YUZU-V2) (`cursor/yuzu-website-simplification-8eb7`), [YUZU_AUTO](https://github.com/tigges/YUZU_AUTO). [YUZU_V3](https://github.com/tigges/YUZU_V3) is README-only.
+Every ported page uses Dickens Yard (5 Dickens Yard, W5 2TD), the canonical URLs above, and real hours (Tue–Fri 10–8, Sat 9–6, Sun/Mon closed). Do not keep HAIR-CLONE’s old “22 The Green” address or YUZU_AUTO’s Covent Garden placeholders.

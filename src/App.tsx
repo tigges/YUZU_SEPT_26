@@ -1,9 +1,15 @@
+import Auto from './pages/Auto'
+import Convert from './pages/Convert'
 import Earthy from './pages/Earthy'
+import Editorial from './pages/Editorial'
+import Gold from './pages/Gold'
 import Hub from './pages/Hub'
 import Instagram from './pages/Instagram'
-import Studio from './pages/Studio'
-import Gold from './pages/Gold'
+import Midnight from './pages/Midnight'
+import Quiet from './pages/Quiet'
 import Sanctuary from './pages/Sanctuary'
+import Simple from './pages/Simple'
+import Studio from './pages/Studio'
 import { readVersionParam } from './versions'
 
 export default function App() {
@@ -15,5 +21,11 @@ export default function App() {
   if (version === 'studio') return <Studio />
   if (version === 'gold') return <Gold />
   if (version === 'sanctuary') return <Sanctuary />
+  if (version === 'editorial') return <Editorial />
+  if (version === 'midnight') return <Midnight />
+  if (version === 'quiet') return <Quiet />
+  if (version === 'convert') return <Convert />
+  if (version === 'simple') return <Simple />
+  if (version === 'auto') return <Auto />
   return <Hub />
 }

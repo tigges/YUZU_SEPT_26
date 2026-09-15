@@ -42,11 +42,14 @@ Pulled from the live profile (not the login wall):
 
 Version 2 (`?v=instagram`) uses those downloaded posts, the wordmark, and the sage/blossom language. Version 3 (`?v=studio`) is the opposite: white, coral Book, editorial client looks.
 
-## Other repos
+## Other repos (mapped on the gallery)
 
-- **[YUZU_CLEAN](https://github.com/tigges/YUZU_CLEAN)** — Next.js wireframe, no photos, dummy address. Ported as **Gold** (`?v=gold`) with Dickens Yard facts and our gallery.
-- **[-YUZU_V4_CURSOR](https://github.com/tigges/-YUZU_V4_CURSOR)** — `main` is empty; the real prototype is on `cursor/wordpress-git-integration-3576`. Ported as **Sanctuary** (`?v=sanctuary`) with its hero, salon photos, and hours strip.
-- **[YUZU_CUSROR_V7](https://github.com/tigges/YUZU_CUSROR_V7)** — empty scaffold (README only). No design or assets to port.
+- **[YUZU_CLEAN](https://github.com/tigges/YUZU_CLEAN)** — Next.js wireframe. **Gold** (`?v=gold`).
+- **[-YUZU_V4_CURSOR](https://github.com/tigges/-YUZU_V4_CURSOR)** — prototype on `cursor/wordpress-git-integration-3576`. **Sanctuary** (`?v=sanctuary`).
+- **[YUZU-HAIR-CLONE](https://github.com/tigges/YUZU-HAIR-CLONE)** — `v1` **Editorial**, `v2` **Midnight**, `v3` **Quiet**, `v4` **Convert**. Extra Instagram stills in `public/assets/archive-ig/`.
+- **[YUZU-V2](https://github.com/tigges/YUZU-V2)** — forest/gold simplification on `cursor/yuzu-website-simplification-8eb7`. **Simple** (`?v=simple`).
+- **[YUZU_AUTO](https://github.com/tigges/YUZU_AUTO)** — warm Manrope/Playfair landing. **Auto** (`?v=auto`), with Dickens Yard facts instead of Covent Garden / Unsplash.
+- **[YUZU_V3](https://github.com/tigges/YUZU_V3)** and **[YUZU_CUSROR_V7](https://github.com/tigges/YUZU_CUSROR_V7)** — README-only. Not in the grid.
 
 The homepage is a version gallery. Earthy is `?v=earthy`.
 

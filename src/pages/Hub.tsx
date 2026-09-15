@@ -16,8 +16,9 @@ export default function Hub() {
           <p className="eyebrow">Dickens Yard · Ealing</p>
           <h1>Pick a direction for the new site.</h1>
           <p>
-            Five complete versions of Yuzu Hair &amp; Beauty. The live salon still books through
-            Phorest; this gallery is for choosing a look.
+            Eleven complete versions of Yuzu Hair &amp; Beauty, pulled from every Yuzu repo that
+            actually contained a design. The live salon still books through Phorest; this gallery
+            is for choosing a look.
           </p>
         </div>
 
@@ -47,6 +48,17 @@ export default function Hub() {
             grid mixes blossom-toned weekday offers, in-salon colour (blonde layers, copper
             balayage), and personality reels — behind the scenes, neighbours at Dickens Yard, and
             a 10-year community party. Version 2 is built from that feed, not guessed.
+          </p>
+          <p>
+            Empty scaffolds —{' '}
+            <a href="https://github.com/tigges/YUZU_V3" target="_blank" rel="noreferrer">
+              YUZU_V3
+            </a>{' '}
+            and{' '}
+            <a href="https://github.com/tigges/YUZU_CUSROR_V7" target="_blank" rel="noreferrer">
+              YUZU_CUSROR_V7
+            </a>{' '}
+            — are README-only, so they are not in the grid.
           </p>
           <a className="btn btn-ink" href={BOOKING_URL} target="_blank" rel="noreferrer">
             Book on the live site
