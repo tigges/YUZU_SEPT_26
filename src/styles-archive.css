@@ -2204,6 +2204,70 @@ body[data-theme='wireframe'] {
   box-shadow: 0 0 0 6px rgba(42, 41, 38, 0.12);
 }
 
+.wf-carousel {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+  min-height: 120px;
+}
+
+.wf-carousel-slides {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.wf-carousel-slides span {
+  display: grid;
+  gap: 4px;
+  align-content: start;
+  min-height: 72px;
+  padding: 8px;
+  border: 1px solid #d4cec3;
+  background: #fff;
+  font-size: 0.78rem;
+}
+
+.wf-carousel-slides span.on {
+  border-color: #2a2926;
+  background: #f6f4ee;
+}
+
+.wf-carousel-slides small {
+  color: #6f6a60;
+  font-size: 0.7rem;
+}
+
+.wf-carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.wf-carousel-dots i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #d4cec3;
+}
+
+.wf-carousel-dots i.on {
+  background: #2a2926;
+}
+
+.wf-chat {
+  justify-content: space-between;
+  min-height: 64px;
+}
+
+.wf-chat-bubble {
+  margin-left: auto;
+  background: #2a2926;
+  color: #f6f4ee;
+  padding: 0.45rem 0.85rem;
+  font-size: 0.78rem;
+}
+
 @media (max-width: 800px) {
   .wf-top-inner {
     flex-direction: column;
@@ -2242,6 +2306,10 @@ body[data-theme='wireframe'] {
 
   .wf-form {
     grid-template-columns: 1fr;
+  }
+
+  .wf-carousel-slides {
+    grid-template-columns: 1fr 1fr;
   }
 }
 

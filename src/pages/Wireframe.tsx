@@ -59,6 +59,36 @@ function Sketch({ id }: { id: WireId }) {
       </div>
     )
   }
+  if (id === 'carousel') {
+    return (
+      <div className="wf-sketch wf-carousel">
+        <div className="wf-carousel-slides">
+          <span className="on">
+            Hero + Book
+            <small>Pic and CTA</small>
+          </span>
+          <span>
+            Offers
+            <small>Colour Tuesdays</small>
+          </span>
+          <span>
+            Patch test
+            <small>Before colour</small>
+          </span>
+          <span>
+            New customer cut
+            <small>First visit</small>
+          </span>
+        </div>
+        <div className="wf-carousel-dots" aria-hidden="true">
+          <i className="on" />
+          <i />
+          <i />
+          <i />
+        </div>
+      </div>
+    )
+  }
   if (id === 'welcome') {
     return (
       <div className="wf-sketch wf-welcome">
@@ -198,6 +228,14 @@ function Sketch({ id }: { id: WireId }) {
       <div className="wf-sketch wf-map">
         <span className="wf-pin" aria-hidden="true" />
         <span>5 Dickens Yard, W5 2TD</span>
+      </div>
+    )
+  }
+  if (id === 'chat') {
+    return (
+      <div className="wf-sketch wf-chat">
+        <span>Questions? Message the salon</span>
+        <span className="wf-chat-bubble">WhatsApp</span>
       </div>
     )
   }
@@ -463,10 +501,10 @@ export default function Wireframe() {
           = archived
         </p>
         <p className="wf-note">
-          Welcome, trust, prices, follow, form, and map are new blocks taken from the other
-          versions. Nest or archive anything you do not want on the homepage. A short page might
-          keep ticker, hero, gallery, services, and visit — with hours, prices, offers, and the
-          form as sub-pages.
+          Default homepage keeps a static hero plus a carousel (hero + Book, offers, patch test,
+          new-customer cut), then trust, hours, work, services (price list nested), offers, visit,
+          map, and a WhatsApp widget. Welcome, follow, enquiry form, and the social bar start in
+          the archive. Hit Reset layout if an older sketch is still in this browser.
         </p>
 
         <div className="wf-board">

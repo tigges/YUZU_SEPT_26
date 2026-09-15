@@ -5,8 +5,8 @@ import {
   MAPS_DIRECTIONS_URL,
   OFFERS_PAGE_URL,
   PATCH_TEST_PDF_URL,
-  PRICE_LIST_URL,
   TERMS_URL,
+  WHATSAPP_URL,
   contact,
   social,
 } from './data'
@@ -15,6 +15,7 @@ export type WireId =
   | 'header'
   | 'ticker'
   | 'hero'
+  | 'carousel'
   | 'welcome'
   | 'trust'
   | 'hours'
@@ -30,6 +31,7 @@ export type WireId =
   | 'contact'
   | 'form'
   | 'map'
+  | 'chat'
   | 'social'
   | 'footer'
   | 'stylists'
@@ -73,13 +75,14 @@ export const WIRE_CATALOG: WireMeta[] = [
   { id: 'header', title: 'Logo + menu', hint: 'Wordmark, page links, Book — stays on every page' },
   { id: 'ticker', title: 'News ticker', hint: 'Slim bar under the header: offer, hours, patch test' },
   { id: 'hero', title: 'Hero + CTA', hint: 'Headline, short story, Book on Phorest' },
+  { id: 'carousel', title: 'Hero carousel', hint: 'Rotates hero + Book, offers, patch test, and a new-customer cut' },
   { id: 'welcome', title: 'Welcome', hint: 'Salon story — Wix, Editorial, Quiet, Gold intro' },
   { id: 'trust', title: 'Trust strip', hint: 'Google rating and short proofs — Gold, Convert' },
   { id: 'hours', title: 'Opening hours', hint: 'Tue–Fri 10–8 · Sat 9–6 · Sun/Mon closed' },
   { id: 'patch', title: 'Patch-test notice', hint: 'Links out to the colour policy PDF' },
   { id: 'gallery', title: 'Customer gallery', hint: 'Client looks / Instagram results' },
   { id: 'reviews', title: 'Review gallery', hint: 'Google quotes + 4.5 rating' },
-  { id: 'services', title: 'Services', hint: 'Cut, colour, highlights — prices can sit beside this' },
+  { id: 'services', title: 'Services', hint: 'Cut, colour, highlights — price list nests under this' },
   { id: 'prices', title: 'Price list', hint: 'In-page menu (Earthy) or a band that opens the PDF (Wix)' },
   { id: 'shop', title: 'Take it home', hint: 'Retail at the desk after the appointment — no cart' },
   { id: 'offers', title: 'Offers', hint: 'Weekday colour deals on a sub-page' },
@@ -88,6 +91,7 @@ export const WIRE_CATALOG: WireMeta[] = [
   { id: 'contact', title: 'Contact', hint: 'Dickens Yard, phone, email' },
   { id: 'form', title: 'Enquiry form', hint: 'Name, email, message — Wix contact form' },
   { id: 'map', title: 'Map', hint: 'Full-width map — Wix, Earthy, Clean visit, Gold, Auto' },
+  { id: 'chat', title: 'WhatsApp / chat', hint: 'Floating widget — tap to message the salon' },
   { id: 'social', title: 'Social bar', hint: 'Instagram, TikTok, Facebook' },
   { id: 'footer', title: 'Footer', hint: 'T&Cs and copyright — blocks below this are archived' },
   { id: 'stylists', title: 'Meet the stylists', hint: 'Faces and first names, not a recruiting ad' },
@@ -99,13 +103,15 @@ export const WIRE_DESTINATIONS: WireDest[] = [
   { id: 'book-header', from: 'header', kind: 'offsite', title: 'Phorest', detail: 'Book from the menu', href: BOOKING_URL },
   { id: 'ticker-offers', from: 'ticker', kind: 'subpage', title: 'Offers page', detail: 'Ticker can point at the current deal', href: OFFERS_PAGE_URL },
   { id: 'book-hero', from: 'hero', kind: 'offsite', title: 'Phorest', detail: 'Hero Book CTA', href: BOOKING_URL },
+  { id: 'carousel-book', from: 'carousel', kind: 'offsite', title: 'Phorest', detail: 'Hero slide and new-customer cut', href: BOOKING_URL },
+  { id: 'carousel-offers', from: 'carousel', kind: 'subpage', title: 'Offers page', detail: 'Offers slide', href: OFFERS_PAGE_URL },
+  { id: 'carousel-patch', from: 'carousel', kind: 'subpage', title: 'Patch-test PDF', detail: 'Patch-test slide', href: PATCH_TEST_PDF_URL },
   { id: 'book-welcome', from: 'welcome', kind: 'offsite', title: 'Phorest', detail: 'Book from the story', href: BOOKING_URL },
   { id: 'ig-welcome', from: 'welcome', kind: 'offsite', title: 'Instagram', detail: 'Daily work', href: social.instagram },
   { id: 'trust-reviews', from: 'trust', kind: 'offsite', title: 'Google reviews', detail: '4.5 on Maps', href: MAPS_DIRECTIONS_URL },
   { id: 'patch-pdf', from: 'patch', kind: 'subpage', title: 'Patch-test PDF', detail: 'Mandatory colour policy', href: PATCH_TEST_PDF_URL },
   { id: 'ig-gallery', from: 'gallery', kind: 'offsite', title: 'Instagram', detail: 'Portfolio / results', href: social.instagram },
   { id: 'reviews-maps', from: 'reviews', kind: 'offsite', title: 'Google reviews', detail: 'Maps listing', href: MAPS_DIRECTIONS_URL },
-  { id: 'services-prices', from: 'services', kind: 'subpage', title: 'Price list PDF', detail: 'Full 2025 menu', href: PRICE_LIST_URL },
   { id: 'offers-page', from: 'offers', kind: 'subpage', title: 'Offers page', detail: 'Live Wix offers (not a PDF)', href: OFFERS_PAGE_URL },
   { id: 'careers-page', from: 'careers', kind: 'subpage', title: 'Join webpage', detail: 'Roles on the current site', href: JOIN_TEAM_PAGE_URL },
   { id: 'careers-mail', from: 'careers', kind: 'offsite', title: 'Email CV', detail: 'Join the team', href: JOIN_TEAM_URL },
@@ -118,6 +124,8 @@ export const WIRE_DESTINATIONS: WireDest[] = [
   { id: 'form-email', from: 'form', kind: 'offsite', title: 'Email', detail: 'Form can mail the salon', href: social.email },
   { id: 'form-phone', from: 'form', kind: 'offsite', title: 'Call', detail: contact.phone, href: contact.phoneHref },
   { id: 'map-directions', from: 'map', kind: 'offsite', title: 'Google Maps', detail: 'Directions to Dickens Yard', href: MAPS_DIRECTIONS_URL },
+  { id: 'chat-whatsapp', from: 'chat', kind: 'offsite', title: 'WhatsApp', detail: 'Chat with the salon', href: WHATSAPP_URL },
+  { id: 'chat-phone', from: 'chat', kind: 'offsite', title: 'Call', detail: contact.phone, href: contact.phoneHref },
   { id: 'ig', from: 'social', kind: 'offsite', title: 'Instagram', detail: '@yuzuhairandbeauty', href: social.instagram },
   { id: 'tiktok', from: 'social', kind: 'offsite', title: 'TikTok', detail: '@yuzuhairandbeauty.est16', href: social.tiktok },
   { id: 'fb', from: 'social', kind: 'offsite', title: 'Facebook', detail: 'YUZU Hair and Beauty', href: social.facebook },
@@ -131,34 +139,32 @@ const LIVE_ORDER: WireId[] = [
   'header',
   'ticker',
   'hero',
-  'welcome',
+  'carousel',
   'trust',
   'hours',
   'patch',
   'gallery',
   'reviews',
   'services',
-  'prices',
   'shop',
   'offers',
   'careers',
-  'follow',
   'contact',
-  'form',
   'map',
-  'social',
+  'chat',
   'footer',
 ]
 
-const ARCHIVE_ORDER: WireId[] = ['stylists', 'vouchers', 'faq']
+const ARCHIVE_ORDER: WireId[] = ['welcome', 'follow', 'form', 'social', 'stylists', 'vouchers', 'faq']
 const DEFAULT_ORDER: WireId[] = [...LIVE_ORDER, ...ARCHIVE_ORDER]
+const DEFAULT_SUBPAGES: WireSubpage[] = [{ id: 'prices', parent: 'services' }]
 
 export const DEFAULT_WIRE: WireState = {
   order: [...DEFAULT_ORDER],
-  subpages: [],
+  subpages: [...DEFAULT_SUBPAGES],
 }
 
-const STORAGE_KEY = 'yuzu-wireframe-v5'
+const STORAGE_KEY = 'yuzu-wireframe-v6'
 const IDS = new Set(WIRE_CATALOG.map((item) => item.id))
 
 export function metaFor(id: WireId) {
@@ -262,10 +268,7 @@ export function normalizeWire(input: WireState): WireState {
 
 export function loadWire(): WireState {
   try {
-    const raw =
-      localStorage.getItem(STORAGE_KEY) ??
-      localStorage.getItem('yuzu-wireframe-v4') ??
-      localStorage.getItem('yuzu-wireframe-v3')
+    const raw = localStorage.getItem(STORAGE_KEY)
     if (!raw) return DEFAULT_WIRE
     return normalizeWire(JSON.parse(raw) as WireState)
   } catch {
