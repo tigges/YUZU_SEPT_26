@@ -51,7 +51,7 @@ Version 2 (`?v=instagram`) uses those downloaded posts, the wordmark, and the sa
 - **[YUZU_AUTO](https://github.com/tigges/YUZU_AUTO)** — warm Manrope/Playfair landing. **Auto** (`?v=auto`), with Dickens Yard facts instead of Covent Garden / Unsplash.
 - **[YUZU_V3](https://github.com/tigges/YUZU_V3)** and **[YUZU_CUSROR_V7](https://github.com/tigges/YUZU_CUSROR_V7)** — README-only. Not in the grid.
 
-The homepage is a version gallery. Earthy is `?v=earthy`.
+The homepage is a version gallery. Earthy is `?v=earthy`. **Links** (`?v=links`) is a desk of live URLs and PDFs (price list + patch testing). T&Cs and offers are Wix pages — there is no offers PDF.
 
 ## Canonical URLs
 

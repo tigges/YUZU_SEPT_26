@@ -89,6 +89,15 @@ export const versions = [
     preview: asset('assets/gallery/5.jpg'),
     previewAlt: 'Vivid red bob with a blunt fringe',
   },
+  {
+    id: 'links',
+    name: 'Links',
+    kicker: 'Version 12',
+    summary:
+      'Every live salon URL and PDF: Phorest, Google Maps, Instagram, TikTok, Facebook, 2025 price list, patch-test PDF, and T&Cs. Offers are a webpage, not a PDF.',
+    preview: asset('assets/instagram/00.jpg'),
+    previewAlt: 'Colour Tuesdays offer graphic from Instagram',
+  },
 ] as const
 
 export type VersionId = (typeof versions)[number]['id']

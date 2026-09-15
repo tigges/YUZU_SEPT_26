@@ -15,6 +15,19 @@ Code source of truth: `src/data.ts` (`BOOKING_URL`, `MAPS_DIRECTIONS_URL`, `GOOG
 
 The in-page map iframe may still use OpenStreetMap for embed; every “Get directions”, Book, Instagram, and TikTok control must use the table above.
 
+## Documents on the live Wix site
+
+| Document | What it actually is |
+| --- | --- |
+| 2025 price list | PDF. Hosted locally as `public/price-list.pdf` (same file as `2025 price list.pdf` on Wix) |
+| Mandatory patch testing 2025 | PDF. Hosted locally as `public/patch-testing.pdf` |
+| Terms & conditions | **Webpage**, not a PDF: `https://www.yuzuhairandbeauty.london/terms-and-conditions` |
+| Exclusive offers | **Webpage**, not a PDF: `https://www.yuzuhairandbeauty.london/o-f-f-e-r-s-1` |
+
+There is no promotions/offers PDF. Gallery version **Links** (`?v=links`) lists all of the above.
+
+Code: `PRICE_LIST_URL`, `PATCH_TEST_PDF_URL`, `TERMS_URL`, `OFFERS_PAGE_URL`, `LIVE_SITE_URL` in `src/data.ts`.
+
 ## Testing
 
 The user tests the **live GitHub Pages site** after merge to `main`. Do not screenshot or screen-record after building unless they ask.

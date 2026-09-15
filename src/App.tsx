@@ -5,6 +5,7 @@ import Editorial from './pages/Editorial'
 import Gold from './pages/Gold'
 import Hub from './pages/Hub'
 import Instagram from './pages/Instagram'
+import Links from './pages/Links'
 import Midnight from './pages/Midnight'
 import Quiet from './pages/Quiet'
 import Sanctuary from './pages/Sanctuary'
@@ -27,5 +28,6 @@ export default function App() {
   if (version === 'convert') return <Convert />
   if (version === 'simple') return <Simple />
   if (version === 'auto') return <Auto />
+  if (version === 'links') return <Links />
   return <Hub />
 }
