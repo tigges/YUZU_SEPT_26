@@ -5,7 +5,9 @@ export const MAPS_DIRECTIONS_URL =
   'https://www.google.com/maps/dir/?api=1&destination=5%20Dickens%20Yard%2C%20Longfield%20Avenue%2C%20London%20W5%202TD'
 export const MAPS_EMBED_URL =
   'https://www.openstreetmap.org/export/embed.html?bbox=-0.307%2C51.511%2C-0.297%2C51.5165&layer=mapnik&marker=51.5137%2C-0.302'
-export const PRICE_LIST_URL = '/price-list.pdf'
+const asset = (path: string) => `${import.meta.env.BASE_URL}${path}`
+
+export const PRICE_LIST_URL = asset('price-list.pdf')
 
 export const social = {
   instagram: 'https://www.instagram.com/yuzuhairandbeauty/',
@@ -27,12 +29,12 @@ export const contact = {
 }
 
 export const gallery = [
-  { src: '/assets/gallery/1.jpg', alt: 'Copper and rose colour with textured fringe' },
-  { src: '/assets/gallery/2.jpg', alt: 'Long sleek dark hair, freshly styled in salon' },
-  { src: '/assets/gallery/3.jpg', alt: 'Deep teal bob with a soft, healthy finish' },
-  { src: '/assets/gallery/4.jpg', alt: 'Violet and blue colour melt, worn long' },
-  { src: '/assets/gallery/5.jpg', alt: 'Vivid red bob with a blunt fringe' },
-  { src: '/assets/gallery/6.jpg', alt: 'Long chocolate brown hair, cut and blow-dried' },
+  { src: asset('assets/gallery/1.jpg'), alt: 'Copper and rose colour with textured fringe' },
+  { src: asset('assets/gallery/2.jpg'), alt: 'Long sleek dark hair, freshly styled in salon' },
+  { src: asset('assets/gallery/3.jpg'), alt: 'Deep teal bob with a soft, healthy finish' },
+  { src: asset('assets/gallery/4.jpg'), alt: 'Violet and blue colour melt, worn long' },
+  { src: asset('assets/gallery/5.jpg'), alt: 'Vivid red bob with a blunt fringe' },
+  { src: asset('assets/gallery/6.jpg'), alt: 'Long chocolate brown hair, cut and blow-dried' },
 ]
 
 export const reviews = [
@@ -40,19 +42,19 @@ export const reviews = [
     name: 'Alexa',
     quote: 'Amazing — focused on every detail',
     body: 'Listened to my requests and delivered exactly what I wanted. I already booked my follow-up.',
-    photo: '/assets/reviews/1.jpg',
+    photo: asset('assets/reviews/1.jpg'),
   },
   {
     name: 'Rachel',
     quote: 'I always leave feeling a million dollars',
     body: 'Cut and colour once again exactly how I asked. Calm, expert and friendly throughout.',
-    photo: '/assets/reviews/2.jpg',
+    photo: asset('assets/reviews/2.jpg'),
   },
   {
     name: 'Steve',
     quote: 'A brilliant artist working in hair',
     body: 'Jasmine is not just another haircut, but a brilliant artist working in hair.',
-    photo: '/assets/reviews/3.jpg',
+    photo: asset('assets/reviews/3.jpg'),
   },
 ]
 
