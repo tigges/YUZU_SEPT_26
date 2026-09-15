@@ -13,7 +13,7 @@
 
 ## What we took from v1-clean
 
-The Cloudways preview is behind HTTP basic auth, so the first pass used screenshots. **v1-clean** (`?v=clean`) is now a layout clone of that WordPress page (white header, photo hero, gallery, reviews, services, offers) rebuilt from the screenshots you sent.
+The Cloudways preview is behind HTTP basic auth, so the first pass used screenshots. **Clean** (`?v=clean`) is a layout clone of that WordPress page (white header, photo hero, gallery, reviews, services, offers) rebuilt from the screenshots you sent. **Round** (`?v=round`) is the same layout with rounded boxes.
 
 - Customer gallery (six looks)
 - Review portraits and quotes (Alexa, Rachel, Steve)
@@ -40,18 +40,18 @@ Pulled from the live profile (not the login wall):
 - Profile mark: serif YUZU / HAIR on pale sage
 - Recent grid: blossom and pink weekday-offer graphics; personality reels (BTS, team, neighbours, 10-year party, tagged “Asian beauty spots in London”); in-salon carousels of blonde layers and copper balayage
 
-Version 4 (`?v=instagram`) uses those downloaded posts, the wordmark, and the sage/blossom language. Version 3 (`?v=studio`) is the opposite: white, coral Book, editorial client looks.
+Version 6 (`?v=instagram`) uses those downloaded posts, the wordmark, and the sage/blossom language. Version 5 (`?v=studio`) is the opposite: white, coral Book, editorial client looks.
 
 ## Other repos (mapped on the gallery)
 
-- **[YUZU_CLEAN](https://github.com/tigges/YUZU_CLEAN)** — Next.js wireframe. **Gold** (`?v=gold`). **v1-clean** (`?v=clean`) is a visual clone of the Cloudways WordPress `/v1-clean/` preview.
+- **[YUZU_CLEAN](https://github.com/tigges/YUZU_CLEAN)** — Next.js wireframe. **Gold** (`?v=gold`). **Clean** (`?v=clean`) is a visual clone of the Cloudways WordPress `/v1-clean/` preview; **Round** (`?v=round`) is that layout with rounded boxes.
 - **[-YUZU_V4_CURSOR](https://github.com/tigges/-YUZU_V4_CURSOR)** — prototype on `cursor/wordpress-git-integration-3576`. **Sanctuary** (`?v=sanctuary`).
 - **[YUZU-HAIR-CLONE](https://github.com/tigges/YUZU-HAIR-CLONE)** — `v1` **Editorial**, `v2` **Midnight**, `v3` **Quiet**, `v4` **Convert**. Extra Instagram stills in `public/assets/archive-ig/`.
 - **[YUZU-V2](https://github.com/tigges/YUZU-V2)** — forest/gold simplification on `cursor/yuzu-website-simplification-8eb7`. **Simple** (`?v=simple`).
 - **[YUZU_AUTO](https://github.com/tigges/YUZU_AUTO)** — warm Manrope/Playfair landing. **Auto** (`?v=auto`), with Dickens Yard facts instead of Covent Garden / Unsplash.
 - **[YUZU_V3](https://github.com/tigges/YUZU_V3)** and **[YUZU_CUSROR_V7](https://github.com/tigges/YUZU_CUSROR_V7)** — README-only. Not in the grid.
 
-The homepage is a version gallery. **Wireframe** (`?v=wireframe`) is Version 1: a draggable page-order sketch. **Wix** (`?v=wix`) clones the live homepage. **v1-clean** (`?v=clean`) clones the Cloudways WordPress preview. → sends a section into the sub-page column of the block above; ← brings it back. Off-site links (Phorest, Maps, socials) and existing sub-pages (price list, patch-test PDF, T&Cs) stay as chips. A news ticker sits under the header; take-home retail is a quiet desk shelf (Nashi / K2.0 — no cart). Blocks dragged below the footer are archived (grey). Meet the stylists, gift vouchers, and first-visit FAQ start in the archive. Earthy is `?v=earthy`. **Links** (`?v=links`) is a desk of live URLs and PDFs (price list + patch testing). T&Cs and offers are Wix pages — there is no offers PDF.
+The homepage is a version gallery. **Earthy** (`?v=earthy`) is Version 1, then **Sanctuary**, **Clean**, **Round**, and **Studio**. **Wireframe** (`?v=wireframe`) is a draggable page-order sketch: welcome, trust, prices, follow, form, and map sit alongside the older blocks. → sends a section into the sub-page column of the block above; ← brings it back. Header, ticker, and footer stay as chrome. Off-site links (Phorest, Maps, socials) and existing sub-pages (price list, patch-test PDF, T&Cs) stay as chips. A news ticker sits under the header; take-home retail is a quiet desk shelf (Nashi / K2.0 — no cart). Blocks dragged below the footer are archived (grey). Meet the stylists, gift vouchers, and first-visit FAQ start in the archive. **Wix** (`?v=wix`) clones the live homepage. **Links** (`?v=links`) is a desk of live URLs and PDFs (price list + patch testing). T&Cs and offers are Wix pages — there is no offers PDF.
 
 ## Canonical URLs
 

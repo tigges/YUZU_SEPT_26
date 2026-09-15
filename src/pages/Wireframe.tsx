@@ -59,6 +59,28 @@ function Sketch({ id }: { id: WireId }) {
       </div>
     )
   }
+  if (id === 'welcome') {
+    return (
+      <div className="wf-sketch wf-welcome">
+        <div className="wf-bars">
+          <i className="wide" />
+          <i />
+          <i />
+          <i className="short" />
+        </div>
+        <span className="wf-portrait" aria-hidden="true" />
+      </div>
+    )
+  }
+  if (id === 'trust') {
+    return (
+      <div className="wf-sketch wf-trust">
+        <span>★★★★★ 4.5 Google</span>
+        <span>New clients welcome</span>
+        <span>Unhurried consultations</span>
+      </div>
+    )
+  }
   if (id === 'hours') {
     return (
       <div className="wf-sketch wf-hours">
@@ -102,6 +124,22 @@ function Sketch({ id }: { id: WireId }) {
       </div>
     )
   }
+  if (id === 'prices') {
+    return (
+      <div className="wf-sketch wf-prices">
+        <span>
+          Cut &amp; blow dry <em>£55</em>
+        </span>
+        <span>
+          Colour <em>£85</em>
+        </span>
+        <span>
+          Highlights <em>from £64</em>
+        </span>
+        <span className="wf-pill">Full price list</span>
+      </div>
+    )
+  }
   if (id === 'shop') {
     return (
       <div className="wf-sketch wf-shelf">
@@ -129,12 +167,38 @@ function Sketch({ id }: { id: WireId }) {
   if (id === 'careers') {
     return <div className="wf-sketch wf-banner">Join the Yuzu team · Send CV →</div>
   }
+  if (id === 'follow') {
+    return (
+      <div className="wf-sketch wf-follow">
+        <strong>Follow us</strong>
+        <span>@yuzuhairandbeauty</span>
+      </div>
+    )
+  }
   if (id === 'contact') {
     return (
       <div className="wf-sketch wf-contact">
         <span>5 Dickens Yard, W5 2TD</span>
         <span>020 8840 2244</span>
         <span>Book / directions →</span>
+      </div>
+    )
+  }
+  if (id === 'form') {
+    return (
+      <div className="wf-sketch wf-form">
+        <span>Name</span>
+        <span>Email</span>
+        <span className="wide">Message</span>
+        <span className="wf-pill">Submit</span>
+      </div>
+    )
+  }
+  if (id === 'map') {
+    return (
+      <div className="wf-sketch wf-map">
+        <span className="wf-pin" aria-hidden="true" />
+        <span>5 Dickens Yard, W5 2TD</span>
       </div>
     )
   }
@@ -390,10 +454,10 @@ export default function Wireframe() {
 
       <main className="wf-wrap">
         <p className="wf-lead">
-          Left column is the homepage. → sends a section into the sub-page column of the block
-          above (one click away, not in the scroll). ← on that chip brings it back. Off-site chips
-          (Phorest, Maps, socials) stay as links — they are not pages. Drag below the footer to
-          archive.
+          Left column is the homepage. Almost every block can become a sub-page: → sends it into
+          the column of the block above (one click away, not in the scroll). ← on that chip brings
+          it back. Header, ticker, and footer stay as chrome. Off-site chips (Phorest, Maps,
+          socials) stay as links — they are not pages. Drag below the footer to archive.
         </p>
         <p className="wf-legend">
           <span className="wf-sat-kind">Off-site</span> leaves the site ·{' '}
@@ -401,9 +465,10 @@ export default function Wireframe() {
           = archived
         </p>
         <p className="wf-note">
-          Default order is unchanged so you can try the arrows. A short homepage is ticker, hero,
-          gallery, reviews, services, take-home, visit, Book — with hours, patch, offers, and
-          careers as sub-pages.
+          Welcome, trust, prices, follow, form, and map are new blocks taken from the other
+          versions. Nest or archive anything you do not want on the homepage. A short page might
+          keep ticker, hero, gallery, services, and visit — with hours, prices, offers, and the
+          form as sub-pages.
         </p>
 
         <div className="wf-board">
