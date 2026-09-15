@@ -37,6 +37,7 @@ cpSync(resolve(root, 'public/assets/reviews'), resolve(assets, 'reviews'), { rec
 cpSync(resolve(root, 'public/assets/instagram'), resolve(assets, 'instagram'), { recursive: true })
 cpSync(resolve(root, 'public/assets/v4'), resolve(assets, 'v4'), { recursive: true })
 cpSync(resolve(root, 'public/assets/archive-ig'), resolve(assets, 'archive-ig'), { recursive: true })
+cpSync(resolve(root, 'public/assets/clean'), resolve(assets, 'clean'), { recursive: true })
 copyFileSync(resolve(root, 'public/favicon.svg'), resolve(root, 'favicon.svg'))
 copyFileSync(resolve(root, 'public/price-list.pdf'), resolve(root, 'price-list.pdf'))
 copyFileSync(resolve(root, 'public/patch-testing.pdf'), resolve(root, 'patch-testing.pdf'))
