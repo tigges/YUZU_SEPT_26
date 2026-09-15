@@ -590,9 +590,10 @@ export default function Wireframe() {
       <main className="wf-wrap">
         <p className="wf-lead">
           Left column is the homepage. → nests a section as a sub-page; ← brings it back. × on a
-          section or sub-page sends it to the archive at the bottom. Header, ticker, and footer
-          stay as chrome. Links live in the tray: drag onto a block or nested sub-page; drag again
-          to put the same link in a second place. × on a link chip takes it off that block.
+          section or sub-page sends it to the archive at the bottom. Header and footer stay put.
+          The news ticker can be archived if you do not want it. Links live in the tray: drag onto
+          a block or nested sub-page; drag again to put the same link in a second place. × on a
+          link chip takes it off that block.
         </p>
         <p className="wf-legend">
           <span className="wf-sat-kind">Off-site</span> leaves the site ·{' '}
