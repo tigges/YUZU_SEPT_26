@@ -35,8 +35,14 @@ export type WireMeta = {
   hint: string
 }
 
+export type WireSubpage = {
+  id: WireId
+  parent: WireId
+}
+
 export type WireState = {
   order: WireId[]
+  subpages: WireSubpage[]
 }
 
 export type DestKind = 'offsite' | 'subpage'
@@ -113,9 +119,10 @@ const ARCHIVE_ORDER: WireId[] = ['stylists', 'vouchers', 'faq']
 
 export const DEFAULT_WIRE: WireState = {
   order: [...LIVE_ORDER, ...ARCHIVE_ORDER],
+  subpages: [],
 }
 
-const STORAGE_KEY = 'yuzu-wireframe-v3'
+const STORAGE_KEY = 'yuzu-wireframe-v4'
 const IDS = new Set(WIRE_CATALOG.map((item) => item.id))
 
 export function metaFor(id: WireId) {
@@ -136,17 +143,59 @@ export function isArchived(order: WireId[], id: WireId) {
   return splitWire(order).archived.includes(id)
 }
 
+export function childrenOf(state: WireState, parent: WireId) {
+  return state.subpages.filter((item) => item.parent === parent).map((item) => item.id)
+}
+
+export function canPushSubpage(state: WireState, id: WireId) {
+  if (id === 'header' || id === 'footer') return false
+  if (state.subpages.some((item) => item.id === id)) return false
+  return parentForPush(state, id) !== null
+}
+
+function parentForPush(state: WireState, id: WireId): WireId | null {
+  const { live } = splitWire(state.order)
+  const index = live.indexOf(id)
+  if (index > 0) return live[index - 1]
+  const main = live.filter((item) => item !== id && item !== 'footer')
+  if (index === 0) return main.includes('header') ? 'header' : main[0] ?? null
+  return main[main.length - 1] ?? (live.includes('header') ? 'header' : null)
+}
+
 export function normalizeWire(input: WireState): WireState {
-  const order = input.order.filter((id) => IDS.has(id))
-  for (const id of IDS) {
-    if (!order.includes(id)) order.push(id)
+  const seen = new Set<WireId>()
+  const subpages: WireSubpage[] = []
+  for (const item of input.subpages ?? []) {
+    if (!IDS.has(item.id) || !IDS.has(item.parent)) continue
+    if (item.id === item.parent || item.id === 'header' || item.id === 'footer') continue
+    if (seen.has(item.id)) continue
+    seen.add(item.id)
+    subpages.push({ id: item.id, parent: item.parent })
   }
-  return { order }
+
+  const order = (input.order ?? []).filter((id) => IDS.has(id) && !seen.has(id))
+  for (const id of IDS) {
+    if (!order.includes(id) && !seen.has(id)) order.push(id)
+  }
+  if (!order.includes('header')) order.unshift('header')
+  if (!order.includes('footer')) {
+    const cut = splitWire(order).live.length
+    order.splice(cut, 0, 'footer')
+  }
+
+  const inOrder = new Set(order)
+  for (const item of subpages) {
+    if (!inOrder.has(item.parent) || seen.has(item.parent)) {
+      item.parent = parentForPush({ order, subpages: [] }, item.id) ?? 'header'
+    }
+  }
+
+  return { order, subpages }
 }
 
 export function loadWire(): WireState {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY)
+    const raw = localStorage.getItem(STORAGE_KEY) ?? localStorage.getItem('yuzu-wireframe-v3')
     if (!raw) return DEFAULT_WIRE
     return normalizeWire(JSON.parse(raw) as WireState)
   } catch {
@@ -162,9 +211,9 @@ export function moveWire(state: WireState, fromId: WireId, toId: WireId, place: 
   if (fromId === toId) return state
   const order = state.order.filter((id) => id !== fromId)
   const index = order.indexOf(toId)
-  if (index < 0) return normalizeWire({ order: [...order, fromId] })
+  if (index < 0) return normalizeWire({ ...state, order: [...order, fromId] })
   order.splice(place === 'after' ? index + 1 : index, 0, fromId)
-  return normalizeWire({ order })
+  return normalizeWire({ ...state, order })
 }
 
 export function nudgeWire(state: WireState, id: WireId, dir: -1 | 1) {
@@ -174,5 +223,33 @@ export function nudgeWire(state: WireState, id: WireId, dir: -1 | 1) {
   const order = [...state.order]
   const [item] = order.splice(index, 1)
   order.splice(nextIndex, 0, item)
-  return normalizeWire({ order })
+  return normalizeWire({ ...state, order })
+}
+
+export function pushSubpage(state: WireState, id: WireId): WireState {
+  const parent = parentForPush(state, id)
+  if (!parent || !canPushSubpage(state, id)) return state
+  const order = state.order.filter((item) => item !== id)
+  const subpages = [
+    ...state.subpages.filter((item) => item.id !== id).map((item) => (item.parent === id ? { ...item, parent } : item)),
+    { id, parent },
+  ]
+  return normalizeWire({ order, subpages })
+}
+
+export function popSubpage(state: WireState, id: WireId): WireState {
+  const entry = state.subpages.find((item) => item.id === id)
+  if (!entry) return state
+  const subpages = state.subpages.filter((item) => item.id !== id)
+  const order = [...state.order]
+  const parentIndex = order.indexOf(entry.parent)
+  if (parentIndex < 0) {
+    const cut = order.indexOf('footer')
+    order.splice(cut >= 0 ? cut : order.length, 0, id)
+  } else if (entry.parent === 'footer') {
+    order.splice(parentIndex, 0, id)
+  } else {
+    order.splice(parentIndex + 1, 0, id)
+  }
+  return normalizeWire({ order, subpages })
 }

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { Fragment, useEffect, useRef, useState } from 'react'
 import { BOOKING_URL, LIVE_SITE_URL } from '../data'
 import { VersionBar } from '../components/VersionBar'
 import {
@@ -6,11 +6,15 @@ import {
   type WireDest,
   type WireId,
   type WireState,
+  canPushSubpage,
+  childrenOf,
   destsFor,
   loadWire,
   metaFor,
   moveWire,
   nudgeWire,
+  popSubpage,
+  pushSubpage,
   saveWire,
   splitWire,
 } from '../wireframe'
@@ -175,8 +179,8 @@ function Sketch({ id }: { id: WireId }) {
 
 function Connector({ count }: { count: number }) {
   const start = 20
-  const first = 42
-  const step = 64
+  const first = 48
+  const step = 78
   const height = Math.max(64, first + (count - 1) * step + 18)
   const branches = Array.from({ length: count }, (_, index) => {
     const y = first + index * step
@@ -197,6 +201,28 @@ function Satellite({ item }: { item: WireDest }) {
       <strong>{item.title}</strong>
       <span>{item.detail}</span>
     </a>
+  )
+}
+
+function SectionSatellite({
+  id,
+  onRestore,
+}: {
+  id: WireId
+  onRestore: (id: WireId) => void
+}) {
+  const item = metaFor(id)
+  return (
+    <div className="wf-sat wf-sat-section">
+      <div className="wf-sat-row">
+        <span className="wf-sat-kind sub">Sub-page</span>
+        <button type="button" className="wf-sat-back" aria-label={`Move ${item.title} back to the main page`} onClick={() => onRestore(id)}>
+          ←
+        </button>
+      </div>
+      <strong>{item.title}</strong>
+      <span>{item.hint}</span>
+    </div>
   )
 }
 
@@ -258,11 +284,15 @@ export default function Wireframe() {
   const renderRow = (id: WireId, archived: boolean) => {
     const item = metaFor(id)
     const dests = destsFor(id)
+    const children = childrenOf(state, id)
+    const childDests = children.flatMap((child) => destsFor(child))
+    const satCount = dests.length + children.length + childDests.length
     const isOver = over?.id === id
+    const showPush = canPushSubpage(state, id)
     return (
       <div className={`wf-row${archived ? ' archived' : ''}`} key={id}>
         <article
-          className={`wf-block${dests.length ? ' has-links' : ''}${dragId === id ? ' dragging' : ''}${
+          className={`wf-block${satCount ? ' has-links' : ''}${dragId === id ? ' dragging' : ''}${
             isOver ? ` over-${over.place}` : ''
           }${archived ? ' archived' : ''}`}
           data-wf-id={id}
@@ -288,6 +318,17 @@ export default function Wireframe() {
               <button type="button" aria-label={`Move ${item.title} up`} onClick={() => setState((s) => nudgeWire(s, id, -1))}>
                 ↑
               </button>
+              {showPush ? (
+                <button
+                  type="button"
+                  aria-label={`Move ${item.title} to the sub-page column`}
+                  onClick={() => setState((s) => pushSubpage(s, id))}
+                >
+                  →
+                </button>
+              ) : (
+                <span className="wf-nudge-gap" />
+              )}
               <button type="button" aria-label={`Move ${item.title} down`} onClick={() => setState((s) => nudgeWire(s, id, 1))}>
                 ↓
               </button>
@@ -295,10 +336,18 @@ export default function Wireframe() {
           </header>
           <Sketch id={id} />
         </article>
-        {dests.length ? (
+        {satCount ? (
           <>
-            <Connector count={dests.length} />
+            <Connector count={satCount} />
             <aside className="wf-satellites">
+              {children.map((child) => (
+                <Fragment key={child}>
+                  <SectionSatellite id={child} onRestore={(next) => setState((s) => popSubpage(s, next))} />
+                  {destsFor(child).map((dest) => (
+                    <Satellite key={dest.id} item={dest} />
+                  ))}
+                </Fragment>
+              ))}
               {dests.map((dest) => (
                 <Satellite key={dest.id} item={dest} />
               ))}
@@ -327,7 +376,7 @@ export default function Wireframe() {
           </div>
           <div className="wf-top-actions">
             <button type="button" className="wf-reset" onClick={() => setState(DEFAULT_WIRE)}>
-              Reset order
+            Reset layout
             </button>
             <a className="wf-link" href={LIVE_SITE_URL} target="_blank" rel="noreferrer">
               Current site
@@ -341,26 +390,27 @@ export default function Wireframe() {
 
       <main className="wf-wrap">
         <p className="wf-lead">
-          Left column is the page. The smaller column to the right is everything a block links
-          <em> out</em> to — off-site (Phorest, Maps, socials) and on-site sub-pages (price list,
-          patch-test PDF, T&amp;Cs, offers). Dotted lines follow the source, so they move when you
-          reorder. Drag a block below the footer to archive it (greyed out, not on the live page).
+          Left column is the homepage. → sends a section into the sub-page column of the block
+          above (one click away, not in the scroll). ← on that chip brings it back. Off-site chips
+          (Phorest, Maps, socials) stay as links — they are not pages. Drag below the footer to
+          archive.
         </p>
         <p className="wf-legend">
           <span className="wf-sat-kind">Off-site</span> leaves the site ·{' '}
-          <span className="wf-sat-kind sub">Sub-page</span> stays on Yuzu · grey = archived
+          <span className="wf-sat-kind sub">Sub-page</span> stays on Yuzu · → / ← move sections · grey
+          = archived
         </p>
         <p className="wf-note">
-          Keep the live page short: ticker, hero, gallery, reviews, services, take-home shelf, one
-          offer path, visit, Book. Join the team, meet the stylists, vouchers, and first-visit can
-          live below the footer until you want them.
+          Default order is unchanged so you can try the arrows. A short homepage is ticker, hero,
+          gallery, reviews, services, take-home, visit, Book — with hours, patch, offers, and
+          careers as sub-pages.
         </p>
 
         <div className="wf-board">
           <div className="wf-board-head" aria-hidden="true">
             <span>On the page</span>
             <span />
-            <span>Links out</span>
+            <span>Sub-pages / links out</span>
           </div>
           {live.map((id) => renderRow(id, false))}
           <div
