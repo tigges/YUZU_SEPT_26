@@ -11,6 +11,7 @@ import Quiet from './pages/Quiet'
 import Sanctuary from './pages/Sanctuary'
 import Simple from './pages/Simple'
 import Studio from './pages/Studio'
+import Wireframe from './pages/Wireframe'
 import { readVersionParam } from './versions'
 
 export default function App() {
@@ -29,5 +30,6 @@ export default function App() {
   if (version === 'simple') return <Simple />
   if (version === 'auto') return <Auto />
   if (version === 'links') return <Links />
+  if (version === 'wireframe') return <Wireframe />
   return <Hub />
 }

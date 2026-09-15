@@ -17,6 +17,7 @@ Live: https://tigges.github.io/YUZU_SEPT_26/
 - `?v=simple` forest / gold from [YUZU-V2](https://github.com/tigges/YUZU-V2)
 - `?v=auto` warm landing from [YUZU_AUTO](https://github.com/tigges/YUZU_AUTO), with real Dickens Yard content
 - `?v=links` current site ([yuzuhairandbeauty.london](https://www.yuzuhairandbeauty.london/)), Phorest, Maps, Instagram, TikTok, Facebook, 2025 price list, patch-test PDF, T&Cs page. Offers are a webpage, not a PDF.
+- `?v=wireframe` visual layout: drag sections up and down. Price list nests under Services; map nests under Contact.
 
 [YUZU_V3](https://github.com/tigges/YUZU_V3) and [YUZU_CUSROR_V7](https://github.com/tigges/YUZU_CUSROR_V7) are README-only and are not in the gallery.
 
