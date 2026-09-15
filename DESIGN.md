@@ -42,7 +42,26 @@ Pulled from the live profile (not the login wall):
 
 Version 2 (`?v=instagram`) uses those downloaded posts, the wordmark, and the sage/blossom language. Version 3 (`?v=studio`) is the opposite: white, coral Book, editorial client looks.
 
-The homepage is now a version gallery. Earthy is `?v=earthy`.
+## Other repos (mapped on the gallery)
+
+- **[YUZU_CLEAN](https://github.com/tigges/YUZU_CLEAN)** — Next.js wireframe. **Gold** (`?v=gold`).
+- **[-YUZU_V4_CURSOR](https://github.com/tigges/-YUZU_V4_CURSOR)** — prototype on `cursor/wordpress-git-integration-3576`. **Sanctuary** (`?v=sanctuary`).
+- **[YUZU-HAIR-CLONE](https://github.com/tigges/YUZU-HAIR-CLONE)** — `v1` **Editorial**, `v2` **Midnight**, `v3` **Quiet**, `v4` **Convert**. Extra Instagram stills in `public/assets/archive-ig/`.
+- **[YUZU-V2](https://github.com/tigges/YUZU-V2)** — forest/gold simplification on `cursor/yuzu-website-simplification-8eb7`. **Simple** (`?v=simple`).
+- **[YUZU_AUTO](https://github.com/tigges/YUZU_AUTO)** — warm Manrope/Playfair landing. **Auto** (`?v=auto`), with Dickens Yard facts instead of Covent Garden / Unsplash.
+- **[YUZU_V3](https://github.com/tigges/YUZU_V3)** and **[YUZU_CUSROR_V7](https://github.com/tigges/YUZU_CUSROR_V7)** — README-only. Not in the grid.
+
+The homepage is a version gallery. Earthy is `?v=earthy`. **Links** (`?v=links`) is a desk of live URLs and PDFs (price list + patch testing). T&Cs and offers are Wix pages — there is no offers PDF.
+
+## Canonical URLs
+
+- Current site: https://www.yuzuhairandbeauty.london/
+- Book: https://www.phorest.com/salon/yuzuhairandbeauty
+- Maps: https://maps.app.goo.gl/bhFS5wwkW3xxAdKd8
+- Instagram: https://www.instagram.com/yuzuhairandbeauty/
+- TikTok: https://www.tiktok.com/@yuzuhairandbeauty.est16
+
+See `AGENTS.md`. Do not replace these with search links or the old `phorest.com/book/salons/…` path.
 
 ## Stack
 

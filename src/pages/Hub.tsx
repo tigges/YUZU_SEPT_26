@@ -1,4 +1,4 @@
-import { BOOKING_URL } from '../data'
+import { BOOKING_URL, LIVE_SITE_URL, social } from '../data'
 import { versionUrl, versions } from '../versions'
 
 export default function Hub() {
@@ -7,7 +7,9 @@ export default function Hub() {
       <header className="hub-top">
         <div className="wrap hub-top-inner">
           <span className="hub-mark">YUZU</span>
-          <span className="hub-top-label">Design versions</span>
+          <a className="hub-top-label" href={LIVE_SITE_URL} target="_blank" rel="noreferrer">
+            Current site
+          </a>
         </div>
       </header>
 
@@ -16,8 +18,12 @@ export default function Hub() {
           <p className="eyebrow">Dickens Yard · Ealing</p>
           <h1>Pick a direction for the new site.</h1>
           <p>
-            Three complete versions of Yuzu Hair &amp; Beauty. The live salon still books through
-            Phorest; this gallery is for choosing a look.
+            Eleven design looks, plus a Links desk of every live salon URL and PDF. The current
+            site is{' '}
+            <a href={LIVE_SITE_URL} target="_blank" rel="noreferrer">
+              yuzuhairandbeauty.london
+            </a>
+            ; this gallery is for choosing a look.
           </p>
         </div>
 
@@ -40,7 +46,7 @@ export default function Hub() {
         <aside className="hub-note">
           <h2>From Instagram</h2>
           <p>
-            <a href="https://www.instagram.com/yuzuhairandbeauty/" target="_blank" rel="noreferrer">
+            <a href={social.instagram} target="_blank" rel="noreferrer">
               @yuzuhairandbeauty
             </a>{' '}
             is 2,952 followers and 776 posts, with highlights for Offers and Portfolio Hair. The
@@ -48,9 +54,25 @@ export default function Hub() {
             balayage), and personality reels — behind the scenes, neighbours at Dickens Yard, and
             a 10-year community party. Version 2 is built from that feed, not guessed.
           </p>
-          <a className="btn btn-ink" href={BOOKING_URL} target="_blank" rel="noreferrer">
-            Book on the live site
-          </a>
+          <p>
+            Empty scaffolds —{' '}
+            <a href="https://github.com/tigges/YUZU_V3" target="_blank" rel="noreferrer">
+              YUZU_V3
+            </a>{' '}
+            and{' '}
+            <a href="https://github.com/tigges/YUZU_CUSROR_V7" target="_blank" rel="noreferrer">
+              YUZU_CUSROR_V7
+            </a>{' '}
+            — are README-only, so they are not in the grid.
+          </p>
+          <div className="hub-note-actions">
+            <a className="btn btn-ink" href={LIVE_SITE_URL} target="_blank" rel="noreferrer">
+              Current site
+            </a>
+            <a className="btn btn-ink" href={BOOKING_URL} target="_blank" rel="noreferrer">
+              Book on Phorest
+            </a>
+          </div>
         </aside>
       </main>
     </div>

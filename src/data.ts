@@ -1,16 +1,19 @@
-export const BOOKING_URL = 'https://phorest.com/book/salons/yuzuhairandbeauty'
-export const GOOGLE_REVIEWS_URL =
-  'https://www.google.com/maps/search/?api=1&query=Yuzu%20Hair%205%20Dickens%20Yard%20Ealing'
-export const MAPS_DIRECTIONS_URL =
-  'https://www.google.com/maps/dir/?api=1&destination=5%20Dickens%20Yard%2C%20Longfield%20Avenue%2C%20London%20W5%202TD'
+export const LIVE_SITE_URL = 'https://www.yuzuhairandbeauty.london/'
+export const BOOKING_URL = 'https://www.phorest.com/salon/yuzuhairandbeauty'
+export const GOOGLE_REVIEWS_URL = 'https://maps.app.goo.gl/bhFS5wwkW3xxAdKd8'
+export const MAPS_DIRECTIONS_URL = 'https://maps.app.goo.gl/bhFS5wwkW3xxAdKd8'
 export const MAPS_EMBED_URL =
   'https://www.openstreetmap.org/export/embed.html?bbox=-0.307%2C51.511%2C-0.297%2C51.5165&layer=mapnik&marker=51.5137%2C-0.302'
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path}`
 
 export const PRICE_LIST_URL = asset('price-list.pdf')
+export const PATCH_TEST_PDF_URL = asset('patch-testing.pdf')
+export const TERMS_URL = 'https://www.yuzuhairandbeauty.london/terms-and-conditions'
+export const OFFERS_PAGE_URL = 'https://www.yuzuhairandbeauty.london/o-f-f-e-r-s-1'
 
 export const social = {
   instagram: 'https://www.instagram.com/yuzuhairandbeauty/',
+  tiktok: 'https://www.tiktok.com/@yuzuhairandbeauty.est16',
   facebook: 'https://www.facebook.com/YUZUHairandBeauty/',
   email: 'mailto:info@yuzuhairandbeauty.co.uk',
 }
@@ -290,3 +293,36 @@ export const instagram = {
     },
   ],
 }
+
+export const v4Assets = {
+  hero: asset('assets/v4/hero.jpg'),
+  wordmark: asset('assets/v4/wordmark.png'),
+  looks: [
+    { src: asset('assets/v4/look-1.jpg'), title: 'Copper & Rose', subtitle: 'Vivid colour' },
+    { src: asset('assets/v4/look-2.jpg'), title: 'Vivid red bob', subtitle: 'Colour + cut' },
+    { src: asset('assets/v4/ig-3.jpg'), title: 'Salon atmosphere', subtitle: 'Dickens Yard' },
+    { src: asset('assets/v4/look-3.jpg'), title: 'Soft layers', subtitle: 'Textured styling' },
+    { src: asset('assets/v4/ig-2.jpg'), title: 'Editorial detail', subtitle: 'Precision finish' },
+  ],
+  servicesMedia: [
+    { src: asset('assets/v4/service-colour.jpg'), label: 'Colour' },
+    { src: asset('assets/v4/service-cut.jpg'), label: 'Cut & styling' },
+    { src: asset('assets/v4/service-salon.png'), label: 'Salon finish' },
+  ],
+  reviewPhotos: [asset('assets/v4/review-1.jpg'), asset('assets/v4/review-2.jpg'), asset('assets/v4/ig-4.jpg')],
+}
+
+export const JOIN_TEAM_URL = 'mailto:info@yuzuhairandbeauty.co.uk?subject=Joining the Yuzu team'
+
+/** Extra Instagram stills pulled from YUZU-HAIR-CLONE (not already in public/assets/instagram). */
+export const archiveLooks = [
+  { src: asset('assets/archive-ig/DU3pkydDIvf.jpg'), alt: 'Colour result from the Yuzu Instagram archive' },
+  { src: asset('assets/archive-ig/DUqjrd_DRky.jpg'), alt: 'Salon hair finish from Instagram' },
+  { src: asset('assets/archive-ig/DUyAEtbjKdM.jpg'), alt: 'Styled hair photographed at Dickens Yard' },
+  { src: asset('assets/archive-ig/DVb3HcZDELC.jpg'), alt: 'Colour work from the Instagram archive' },
+  { src: asset('assets/archive-ig/DVENtQODLyW.jpg'), alt: 'Client look from Instagram' },
+  { src: asset('assets/archive-ig/DVGXBMpiPDE.jpg'), alt: 'Hair colour and cut from Instagram' },
+  { src: asset('assets/archive-ig/DVHhfzMivY5.jpg'), alt: 'Salon result from Instagram' },
+  { src: asset('assets/archive-ig/DVJmKTmgPLH.jpg'), alt: 'Finished style from Instagram' },
+  { src: asset('assets/archive-ig/DVn3W8pDBEM.jpg'), alt: 'Hair transformation from Instagram' },
+]

@@ -5,6 +5,7 @@ import {
   MAPS_DIRECTIONS_URL,
   MAPS_EMBED_URL,
   PRICE_LIST_URL,
+  TERMS_URL,
   contact,
   extras,
   gallery,
@@ -374,7 +375,9 @@ export default function Earthy() {
       <footer className="footer">
         <div className="wrap">
           <span>© {new Date().getFullYear()} Yuzu Hair &amp; Beauty. All rights reserved.</span>
-          <a href="https://www.yuzuhairandbeauty.london/terms-and-conditions">Terms &amp; conditions</a>
+          <a href={TERMS_URL} target="_blank" rel="noreferrer">
+            Terms &amp; conditions
+          </a>
         </div>
       </footer>
 
