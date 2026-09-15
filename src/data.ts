@@ -1,4 +1,5 @@
 export const LIVE_SITE_URL = 'https://www.yuzuhairandbeauty.london/'
+export const LEGACY_SITE_URL = 'https://yuzuhairandbeauty.ueniweb.com/'
 export const BOOKING_URL = 'https://www.phorest.com/salon/yuzuhairandbeauty'
 export const GOOGLE_REVIEWS_URL = 'https://maps.app.goo.gl/bhFS5wwkW3xxAdKd8'
 export const MAPS_DIRECTIONS_URL = 'https://maps.app.goo.gl/bhFS5wwkW3xxAdKd8'

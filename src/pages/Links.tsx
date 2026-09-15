@@ -2,6 +2,7 @@ import {
   BOOKING_URL,
   JOIN_TEAM_URL,
   LIVE_SITE_URL,
+  LEGACY_SITE_URL,
   MAPS_DIRECTIONS_URL,
   MAPS_EMBED_URL,
   OFFERS_PAGE_URL,
@@ -113,7 +114,23 @@ export default function Links() {
           Every public salon destination in one place, starting with the current site at
           yuzuhairandbeauty.london. Booking, maps, and socials use the canonical URLs. Price list
           and patch-test policy are PDFs. Terms and offers are webpages — there is no offers PDF.
+          The old Ueni site is listed under Take offline.
         </p>
+
+        <section className="desk-section" aria-labelledby="desk-offline">
+          <h2 id="desk-offline">Take offline</h2>
+          <p>Previous Yuzu site. Still reachable — switch it off when the new site is live.</p>
+          <ul className="desk-grid">
+            <li>
+              <a className="desk-offline-card" href={LEGACY_SITE_URL} target="_blank" rel="noreferrer">
+                <span className="desk-tag offline">Take offline</span>
+                <strong>Old Ueni site</strong>
+                <span>Not the current Wix site. yuzuhairandbeauty.london is live.</span>
+                <code>{displayHref(LEGACY_SITE_URL)}</code>
+              </a>
+            </li>
+          </ul>
+        </section>
 
         <section className="desk-section" aria-labelledby="desk-go">
           <h2 id="desk-go">Book, map, social</h2>

@@ -1505,6 +1505,16 @@ body[data-theme='links'] {
   border-color: #3f4a38;
 }
 
+.desk-tag.offline {
+  background: #8a3d2a;
+  color: #faf7f1;
+  border-color: #8a3d2a;
+}
+
+.desk-offline-card {
+  outline: 1px dashed #b85c38;
+}
+
 .desk-pdf-grid {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;

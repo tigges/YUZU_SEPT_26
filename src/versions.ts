@@ -104,7 +104,7 @@ export const versions = [
     name: 'Links',
     kicker: 'Version 13',
     summary:
-      'Current site (yuzuhairandbeauty.london), Phorest, Google Maps, Instagram, TikTok, Facebook, 2025 price list, patch-test PDF, and T&Cs. Offers are a webpage, not a PDF.',
+      'Current site (yuzuhairandbeauty.london), old Ueni site marked take-offline, Phorest, Google Maps, Instagram, TikTok, Facebook, 2025 price list, patch-test PDF, and T&Cs. Offers are a webpage, not a PDF.',
     preview: asset('assets/instagram/00.jpg'),
     previewAlt: 'Colour Tuesdays offer graphic from Instagram',
   },
