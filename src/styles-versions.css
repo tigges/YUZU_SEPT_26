@@ -145,6 +145,36 @@ body[data-theme='sanctuary'] {
   object-fit: cover;
 }
 
+.hub-sketch {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 18px;
+  height: 100%;
+  background:
+    repeating-linear-gradient(
+      -45deg,
+      #e6e1d6,
+      #e6e1d6 10px,
+      #efe9de 10px,
+      #efe9de 20px
+    );
+}
+
+.hub-sketch span {
+  flex: 1;
+  border: 1px dashed #8f8778;
+  background: rgba(255, 252, 246, 0.72);
+}
+
+.hub-sketch span:nth-child(1) {
+  flex: 0.55;
+}
+
+.hub-sketch span:nth-child(2) {
+  flex: 1.35;
+}
+
 .hub-card:first-child img {
   object-position: 18% 35%;
 }

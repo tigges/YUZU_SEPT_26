@@ -98,6 +98,16 @@ export const versions = [
     preview: asset('assets/instagram/00.jpg'),
     previewAlt: 'Colour Tuesdays offer graphic from Instagram',
   },
+  {
+    id: 'wireframe',
+    name: 'Wireframe',
+    kicker: 'Layout',
+    summary:
+      'Visual page order: drag logo+menu, hero, gallery, reviews, services (price list as a sub-page), offers, careers, contact, and social. Hours, patch-test, map, and footer included.',
+    preview: asset('assets/brand/leaves.jpg'),
+    previewAlt: 'Wireframe layout blocks',
+    sketch: true,
+  },
 ] as const
 
 export type VersionId = (typeof versions)[number]['id']

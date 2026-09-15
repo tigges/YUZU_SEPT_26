@@ -18,7 +18,7 @@ export default function Hub() {
           <p className="eyebrow">Dickens Yard · Ealing</p>
           <h1>Pick a direction for the new site.</h1>
           <p>
-            Eleven design looks, plus a Links desk of every live salon URL and PDF. The current
+            Eleven design looks, a Links desk, and a Wireframe you can reorder. The current
             site is{' '}
             <a href={LIVE_SITE_URL} target="_blank" rel="noreferrer">
               yuzuhairandbeauty.london
@@ -31,7 +31,19 @@ export default function Hub() {
           {versions.map((item) => (
             <a className="hub-card" key={item.id} href={versionUrl(item.id)}>
               <div className="hub-card-media">
-                <img src={item.preview} alt={item.previewAlt} />
+                {'sketch' in item && item.sketch ? (
+                  <div className="hub-sketch" aria-hidden="true">
+                    <span />
+                    <span />
+                    <span />
+                    <span />
+                    <span />
+                    <span />
+                    <span />
+                  </div>
+                ) : (
+                  <img src={item.preview} alt={item.previewAlt} />
+                )}
               </div>
               <div className="hub-card-body">
                 <span className="eyebrow">{item.kicker}</span>
