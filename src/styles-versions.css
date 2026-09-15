@@ -1607,20 +1607,23 @@ body[data-theme='sanctuary'] {
 
   .studio-header .nav-toggle,
   .gold-header .nav-toggle,
-  .clean-header .nav-toggle {
+  .clean-header .nav-toggle,
+  .wix-header .nav-toggle {
     display: grid;
     place-items: center;
   }
 
   .studio-nav,
   .gold-nav,
-  .clean-nav {
+  .clean-nav,
+  .wix-nav {
     display: none;
   }
 
   .studio-header.open .studio-nav,
   .gold-header.open .gold-nav,
-  .clean-header.open .clean-nav {
+  .clean-header.open .clean-nav,
+  .wix-header.open .wix-nav {
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -1633,6 +1636,11 @@ body[data-theme='sanctuary'] {
 
   .gold-header.open .gold-nav {
     background: #faf8f5;
+  }
+
+  .wix-header.open .wix-nav {
+    background: #768262;
+    border-bottom-color: #5f6b4e;
   }
 
   .sanct-toggle {

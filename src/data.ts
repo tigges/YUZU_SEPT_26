@@ -313,6 +313,7 @@ export const v4Assets = {
 }
 
 export const JOIN_TEAM_URL = 'mailto:info@yuzuhairandbeauty.co.uk?subject=Joining the Yuzu team'
+export const JOIN_TEAM_PAGE_URL = 'https://www.yuzuhairandbeauty.london/items'
 
 /** Extra Instagram stills pulled from YUZU-HAIR-CLONE (not already in public/assets/instagram). */
 export const archiveLooks = [
