@@ -11,7 +11,7 @@ Live: https://tigges.github.io/YUZU_SEPT_26/
 - `?v=instagram` built from [@yuzuhairandbeauty](https://www.instagram.com/yuzuhairandbeauty/)
 - `?v=convert` forest-green booking landing from HAIR-CLONE v4
 - `?v=simple` forest / gold from [YUZU-V2](https://github.com/tigges/YUZU-V2)
-- `?v=clean` v1-clean rebuilt with the YUZU wordmark, client looks, and offer graphics
+- `?v=clean` clone of the Cloudways WordPress `/v1-clean/` preview (white header, photo hero, gallery, reviews, services, offers)
 - `?v=gold` charcoal / cream / yuzu gold from [YUZU_CLEAN](https://github.com/tigges/YUZU_CLEAN)
 - `?v=sanctuary` forest / gold “Sanctuary” prototype from [YUZU_V4_CURSOR](https://github.com/tigges/-YUZU_V4_CURSOR)
 - `?v=editorial` cream / gold split hero from [YUZU-HAIR-CLONE](https://github.com/tigges/YUZU-HAIR-CLONE) v1

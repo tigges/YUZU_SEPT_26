@@ -53,12 +53,12 @@ export const versions = [
   },
   {
     id: 'clean',
-    name: 'Clean',
+    name: 'v1-clean',
     kicker: 'Version 7',
     summary:
-      'v1-clean rebuilt with the YUZU wordmark, line-art portrait, client looks, and weekday offer graphics.',
-    preview: asset('assets/clean/look-red.jpg'),
-    previewAlt: 'Vivid red bob with a blunt fringe',
+      'Clone of the Cloudways WordPress preview: white header, photo hero, six-look gallery, reviews, services, and weekday offers.',
+    preview: asset('assets/gallery/1.jpg'),
+    previewAlt: 'Copper and rose colour with textured fringe',
   },
   {
     id: 'gold',
