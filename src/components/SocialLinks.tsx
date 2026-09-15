@@ -1,4 +1,13 @@
-import { social } from '../data'
+import { LIVE_SITE_URL, social } from '../data'
+
+function SiteIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <circle cx="12" cy="12" r="8.2" stroke="currentColor" strokeWidth="1.6" />
+      <path d="M4 12h16M12 3.8c2.2 2.4 3.5 5.3 3.5 8.2S14.2 17.8 12 20.2C9.8 17.8 8.5 14.9 8.5 12S9.8 6.2 12 3.8Z" stroke="currentColor" strokeWidth="1.6" />
+    </svg>
+  )
+}
 
 function InstagramIcon() {
   return (
@@ -38,6 +47,9 @@ function MailIcon() {
 export function SocialLinks({ className = 'social-row' }: { className?: string }) {
   return (
     <div className={className}>
+      <a href={LIVE_SITE_URL} target="_blank" rel="noreferrer" aria-label="Current site">
+        <SiteIcon />
+      </a>
       <a href={social.instagram} target="_blank" rel="noreferrer" aria-label="Instagram">
         <InstagramIcon />
       </a>

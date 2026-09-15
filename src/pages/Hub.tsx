@@ -1,4 +1,4 @@
-import { BOOKING_URL, social } from '../data'
+import { BOOKING_URL, LIVE_SITE_URL, social } from '../data'
 import { versionUrl, versions } from '../versions'
 
 export default function Hub() {
@@ -7,7 +7,9 @@ export default function Hub() {
       <header className="hub-top">
         <div className="wrap hub-top-inner">
           <span className="hub-mark">YUZU</span>
-          <span className="hub-top-label">Design versions</span>
+          <a className="hub-top-label" href={LIVE_SITE_URL} target="_blank" rel="noreferrer">
+            Current site
+          </a>
         </div>
       </header>
 
@@ -16,8 +18,12 @@ export default function Hub() {
           <p className="eyebrow">Dickens Yard · Ealing</p>
           <h1>Pick a direction for the new site.</h1>
           <p>
-            Eleven design looks, plus a Links desk of every live salon URL and PDF. The live salon
-            still books through Phorest; this gallery is for choosing a look.
+            Eleven design looks, plus a Links desk of every live salon URL and PDF. The current
+            site is{' '}
+            <a href={LIVE_SITE_URL} target="_blank" rel="noreferrer">
+              yuzuhairandbeauty.london
+            </a>
+            ; this gallery is for choosing a look.
           </p>
         </div>
 
@@ -59,9 +65,14 @@ export default function Hub() {
             </a>{' '}
             — are README-only, so they are not in the grid.
           </p>
-          <a className="btn btn-ink" href={BOOKING_URL} target="_blank" rel="noreferrer">
-            Book on the live site
-          </a>
+          <div className="hub-note-actions">
+            <a className="btn btn-ink" href={LIVE_SITE_URL} target="_blank" rel="noreferrer">
+              Current site
+            </a>
+            <a className="btn btn-ink" href={BOOKING_URL} target="_blank" rel="noreferrer">
+              Book on Phorest
+            </a>
+          </div>
         </aside>
       </main>
     </div>

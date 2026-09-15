@@ -17,6 +17,12 @@ import { VersionBar } from '../components/VersionBar'
 
 const actions = [
   {
+    title: 'Current site',
+    detail: 'The live Wix site at yuzuhairandbeauty.london.',
+    href: LIVE_SITE_URL,
+    kind: 'Current site',
+  },
+  {
     title: 'Phorest',
     detail: 'Live online booking for Dickens Yard.',
     href: BOOKING_URL,
@@ -44,12 +50,6 @@ const actions = [
     title: 'Facebook',
     detail: 'YUZU Hair and Beauty',
     href: social.facebook,
-    kind: 'Live site',
-  },
-  {
-    title: 'yuzuhairandbeauty.london',
-    detail: 'The live Wix site.',
-    href: LIVE_SITE_URL,
     kind: 'Live site',
   },
 ]
@@ -97,17 +97,22 @@ export default function Links() {
             <p className="desk-kicker">Yuzu Hair &amp; Beauty · Dickens Yard</p>
             <h1>Live links &amp; PDFs</h1>
           </div>
-          <a className="desk-btn" href={BOOKING_URL} target="_blank" rel="noreferrer">
-            Book on Phorest
-          </a>
+          <div className="desk-header-actions">
+            <a className="desk-btn" href={LIVE_SITE_URL} target="_blank" rel="noreferrer">
+              Current site
+            </a>
+            <a className="desk-btn desk-btn-line" href={BOOKING_URL} target="_blank" rel="noreferrer">
+              Book on Phorest
+            </a>
+          </div>
         </div>
       </header>
 
       <main className="desk-wrap">
         <p className="desk-lead">
-          Every public salon destination in one place. Booking, maps, and socials use the canonical
-          URLs. Price list and patch-test policy are PDFs. Terms and offers are webpages on the
-          live site — there is no offers PDF.
+          Every public salon destination in one place, starting with the current site at
+          yuzuhairandbeauty.london. Booking, maps, and socials use the canonical URLs. Price list
+          and patch-test policy are PDFs. Terms and offers are webpages — there is no offers PDF.
         </p>
 
         <section className="desk-section" aria-labelledby="desk-go">

@@ -83,6 +83,11 @@ body[data-theme='sanctuary'] {
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--sage);
+  text-decoration: none;
+}
+
+.hub-top-label:hover {
+  color: var(--ink);
 }
 
 .hub-main {
@@ -194,6 +199,12 @@ body[data-theme='sanctuary'] {
 
 .hub-note a.btn {
   justify-self: start;
+}
+
+.hub-note-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 /* Instagram version */

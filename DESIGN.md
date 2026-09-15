@@ -55,6 +55,7 @@ The homepage is a version gallery. Earthy is `?v=earthy`. **Links** (`?v=links`)
 
 ## Canonical URLs
 
+- Current site: https://www.yuzuhairandbeauty.london/
 - Book: https://www.phorest.com/salon/yuzuhairandbeauty
 - Maps: https://maps.app.goo.gl/bhFS5wwkW3xxAdKd8
 - Instagram: https://www.instagram.com/yuzuhairandbeauty/

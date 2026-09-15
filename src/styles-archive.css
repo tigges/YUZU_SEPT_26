@@ -1427,11 +1427,16 @@ body[data-theme='links'] {
   font-size: 0.88rem;
 }
 
+.desk-header-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
 .desk-btn-line {
   background: transparent;
   color: #2c271f;
   border: 1px solid #c4b7a4;
-  margin: 0.4rem 0.5rem 0 0;
 }
 
 .desk-lead {

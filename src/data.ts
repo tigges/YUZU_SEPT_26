@@ -1,3 +1,4 @@
+export const LIVE_SITE_URL = 'https://www.yuzuhairandbeauty.london/'
 export const BOOKING_URL = 'https://www.phorest.com/salon/yuzuhairandbeauty'
 export const GOOGLE_REVIEWS_URL = 'https://maps.app.goo.gl/bhFS5wwkW3xxAdKd8'
 export const MAPS_DIRECTIONS_URL = 'https://maps.app.goo.gl/bhFS5wwkW3xxAdKd8'
@@ -7,7 +8,6 @@ const asset = (path: string) => `${import.meta.env.BASE_URL}${path}`
 
 export const PRICE_LIST_URL = asset('price-list.pdf')
 export const PATCH_TEST_PDF_URL = asset('patch-testing.pdf')
-export const LIVE_SITE_URL = 'https://www.yuzuhairandbeauty.london/'
 export const TERMS_URL = 'https://www.yuzuhairandbeauty.london/terms-and-conditions'
 export const OFFERS_PAGE_URL = 'https://www.yuzuhairandbeauty.london/o-f-f-e-r-s-1'
 
