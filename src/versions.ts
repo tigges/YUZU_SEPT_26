@@ -12,6 +12,15 @@ export const versions = [
     sketch: true,
   },
   {
+    id: 'wix',
+    name: 'Wix',
+    kicker: 'Current site',
+    summary:
+      'Clone of yuzuhairandbeauty.london: sage header, patch-test hero, Welcome, price list, exclusive offers, join, contact, and map.',
+    preview: asset('assets/wix/hero-leaves.jpg'),
+    previewAlt: 'Tropical banana leaves used on the live Wix homepage',
+  },
+  {
     id: 'earthy',
     name: 'Earthy',
     kicker: 'Version 2',

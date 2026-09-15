@@ -4,8 +4,9 @@ A version gallery for Yuzu Hair at Dickens Yard, Ealing.
 
 Live: https://tigges.github.io/YUZU_SEPT_26/
 
-- Home: version gallery (Wireframe first, then design looks)
+- Home: version gallery (Wireframe first, then Wix clone, v1-clean clone, and design looks)
 - `?v=wireframe` page order you can drag; → / ← move a section into the sub-page column; archive anything below the footer
+- `?v=wix` clone of the live Wix homepage ([yuzuhairandbeauty.london](https://www.yuzuhairandbeauty.london/))
 - `?v=earthy` parchment / olive site
 - `?v=studio` white, photography-led
 - `?v=instagram` built from [@yuzuhairandbeauty](https://www.instagram.com/yuzuhairandbeauty/)
