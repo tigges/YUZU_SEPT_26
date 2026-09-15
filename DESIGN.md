@@ -40,7 +40,7 @@ Pulled from the live profile (not the login wall):
 - Profile mark: serif YUZU / HAIR on pale sage
 - Recent grid: blossom and pink weekday-offer graphics; personality reels (BTS, team, neighbours, 10-year party, tagged “Asian beauty spots in London”); in-salon carousels of blonde layers and copper balayage
 
-Version 3 (`?v=instagram`) uses those downloaded posts, the wordmark, and the sage/blossom language. Version 4 (`?v=studio`) is the opposite: white, coral Book, editorial client looks.
+Version 4 (`?v=instagram`) uses those downloaded posts, the wordmark, and the sage/blossom language. Version 3 (`?v=studio`) is the opposite: white, coral Book, editorial client looks.
 
 ## Other repos (mapped on the gallery)
 

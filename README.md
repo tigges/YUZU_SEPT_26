@@ -7,15 +7,15 @@ Live: https://tigges.github.io/YUZU_SEPT_26/
 - Home: version gallery (Wireframe first, then design looks)
 - `?v=wireframe` page order you can drag; → / ← move a section into the sub-page column; archive anything below the footer
 - `?v=earthy` parchment / olive site
-- `?v=instagram` built from [@yuzuhairandbeauty](https://www.instagram.com/yuzuhairandbeauty/)
 - `?v=studio` white, photography-led
+- `?v=instagram` built from [@yuzuhairandbeauty](https://www.instagram.com/yuzuhairandbeauty/)
+- `?v=convert` forest-green booking landing from HAIR-CLONE v4
+- `?v=simple` forest / gold from [YUZU-V2](https://github.com/tigges/YUZU-V2)
 - `?v=gold` charcoal / cream / yuzu gold from [YUZU_CLEAN](https://github.com/tigges/YUZU_CLEAN)
 - `?v=sanctuary` forest / gold “Sanctuary” prototype from [YUZU_V4_CURSOR](https://github.com/tigges/-YUZU_V4_CURSOR)
 - `?v=editorial` cream / gold split hero from [YUZU-HAIR-CLONE](https://github.com/tigges/YUZU-HAIR-CLONE) v1
 - `?v=midnight` dark champagne “Midnight Edition” from HAIR-CLONE v2
 - `?v=quiet` cream / sage from HAIR-CLONE v3
-- `?v=convert` forest-green booking landing from HAIR-CLONE v4
-- `?v=simple` forest / gold from [YUZU-V2](https://github.com/tigges/YUZU-V2)
 - `?v=auto` warm landing from [YUZU_AUTO](https://github.com/tigges/YUZU_AUTO), with real Dickens Yard content
 - `?v=links` current site ([yuzuhairandbeauty.london](https://www.yuzuhairandbeauty.london/)), Phorest, Maps, Instagram, TikTok, Facebook, 2025 price list, patch-test PDF, T&Cs page. Offers are a webpage, not a PDF.
 
