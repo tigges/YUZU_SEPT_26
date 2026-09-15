@@ -2231,6 +2231,11 @@ body[data-theme='wireframe'] {
   min-height: 64px;
 }
 
+.wf-upload {
+  justify-content: space-between;
+  min-height: 64px;
+}
+
 .wf-follow strong {
   letter-spacing: 0.12em;
   text-transform: uppercase;
