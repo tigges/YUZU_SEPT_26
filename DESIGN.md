@@ -29,6 +29,21 @@ The Cloudways preview is behind HTTP basic auth, so assets were taken from the s
 - Lightbox on the gallery
 - Mobile nav
 
+## Instagram (@yuzuhairandbeauty)
+
+Pulled from the live profile (not the login wall):
+
+- Name: YUZU Hair & Beauty
+- Bio: Welcome to YUZU Hair / Unit 5, Dickens Yard, Ealing, W5 2TD / Tue–Fri 10–8, Sat 9–6, Sun–Mon closed
+- ~2,952 followers, 510 following, 776 posts
+- Highlights: Offers, Portfolio Hair
+- Profile mark: serif YUZU / HAIR on pale sage
+- Recent grid: blossom and pink weekday-offer graphics; personality reels (BTS, team, neighbours, 10-year party, tagged “Asian beauty spots in London”); in-salon carousels of blonde layers and copper balayage
+
+Version 2 (`?v=instagram`) uses those downloaded posts, the wordmark, and the sage/blossom language. Version 3 (`?v=studio`) is the opposite: white, coral Book, editorial client looks.
+
+The homepage is now a version gallery. Earthy is `?v=earthy`.
+
 ## Stack
 
-Vite + React + TypeScript. Static files in `public/`. No CMS.
+Vite + React + TypeScript. Static files in `public/`. No CMS. Query-param versions so GitHub Pages and in-page `#gallery` anchors both work.

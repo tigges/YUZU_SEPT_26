@@ -13,8 +13,10 @@ export default defineConfig(({ command }) => ({
       name: 'dev-html',
       configureServer(server) {
         server.middlewares.use((req, _res, next) => {
-          if (req.url === '/' || req.url === '/index.html') {
-            req.url = '/dev.html'
+          const path = req.url?.split('?')[0]
+          if (path === '/' || path === '/index.html') {
+            const query = req.url?.includes('?') ? req.url.slice(req.url.indexOf('?')) : ''
+            req.url = `/dev.html${query}`
           }
           next()
         })
