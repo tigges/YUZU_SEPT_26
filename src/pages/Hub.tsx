@@ -19,7 +19,7 @@ export default function Hub() {
           <h1>Pick a direction for the new site.</h1>
           <p>
             Wireframe first — drag the page order, with off-site links and sub-pages in a second
-            column. A news ticker and shop teaser sit on the page; drag a block below the footer
+            column. A news ticker and a take-home shelf sit on the page; drag a block below the footer
             to archive it. Then eleven design looks and a Links desk. The current
             site is{' '}
             <a href={LIVE_SITE_URL} target="_blank" rel="noreferrer">
