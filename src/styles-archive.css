@@ -2177,7 +2177,6 @@ body[data-theme='wireframe'] {
 
 .wf-cards span,
 .wf-contact span,
-.wf-trust span,
 .wf-prices span,
 .wf-form span {
   border: 1px solid #d4cec3;
@@ -2205,11 +2204,6 @@ body[data-theme='wireframe'] {
   margin-left: auto;
   background: #d8d2c6;
   border: 1px solid #c4bdb0;
-}
-
-.wf-trust {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
 }
 
 .wf-prices {
