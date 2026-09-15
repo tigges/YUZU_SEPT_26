@@ -136,7 +136,6 @@ function Sketch({ id }: { id: WireId }) {
         <span>
           Highlights <em>from £64</em>
         </span>
-        <span className="wf-pill">Full price list</span>
       </div>
     )
   }
@@ -180,7 +179,7 @@ function Sketch({ id }: { id: WireId }) {
       <div className="wf-sketch wf-contact">
         <span>5 Dickens Yard, W5 2TD</span>
         <span>020 8840 2244</span>
-        <span>Book / directions →</span>
+        <span>info@yuzuhairandbeauty.co.uk</span>
       </div>
     )
   }
@@ -205,7 +204,6 @@ function Sketch({ id }: { id: WireId }) {
   if (id === 'social') {
     return (
       <div className="wf-sketch wf-social">
-        <span>Site</span>
         <span>Instagram</span>
         <span>TikTok</span>
         <span>Facebook</span>

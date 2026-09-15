@@ -67,17 +67,6 @@ export default function Hub() {
             balayage), and personality reels — behind the scenes, neighbours at Dickens Yard, and
             a 10-year community party. The Instagram version is built from that feed, not guessed.
           </p>
-          <p>
-            Empty scaffolds —{' '}
-            <a href="https://github.com/tigges/YUZU_V3" target="_blank" rel="noreferrer">
-              YUZU_V3
-            </a>{' '}
-            and{' '}
-            <a href="https://github.com/tigges/YUZU_CUSROR_V7" target="_blank" rel="noreferrer">
-              YUZU_CUSROR_V7
-            </a>{' '}
-            — are README-only, so they are not in the grid.
-          </p>
           <div className="hub-note-actions">
             <a className="btn btn-ink" href={LIVE_SITE_URL} target="_blank" rel="noreferrer">
               Current site
