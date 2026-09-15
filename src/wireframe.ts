@@ -39,7 +39,7 @@ export type WireId =
   | 'vouchers'
   | 'faq'
 
-const CHROME = new Set<WireId>(['header', 'ticker', 'footer'])
+const CHROME = new Set<WireId>(['header', 'footer'])
 
 export function isWireChrome(id: WireId) {
   return CHROME.has(id)
@@ -223,7 +223,7 @@ export function childrenOf(state: WireState, parent: WireId) {
 }
 
 export function canPushSubpage(state: WireState, id: WireId) {
-  if (isWireChrome(id)) return false
+  if (isWireChrome(id) || id === 'ticker') return false
   if (state.subpages.some((item) => item.id === id)) return false
   return parentForPush(state, id) !== null
 }
@@ -273,7 +273,7 @@ export function normalizeWire(input: WireState): WireState {
   const subpages: WireSubpage[] = []
   for (const item of input.subpages ?? []) {
     if (!IDS.has(item.id) || !IDS.has(item.parent)) continue
-    if (item.id === item.parent || isWireChrome(item.id)) continue
+    if (item.id === item.parent || isWireChrome(item.id) || item.id === 'ticker') continue
     if (seen.has(item.id)) continue
     seen.add(item.id)
     subpages.push({ id: item.id, parent: item.parent })
