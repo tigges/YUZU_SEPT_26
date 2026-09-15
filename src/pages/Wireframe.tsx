@@ -12,6 +12,7 @@ import {
   moveWire,
   nudgeWire,
   saveWire,
+  splitWire,
 } from '../wireframe'
 
 function Sketch({ id }: { id: WireId }) {
@@ -23,6 +24,19 @@ function Sketch({ id }: { id: WireId }) {
         <span className="wf-nav">Gallery</span>
         <span className="wf-nav">Visit</span>
         <span className="wf-pill">Book</span>
+      </div>
+    )
+  }
+  if (id === 'ticker') {
+    return (
+      <div className="wf-sketch wf-ticker">
+        <span>Colour Tuesdays 50%</span>
+        <span className="wf-ticker-dot">·</span>
+        <span>Patch tests for colour</span>
+        <span className="wf-ticker-dot">·</span>
+        <span>Sat 9–6</span>
+        <span className="wf-ticker-dot">·</span>
+        <span>Book →</span>
       </div>
     )
   }
@@ -81,6 +95,15 @@ function Sketch({ id }: { id: WireId }) {
       </div>
     )
   }
+  if (id === 'shop') {
+    return (
+      <div className="wf-sketch wf-cards wf-shop">
+        <span>Colour-care at home</span>
+        <span>Olaplex / bond</span>
+        <span>Ask in salon →</span>
+      </div>
+    )
+  }
   if (id === 'offers') {
     return (
       <div className="wf-sketch wf-cards">
@@ -109,6 +132,27 @@ function Sketch({ id }: { id: WireId }) {
         <span>Instagram</span>
         <span>TikTok</span>
         <span>Facebook</span>
+      </div>
+    )
+  }
+  if (id === 'stylists') {
+    return (
+      <div className="wf-sketch wf-cards">
+        <span>Jasmine</span>
+        <span>Senior</span>
+        <span>Stylist</span>
+      </div>
+    )
+  }
+  if (id === 'vouchers') {
+    return <div className="wf-sketch wf-banner">Gift a visit · Book as a gift →</div>
+  }
+  if (id === 'faq') {
+    return (
+      <div className="wf-sketch wf-cards">
+        <span>Patch test?</span>
+        <span>Parking / Dickens Yard</span>
+        <span>First colour visit</span>
       </div>
     )
   }
@@ -165,12 +209,17 @@ export default function Wireframe() {
   }, [ready, state])
 
   const readTarget = (node: EventTarget | null, clientY: number) => {
-    const el = (node as HTMLElement | null)?.closest?.('[data-wf-id]') as HTMLElement | null
-    if (!el) return null
-    const id = el.getAttribute('data-wf-id') as WireId | null
-    if (!id) return null
-    const rect = el.getBoundingClientRect()
-    return { id, place: clientY > rect.top + rect.height / 2 ? ('after' as const) : ('before' as const) }
+    const host = node as HTMLElement | null
+    const el = host?.closest?.('[data-wf-id]') as HTMLElement | null
+    if (el) {
+      const id = el.getAttribute('data-wf-id') as WireId | null
+      if (id) {
+        const rect = el.getBoundingClientRect()
+        return { id, place: clientY > rect.top + rect.height / 2 ? ('after' as const) : ('before' as const) }
+      }
+    }
+    if (host?.closest?.('[data-wf-archive]')) return { id: 'footer' as const, place: 'after' as const }
+    return null
   }
 
   const onPointerDown = (id: WireId) => (event: React.PointerEvent) => {
@@ -196,6 +245,67 @@ export default function Wireframe() {
     setDragId(null)
     setOver(null)
   }
+
+  const renderRow = (id: WireId, archived: boolean) => {
+    const item = metaFor(id)
+    const dests = destsFor(id)
+    const isOver = over?.id === id
+    return (
+      <div className={`wf-row${archived ? ' archived' : ''}`} key={id}>
+        <article
+          className={`wf-block${dests.length ? ' has-links' : ''}${dragId === id ? ' dragging' : ''}${
+            isOver ? ` over-${over.place}` : ''
+          }${archived ? ' archived' : ''}`}
+          data-wf-id={id}
+        >
+          <header className="wf-block-head">
+            <button
+              type="button"
+              className="wf-handle"
+              aria-label={`Drag ${item.title}`}
+              onPointerDown={onPointerDown(id)}
+              onPointerMove={onPointerMove}
+              onPointerUp={onPointerUp}
+              onPointerCancel={onPointerUp}
+            >
+              ⋮⋮
+            </button>
+            <div>
+              {archived ? <p className="wf-archived-flag">Archived</p> : null}
+              <h2>{item.title}</h2>
+              <p>{item.hint}</p>
+            </div>
+            <div className="wf-nudge">
+              <button type="button" aria-label={`Move ${item.title} up`} onClick={() => setState((s) => nudgeWire(s, id, -1))}>
+                ↑
+              </button>
+              <button type="button" aria-label={`Move ${item.title} down`} onClick={() => setState((s) => nudgeWire(s, id, 1))}>
+                ↓
+              </button>
+            </div>
+          </header>
+          <Sketch id={id} />
+        </article>
+        {dests.length ? (
+          <>
+            <Connector count={dests.length} />
+            <aside className="wf-satellites">
+              {dests.map((dest) => (
+                <Satellite key={dest.id} item={dest} />
+              ))}
+            </aside>
+          </>
+        ) : (
+          <>
+            <div className="wf-connector-spacer" />
+            <div className="wf-satellites-empty" />
+          </>
+        )}
+      </div>
+    )
+  }
+
+  const { live, archived } = splitWire(state.order)
 
   return (
     <div className={`wf${dragId ? ' is-dragging' : ''}`}>
@@ -225,11 +335,11 @@ export default function Wireframe() {
           Left column is the page. The smaller column to the right is everything a block links
           <em> out</em> to — off-site (Phorest, Maps, socials) and on-site sub-pages (price list,
           patch-test PDF, T&amp;Cs, offers). Dotted lines follow the source, so they move when you
-          reorder.
+          reorder. Drag a block below the footer to archive it (greyed out, not on the live page).
         </p>
         <p className="wf-legend">
           <span className="wf-sat-kind">Off-site</span> leaves the site ·{' '}
-          <span className="wf-sat-kind sub">Sub-page</span> stays on Yuzu
+          <span className="wf-sat-kind sub">Sub-page</span> stays on Yuzu · grey = archived
         </p>
 
         <div className="wf-board">
@@ -238,63 +348,18 @@ export default function Wireframe() {
             <span />
             <span>Links out</span>
           </div>
-          {state.order.map((id) => {
-            const item = metaFor(id)
-            const dests = destsFor(id)
-            const isOver = over?.id === id
-            return (
-              <div className="wf-row" key={id}>
-                <article
-                  className={`wf-block${dests.length ? ' has-links' : ''}${dragId === id ? ' dragging' : ''}${
-                    isOver ? ` over-${over.place}` : ''
-                  }`}
-                  data-wf-id={id}
-                >
-                  <header className="wf-block-head">
-                    <button
-                      type="button"
-                      className="wf-handle"
-                      aria-label={`Drag ${item.title}`}
-                      onPointerDown={onPointerDown(id)}
-                      onPointerMove={onPointerMove}
-                      onPointerUp={onPointerUp}
-                      onPointerCancel={onPointerUp}
-                    >
-                      ⋮⋮
-                    </button>
-                    <div>
-                      <h2>{item.title}</h2>
-                      <p>{item.hint}</p>
-                    </div>
-                    <div className="wf-nudge">
-                      <button type="button" aria-label={`Move ${item.title} up`} onClick={() => setState((s) => nudgeWire(s, id, -1))}>
-                        ↑
-                      </button>
-                      <button type="button" aria-label={`Move ${item.title} down`} onClick={() => setState((s) => nudgeWire(s, id, 1))}>
-                        ↓
-                      </button>
-                    </div>
-                  </header>
-                  <Sketch id={id} />
-                </article>
-                {dests.length ? (
-                  <>
-                    <Connector count={dests.length} />
-                    <aside className="wf-satellites">
-                      {dests.map((dest) => (
-                        <Satellite key={dest.id} item={dest} />
-                      ))}
-                    </aside>
-                  </>
-                ) : (
-                  <>
-                    <div className="wf-connector-spacer" />
-                    <div className="wf-satellites-empty" />
-                  </>
-                )}
-              </div>
-            )
-          })}
+          {live.map((id) => renderRow(id, false))}
+          <div
+            className={`wf-archive-well${over?.id === 'footer' && over.place === 'after' && dragId !== 'footer' ? ' over' : ''}`}
+            data-wf-archive
+          >
+            <p className="wf-archive-label">Archived — below the live page</p>
+            <p className="wf-archive-hint">
+              Drag anything here to keep the drawing but take it off the homepage. Drag it back
+              above the footer to restore it.
+            </p>
+            {archived.map((id) => renderRow(id, true))}
+          </div>
         </div>
       </main>
     </div>

@@ -1907,9 +1907,69 @@ body[data-theme='wireframe'] {
   font-size: 0.72rem;
 }
 
-.wf-banner {
-  justify-content: center;
-  font-size: 0.88rem;
+.wf-ticker {
+  min-height: 42px;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.wf-ticker-dot {
+  color: #8f8778;
+}
+
+.wf-archived-flag {
+  margin: 0 0 0.15rem;
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #6f6a60;
+}
+
+.wf-archive-well {
+  display: grid;
+  gap: 12px;
+  margin-top: 8px;
+  padding: 14px 12px 12px;
+  border: 1px dashed #8f8778;
+  background: #ddd9d1;
+}
+
+.wf-archive-well.over {
+  outline: 2px dashed #2a2926;
+  outline-offset: 2px;
+}
+
+.wf-archive-label {
+  margin: 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #5c574e;
+}
+
+.wf-archive-hint {
+  margin: 0;
+  font-size: 0.82rem;
+  color: #6f6a60;
+  max-width: 62ch;
+}
+
+.wf-row.archived .wf-block,
+.wf-row.archived .wf-sat,
+.wf-row.archived .wf-connector {
+  filter: grayscale(0.85);
+  opacity: 0.62;
+}
+
+.wf-row.archived .wf-block {
+  background: #d8d4cc;
+}
+
+.wf-block.archived {
+  background: #d8d4cc;
 }
 
 .wf-thumbs {

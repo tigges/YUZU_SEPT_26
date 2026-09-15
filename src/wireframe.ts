@@ -12,17 +12,22 @@ import {
 
 export type WireId =
   | 'header'
+  | 'ticker'
   | 'hero'
   | 'hours'
   | 'patch'
   | 'gallery'
   | 'reviews'
   | 'services'
+  | 'shop'
   | 'offers'
   | 'careers'
   | 'contact'
   | 'social'
   | 'footer'
+  | 'stylists'
+  | 'vouchers'
+  | 'faq'
 
 export type WireMeta = {
   id: WireId
@@ -47,21 +52,27 @@ export type WireDest = {
 
 export const WIRE_CATALOG: WireMeta[] = [
   { id: 'header', title: 'Logo + menu', hint: 'Wordmark, page links, Book' },
+  { id: 'ticker', title: 'News ticker', hint: 'Slim bar under the header: offer, hours, patch test' },
   { id: 'hero', title: 'Hero + CTA', hint: 'Headline, short story, Book on Phorest' },
   { id: 'hours', title: 'Opening hours', hint: 'Tue–Fri 10–8 · Sat 9–6 · Sun/Mon closed' },
   { id: 'patch', title: 'Patch-test notice', hint: 'Links out to the colour policy PDF' },
   { id: 'gallery', title: 'Customer gallery', hint: 'Client looks / Instagram results' },
   { id: 'reviews', title: 'Review gallery', hint: 'Google quotes + 4.5 rating' },
   { id: 'services', title: 'Services', hint: 'Cut, colour, highlights — price list is a sub-page' },
+  { id: 'shop', title: 'Shop teaser', hint: 'A few products at the desk — ask in salon, no cart' },
   { id: 'offers', title: 'Offers', hint: 'Weekday colour deals on a sub-page' },
   { id: 'careers', title: 'Join the Yuzu team', hint: 'Senior stylists, stylists, models' },
   { id: 'contact', title: 'Contact', hint: 'Dickens Yard, phone, email, Book' },
   { id: 'social', title: 'Social bar', hint: 'Current site, Instagram, TikTok, Facebook' },
-  { id: 'footer', title: 'Footer', hint: 'T&Cs and copyright' },
+  { id: 'footer', title: 'Footer', hint: 'T&Cs and copyright — blocks below this are archived' },
+  { id: 'stylists', title: 'Meet the stylists', hint: 'Faces and first names, not a recruiting ad' },
+  { id: 'vouchers', title: 'Gift vouchers', hint: 'Treat someone — book as a gift on Phorest' },
+  { id: 'faq', title: 'First visit', hint: 'Patch test, parking, Dickens Yard, what to bring' },
 ]
 
 export const WIRE_DESTINATIONS: WireDest[] = [
   { id: 'book-header', from: 'header', kind: 'offsite', title: 'Phorest', detail: 'Book from the menu', href: BOOKING_URL },
+  { id: 'ticker-offers', from: 'ticker', kind: 'subpage', title: 'Offers page', detail: 'Ticker can point at the current deal', href: OFFERS_PAGE_URL },
   { id: 'book-hero', from: 'hero', kind: 'offsite', title: 'Phorest', detail: 'Hero Book CTA', href: BOOKING_URL },
   { id: 'patch-pdf', from: 'patch', kind: 'subpage', title: 'Patch-test PDF', detail: 'Mandatory colour policy', href: PATCH_TEST_PDF_URL },
   { id: 'ig-gallery', from: 'gallery', kind: 'offsite', title: 'Instagram', detail: 'Portfolio / results', href: social.instagram },
@@ -76,13 +87,35 @@ export const WIRE_DESTINATIONS: WireDest[] = [
   { id: 'tiktok', from: 'social', kind: 'offsite', title: 'TikTok', detail: '@yuzuhairandbeauty.est16', href: social.tiktok },
   { id: 'fb', from: 'social', kind: 'offsite', title: 'Facebook', detail: 'YUZU Hair and Beauty', href: social.facebook },
   { id: 'terms', from: 'footer', kind: 'subpage', title: 'Terms & conditions', detail: 'Webpage, not a PDF', href: TERMS_URL },
+  { id: 'voucher-book', from: 'vouchers', kind: 'offsite', title: 'Phorest', detail: 'Buy or redeem a gift visit', href: BOOKING_URL },
+  { id: 'faq-patch', from: 'faq', kind: 'subpage', title: 'Patch-test PDF', detail: 'First-visit colour rule', href: PATCH_TEST_PDF_URL },
+  { id: 'faq-maps', from: 'faq', kind: 'offsite', title: 'Google Maps', detail: 'How to find Dickens Yard', href: MAPS_DIRECTIONS_URL },
 ]
 
+const LIVE_ORDER: WireId[] = [
+  'header',
+  'ticker',
+  'hero',
+  'hours',
+  'patch',
+  'gallery',
+  'reviews',
+  'services',
+  'shop',
+  'offers',
+  'careers',
+  'contact',
+  'social',
+  'footer',
+]
+
+const ARCHIVE_ORDER: WireId[] = ['stylists', 'vouchers', 'faq']
+
 export const DEFAULT_WIRE: WireState = {
-  order: WIRE_CATALOG.map((item) => item.id),
+  order: [...LIVE_ORDER, ...ARCHIVE_ORDER],
 }
 
-const STORAGE_KEY = 'yuzu-wireframe-v2'
+const STORAGE_KEY = 'yuzu-wireframe-v3'
 const IDS = new Set(WIRE_CATALOG.map((item) => item.id))
 
 export function metaFor(id: WireId) {
@@ -91,6 +124,16 @@ export function metaFor(id: WireId) {
 
 export function destsFor(id: WireId) {
   return WIRE_DESTINATIONS.filter((item) => item.from === id)
+}
+
+export function splitWire(order: WireId[]) {
+  const cut = order.indexOf('footer')
+  if (cut < 0) return { live: order, archived: [] as WireId[] }
+  return { live: order.slice(0, cut + 1), archived: order.slice(cut + 1) }
+}
+
+export function isArchived(order: WireId[], id: WireId) {
+  return splitWire(order).archived.includes(id)
 }
 
 export function normalizeWire(input: WireState): WireState {
