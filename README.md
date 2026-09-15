@@ -10,7 +10,7 @@ Live: https://tigges.github.io/YUZU_SEPT_26/
 - `?v=clean` clone of the Cloudways WordPress `/v1-clean/` preview (white header, photo hero, gallery, reviews, services, offers)
 - `?v=round` the Clean layout with rounded cards and boxes
 - `?v=studio` white, photography-led
-- `?v=wireframe` page order you can drag; hero carousel and WhatsApp on the page; price list nests under services; → / ← nest a section as a sub-page; archive anything below the footer
+- `?v=wireframe` page order you can drag; links in a tray you drop onto a section or sub-page; → / ← nest a section as a sub-page; archive anything below the footer
 - `?v=wix` clone of the live Wix homepage ([yuzuhairandbeauty.london](https://www.yuzuhairandbeauty.london/))
 - `?v=instagram` built from [@yuzuhairandbeauty](https://www.instagram.com/yuzuhairandbeauty/)
 - `?v=convert` forest-green booking landing from HAIR-CLONE v4

@@ -3,20 +3,27 @@ import { BOOKING_URL, LIVE_SITE_URL } from '../data'
 import { VersionBar } from '../components/VersionBar'
 import {
   DEFAULT_WIRE,
-  type WireDest,
+  LINK_CATALOG,
+  type LinkId,
+  type LinkPlacement,
   type WireId,
   type WireState,
   canPushSubpage,
   childrenOf,
-  destsFor,
+  linkMetaFor,
+  linksOn,
   loadWire,
   metaFor,
+  moveLink,
   moveWire,
   nudgeWire,
+  placeLink,
+  placementCount,
   popSubpage,
   pushSubpage,
   saveWire,
   splitWire,
+  unpinLink,
 } from '../wireframe'
 
 function Sketch({ id }: { id: WireId }) {
@@ -277,6 +284,16 @@ function Sketch({ id }: { id: WireId }) {
   )
 }
 
+
+type Drag =
+  | { kind: 'section'; id: WireId }
+  | { kind: 'link'; link: LinkId }
+  | { kind: 'placement'; id: string }
+
+type Over =
+  | { kind: 'reorder'; id: WireId; place: 'before' | 'after' }
+  | { kind: 'host'; id: WireId }
+
 function Connector({ count }: { count: number }) {
   const start = 20
   const first = 48
@@ -294,26 +311,64 @@ function Connector({ count }: { count: number }) {
   )
 }
 
-function Satellite({ item }: { item: WireDest }) {
+function LinkChip({
+  placement,
+  onUnpin,
+  onDragStart,
+  onDragMove,
+  onDragEnd,
+}: {
+  placement: LinkPlacement
+  onUnpin: (id: string) => void
+  onDragStart: (event: React.PointerEvent, id: string) => void
+  onDragMove: (event: React.PointerEvent) => void
+  onDragEnd: () => void
+}) {
+  const item = linkMetaFor(placement.link)
   return (
-    <a className={`wf-sat wf-sat-${item.kind}`} href={item.href} target="_blank" rel="noreferrer">
-      <span className="wf-sat-kind">{item.kind === 'offsite' ? 'Off-site' : 'Sub-page'}</span>
+    <div className={`wf-sat wf-sat-${item.kind}`}>
+      <div className="wf-sat-row">
+        <span className={`wf-sat-kind${item.kind === 'subpage' ? ' sub' : ''}`}>
+          {item.kind === 'offsite' ? 'Off-site' : 'Existing page'}
+        </span>
+        <div className="wf-sat-tools">
+          <button
+            type="button"
+            className="wf-handle"
+            aria-label={`Move ${item.title}`}
+            onPointerDown={(event) => onDragStart(event, placement.id)}
+            onPointerMove={onDragMove}
+            onPointerUp={onDragEnd}
+            onPointerCancel={onDragEnd}
+          >
+            ⋮⋮
+          </button>
+          <button type="button" className="wf-sat-back" aria-label={`Remove ${item.title}`} onClick={() => onUnpin(placement.id)}>
+            ×
+          </button>
+        </div>
+      </div>
       <strong>{item.title}</strong>
       <span>{item.detail}</span>
-    </a>
+      <a className="wf-sat-open" href={item.href} target="_blank" rel="noreferrer">
+        Open
+      </a>
+    </div>
   )
 }
 
 function SectionSatellite({
   id,
   onRestore,
+  dropOver,
 }: {
   id: WireId
   onRestore: (id: WireId) => void
+  dropOver: boolean
 }) {
   const item = metaFor(id)
   return (
-    <div className="wf-sat wf-sat-section">
+    <div className={`wf-sat wf-sat-section${dropOver ? ' over-host' : ''}`} data-wf-host={id}>
       <div className="wf-sat-row">
         <span className="wf-sat-kind sub">Sub-page</span>
         <button type="button" className="wf-sat-back" aria-label={`Move ${item.title} back to the main page`} onClick={() => onRestore(id)}>
@@ -329,9 +384,9 @@ function SectionSatellite({
 export default function Wireframe() {
   const [state, setState] = useState<WireState>(DEFAULT_WIRE)
   const [ready, setReady] = useState(false)
-  const [dragId, setDragId] = useState<WireId | null>(null)
-  const [over, setOver] = useState<{ id: WireId; place: 'before' | 'after' } | null>(null)
-  const dragIdRef = useRef<WireId | null>(null)
+  const [drag, setDrag] = useState<Drag | null>(null)
+  const [over, setOver] = useState<Over | null>(null)
+  const dragRef = useRef<Drag | null>(null)
 
   useEffect(() => {
     setState(loadWire())
@@ -343,66 +398,82 @@ export default function Wireframe() {
     saveWire(state)
   }, [ready, state])
 
-  const readTarget = (node: EventTarget | null, clientY: number) => {
+  const draggingLink = drag?.kind === 'link' || drag?.kind === 'placement'
+
+  const readTarget = (node: EventTarget | null, clientY: number, mode: Drag['kind']): Over | null => {
     const host = node as HTMLElement | null
+    if (mode === 'link' || mode === 'placement') {
+      const el = host?.closest?.('[data-wf-host]') as HTMLElement | null
+      const id = el?.getAttribute('data-wf-host') as WireId | null
+      return id ? { kind: 'host', id } : null
+    }
     const el = host?.closest?.('[data-wf-id]') as HTMLElement | null
     if (el) {
       const id = el.getAttribute('data-wf-id') as WireId | null
       if (id) {
         const rect = el.getBoundingClientRect()
-        return { id, place: clientY > rect.top + rect.height / 2 ? ('after' as const) : ('before' as const) }
+        return { kind: 'reorder', id, place: clientY > rect.top + rect.height / 2 ? 'after' : 'before' }
       }
     }
-    if (host?.closest?.('[data-wf-archive]')) return { id: 'footer' as const, place: 'after' as const }
+    if (host?.closest?.('[data-wf-archive]')) return { kind: 'reorder', id: 'footer', place: 'after' }
     return null
   }
 
-  const onPointerDown = (id: WireId) => (event: React.PointerEvent) => {
+  const capture = (event: React.PointerEvent, next: Drag) => {
     if (event.button !== 0) return
     event.preventDefault()
-    dragIdRef.current = id
-    setDragId(id)
+    dragRef.current = next
+    setDrag(next)
     ;(event.currentTarget as HTMLElement).setPointerCapture(event.pointerId)
   }
 
   const onPointerMove = (event: React.PointerEvent) => {
-    if (!dragIdRef.current) return
+    const current = dragRef.current
+    if (!current) return
     const under = document.elementFromPoint(event.clientX, event.clientY)
-    setOver(readTarget(under, event.clientY))
+    setOver(readTarget(under, event.clientY, current.kind))
   }
 
   const onPointerUp = () => {
-    const from = dragIdRef.current
-    if (from && over && over.id !== from) {
-      setState((current) => moveWire(current, from, over.id, over.place))
+    const current = dragRef.current
+    if (current?.kind === 'section' && over?.kind === 'reorder' && over.id !== current.id) {
+      setState((s) => moveWire(s, current.id, over.id, over.place))
     }
-    dragIdRef.current = null
-    setDragId(null)
+    if (current?.kind === 'link' && over?.kind === 'host') {
+      setState((s) => placeLink(s, current.link, over.id))
+    }
+    if (current?.kind === 'placement' && over?.kind === 'host') {
+      setState((s) => moveLink(s, current.id, over.id))
+    }
+    dragRef.current = null
+    setDrag(null)
     setOver(null)
   }
 
   const renderRow = (id: WireId, archived: boolean) => {
     const item = metaFor(id)
-    const dests = destsFor(id)
     const children = childrenOf(state, id)
-    const childDests = children.flatMap((child) => destsFor(child))
-    const satCount = dests.length + children.length + childDests.length
-    const isOver = over?.id === id
+    const ownLinks = linksOn(state, id)
+    const childLinks = children.flatMap((child) => linksOn(state, child))
+    const satCount = children.length + ownLinks.length + childLinks.length
+    const reorderOver = over?.kind === 'reorder' && over.id === id
+    const hostOver = over?.kind === 'host' && over.id === id
     const showPush = canPushSubpage(state, id)
     return (
       <div className={`wf-row${archived ? ' archived' : ''}`} key={id}>
         <article
-          className={`wf-block${satCount ? ' has-links' : ''}${dragId === id ? ' dragging' : ''}${
-            isOver ? ` over-${over.place}` : ''
-          }${archived ? ' archived' : ''}`}
+          className={`wf-block${satCount ? ' has-links' : ''}${drag?.kind === 'section' && drag.id === id ? ' dragging' : ''}${
+            reorderOver ? ` over-${over.place}` : ''
+          }${hostOver && draggingLink ? ' over-host' : ''}${archived ? ' archived' : ''}`}
           data-wf-id={id}
+          data-wf-host={id}
         >
           <header className="wf-block-head">
             <button
               type="button"
               className="wf-handle"
               aria-label={`Drag ${item.title}`}
-              onPointerDown={onPointerDown(id)}
+              onPointerDown={(event) => capture(event, { kind: 'section', id })}
               onPointerMove={onPointerMove}
               onPointerUp={onPointerUp}
               onPointerCancel={onPointerUp}
@@ -442,14 +513,32 @@ export default function Wireframe() {
             <aside className="wf-satellites">
               {children.map((child) => (
                 <Fragment key={child}>
-                  <SectionSatellite id={child} onRestore={(next) => setState((s) => popSubpage(s, next))} />
-                  {destsFor(child).map((dest) => (
-                    <Satellite key={dest.id} item={dest} />
+                  <SectionSatellite
+                    id={child}
+                    dropOver={draggingLink && over?.kind === 'host' && over.id === child}
+                    onRestore={(next) => setState((s) => popSubpage(s, next))}
+                  />
+                  {linksOn(state, child).map((placement) => (
+                    <LinkChip
+                      key={placement.id}
+                      placement={placement}
+                      onUnpin={(next) => setState((s) => unpinLink(s, next))}
+                      onDragStart={(event, next) => capture(event, { kind: 'placement', id: next })}
+                      onDragMove={onPointerMove}
+                      onDragEnd={onPointerUp}
+                    />
                   ))}
                 </Fragment>
               ))}
-              {dests.map((dest) => (
-                <Satellite key={dest.id} item={dest} />
+              {ownLinks.map((placement) => (
+                <LinkChip
+                  key={placement.id}
+                  placement={placement}
+                  onUnpin={(next) => setState((s) => unpinLink(s, next))}
+                  onDragStart={(event, next) => capture(event, { kind: 'placement', id: next })}
+                  onDragMove={onPointerMove}
+                  onDragEnd={onPointerUp}
+                />
               ))}
             </aside>
           </>
@@ -464,9 +553,10 @@ export default function Wireframe() {
   }
 
   const { live, archived } = splitWire(state.order)
+  const draggingSection = drag?.kind === 'section' ? drag.id : null
 
   return (
-    <div className={`wf${dragId ? ' is-dragging' : ''}`}>
+    <div className={`wf${drag ? ' is-dragging' : ''}${draggingLink ? ' is-link-dragging' : ''}`}>
       <VersionBar current="wireframe" />
       <header className="wf-top">
         <div className="wf-wrap wf-top-inner">
@@ -490,22 +580,47 @@ export default function Wireframe() {
 
       <main className="wf-wrap">
         <p className="wf-lead">
-          Left column is the homepage. Almost every block can become a sub-page: → sends it into
-          the column of the block above (one click away, not in the scroll). ← on that chip brings
-          it back. Header, ticker, and footer stay as chrome. Off-site chips (Phorest, Maps,
-          socials) stay as links — they are not pages. Drag below the footer to archive.
+          Left column is the homepage. → nests a section as a sub-page; ← brings it back. Header,
+          ticker, and footer stay as chrome. Links live in the tray: drag Phorest (or any other
+          chip) onto a block or a nested sub-page to place it. Drag again to put the same link in
+          a second place. × takes it off that block. Drag a page section below the footer to
+          archive it.
         </p>
         <p className="wf-legend">
           <span className="wf-sat-kind">Off-site</span> leaves the site ·{' '}
-          <span className="wf-sat-kind sub">Sub-page</span> stays on Yuzu · → / ← move sections · grey
-          = archived
+          <span className="wf-sat-kind sub">Existing page / sub-page</span> stays on Yuzu · ×
+          removes a link · grey = archived
         </p>
         <p className="wf-note">
-          Default homepage keeps a static hero plus a carousel (hero + Book, offers, patch test,
-          new-customer cut), then trust, hours, work, services (price list nested), offers, visit,
-          map, and a WhatsApp widget. Welcome, follow, enquiry form, and the social bar start in
-          the archive. Hit Reset layout if an older sketch is still in this browser.
+          Book starts on the title bar. Drop it on the hero as well if you want booking in both
+          places. Unused chips stay in the tray — they are not lost.
         </p>
+
+        <section className="wf-tray" aria-label="Links">
+          <p className="wf-tray-label">Links — drag onto a section or sub-page</p>
+          <div className="wf-tray-chips">
+            {LINK_CATALOG.map((item) => {
+              const count = placementCount(state, item.id)
+              return (
+                <button
+                  key={item.id}
+                  type="button"
+                  className={`wf-tray-chip${count ? ' placed' : ''}${drag?.kind === 'link' && drag.link === item.id ? ' dragging' : ''}`}
+                  onPointerDown={(event) => capture(event, { kind: 'link', link: item.id })}
+                  onPointerMove={onPointerMove}
+                  onPointerUp={onPointerUp}
+                  onPointerCancel={onPointerUp}
+                >
+                  <span className={`wf-sat-kind${item.kind === 'subpage' ? ' sub' : ''}`}>
+                    {item.kind === 'offsite' ? 'Off-site' : 'Page'}
+                  </span>
+                  <strong>{item.title}</strong>
+                  <span>{count ? `${count} placed` : 'Not placed'}</span>
+                </button>
+              )
+            })}
+          </div>
+        </section>
 
         <div className="wf-board">
           <div className="wf-board-head" aria-hidden="true">
@@ -515,13 +630,16 @@ export default function Wireframe() {
           </div>
           {live.map((id) => renderRow(id, false))}
           <div
-            className={`wf-archive-well${over?.id === 'footer' && over.place === 'after' && dragId !== 'footer' ? ' over' : ''}`}
+            className={`wf-archive-well${
+              over?.kind === 'reorder' && over.id === 'footer' && over.place === 'after' && draggingSection !== 'footer'
+                ? ' over'
+                : ''
+            }`}
             data-wf-archive
           >
             <p className="wf-archive-label">Archived — below the live page</p>
             <p className="wf-archive-hint">
-              Drag anything here to keep the drawing but take it off the homepage. Drag it back
-              above the footer to restore it.
+              Drag a page section here to take it off the homepage. Links stay in the tray above.
             </p>
             {archived.map((id) => renderRow(id, true))}
           </div>

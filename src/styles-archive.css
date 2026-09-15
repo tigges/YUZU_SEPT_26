@@ -2035,6 +2035,77 @@ body[data-theme='wireframe'] {
   max-width: 72ch;
 }
 
+.wf-tray {
+  margin: 0 0 1.4rem;
+  padding: 12px 14px 14px;
+  border: 1px dashed #8f8778;
+  background: #f7f5f0;
+}
+
+.wf-tray-label {
+  margin: 0 0 0.7rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #6f6a60;
+}
+
+.wf-tray-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.wf-tray-chip {
+  display: grid;
+  gap: 2px;
+  min-width: 132px;
+  padding: 7px 9px;
+  border: 1px dashed #8f8778;
+  background: #fffdf8;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  cursor: grab;
+  user-select: none;
+}
+
+.wf-tray-chip.placed {
+  background: #f3eee4;
+}
+
+.wf-tray-chip.dragging,
+.wf.is-dragging .wf-tray-chip {
+  cursor: grabbing;
+}
+
+.wf-block.over-host,
+.wf-sat-section.over-host {
+  outline: 2px solid #2a2926;
+  outline-offset: 2px;
+}
+
+.wf-sat-tools {
+  display: flex;
+  gap: 4px;
+}
+
+.wf-sat-tools .wf-handle {
+  width: 28px;
+  height: 22px;
+  min-height: 22px;
+  padding: 0;
+  font-size: 0.7rem;
+}
+
+.wf-sat-open {
+  margin-top: 4px;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #4e5843;
+}
+
 .wf-archived-flag {
   margin: 0 0 0.15rem;
   font-size: 0.62rem;
