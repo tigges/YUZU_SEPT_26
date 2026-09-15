@@ -1,8 +1,13 @@
-# Yuzu Hair & Beauty — earthy redesign
+# Yuzu Hair & Beauty — design versions
 
-A focused single-page site for Yuzu Hair at Dickens Yard, Ealing.
+A version gallery for Yuzu Hair at Dickens Yard, Ealing.
 
 Live: https://tigges.github.io/YUZU_SEPT_26/
+
+- Home: version gallery
+- `?v=earthy` parchment / olive site
+- `?v=instagram` built from [@yuzuhairandbeauty](https://www.instagram.com/yuzuhairandbeauty/)
+- `?v=studio` white, photography-led
 
 ## Run locally
 

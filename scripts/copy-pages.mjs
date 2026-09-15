@@ -34,6 +34,7 @@ for (const file of ['app.js', 'app.css']) {
 cpSync(resolve(root, 'public/assets/gallery'), resolve(assets, 'gallery'), { recursive: true })
 cpSync(resolve(root, 'public/assets/brand'), resolve(assets, 'brand'), { recursive: true })
 cpSync(resolve(root, 'public/assets/reviews'), resolve(assets, 'reviews'), { recursive: true })
+cpSync(resolve(root, 'public/assets/instagram'), resolve(assets, 'instagram'), { recursive: true })
 copyFileSync(resolve(root, 'public/favicon.svg'), resolve(root, 'favicon.svg'))
 copyFileSync(resolve(root, 'public/price-list.pdf'), resolve(root, 'price-list.pdf'))
 

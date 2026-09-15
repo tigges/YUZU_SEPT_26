@@ -176,3 +176,117 @@ export const extras = [
     detail: '£264 upfront, valid 16 weeks. All dates booked on purchase. Non-refundable.',
   },
 ]
+
+export const instagram = {
+  handle: '@yuzuhairandbeauty',
+  name: 'YUZU Hair & Beauty',
+  followers: '2,952',
+  following: '510',
+  posts: '776',
+  profile: asset('assets/instagram/profile.jpg'),
+  bio: 'Welcome to YUZU Hair. Unit 5, Dickens Yard, Ealing.',
+  highlights: [
+    { title: 'Offers', src: asset('assets/instagram/00.jpg') },
+    { title: 'Portfolio', src: asset('assets/instagram/08.jpg') },
+  ],
+  featured: [
+    {
+      src: asset('assets/instagram/08.jpg'),
+      alt: 'Dimensional blonde with silky layers, photographed in salon',
+      title: 'Soft blonde, salon-fresh finish',
+      detail: 'Colour and cut by @glowupwithmia',
+    },
+    {
+      src: asset('assets/instagram/09.jpg'),
+      alt: 'Copper balayage with a glossy finish',
+      title: 'Copper balayage',
+      detail: 'Rich warmth, soft dimension, glossy finish',
+    },
+    {
+      src: asset('assets/instagram/09-1.jpg'),
+      alt: 'Before: long dark wavy hair in the salon chair',
+      title: 'Before',
+      detail: 'The same client, before the copper',
+    },
+    {
+      src: asset('assets/instagram/08-1.jpg'),
+      alt: 'Back view of blended blonde colour',
+      title: 'Blonde, from behind',
+      detail: 'Effortless movement through the lengths',
+    },
+  ],
+  feed: [
+    {
+      src: asset('assets/instagram/00.jpg'),
+      href: 'https://www.instagram.com/yuzuhairandbeauty/p/DWhEa09jImn/',
+      kind: 'image' as const,
+      label: 'Colour Tuesdays · 50% off',
+    },
+    {
+      src: asset('assets/instagram/01.jpg'),
+      href: 'https://www.instagram.com/yuzuhairandbeauty/p/DWhDiM2DLZO/',
+      kind: 'image' as const,
+      label: 'Smooth Wednesdays · 25% off',
+    },
+    {
+      src: asset('assets/instagram/02.jpg'),
+      href: 'https://www.instagram.com/yuzuhairandbeauty/p/DWhDWkJjMmZ/',
+      kind: 'image' as const,
+      label: 'Colour Thursdays · 50% off',
+    },
+    {
+      src: asset('assets/instagram/03.jpg'),
+      href: 'https://www.instagram.com/yuzuhairandbeauty/reel/DcyBdOeMgqE/',
+      kind: 'reel' as const,
+      label: 'Behind the scenes at Dickens Yard',
+    },
+    {
+      src: asset('assets/instagram/04.jpg'),
+      href: 'https://www.instagram.com/yuzuhairandbeauty/reel/Dcl0vYwM16h/',
+      kind: 'reel' as const,
+      label: 'Meet the team',
+    },
+    {
+      src: asset('assets/instagram/05.jpg'),
+      href: 'https://www.instagram.com/itslammmmmm/reel/DcI4Ygruv3R/',
+      kind: 'reel' as const,
+      label: 'Asian beauty spots in London',
+    },
+    {
+      src: asset('assets/instagram/06.jpg'),
+      href: 'https://www.instagram.com/yuzuhairandbeauty/reel/DcBQVFEt3EP/',
+      kind: 'reel' as const,
+      label: '10-year anniversary',
+    },
+    {
+      src: asset('assets/instagram/07.jpg'),
+      href: 'https://www.instagram.com/yuzuhairandbeauty/reel/Db-ybHkMh-R/',
+      kind: 'reel' as const,
+      label: 'Celebrating small businesses',
+    },
+    {
+      src: asset('assets/instagram/08.jpg'),
+      href: 'https://www.instagram.com/yuzuhairandbeauty/p/Db2s4CCDLJ_/',
+      kind: 'carousel' as const,
+      label: 'Dimensional blonde',
+    },
+    {
+      src: asset('assets/instagram/09.jpg'),
+      href: 'https://www.instagram.com/yuzuhairandbeauty/p/Db0-9OpDJ3O/',
+      kind: 'carousel' as const,
+      label: 'Copper balayage',
+    },
+    {
+      src: asset('assets/instagram/10.jpg'),
+      href: 'https://www.instagram.com/yuzuhairandbeauty/p/Daz2v-MstsH/',
+      kind: 'image' as const,
+      label: 'Summer party pastries',
+    },
+    {
+      src: asset('assets/instagram/11.jpg'),
+      href: 'https://www.instagram.com/yuzuhairandbeauty/p/Danv113MFV3/',
+      kind: 'image' as const,
+      label: 'Tooth gems at the summer party',
+    },
+  ],
+}
