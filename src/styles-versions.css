@@ -128,6 +128,10 @@ body[data-theme='studio'] {
   object-fit: cover;
 }
 
+.hub-card:first-child img {
+  object-position: 18% 35%;
+}
+
 .hub-card-body {
   padding: 22px 22px 26px;
   display: flex;
@@ -469,6 +473,16 @@ body[data-theme='studio'] {
   align-items: flex-start;
 }
 
+.ig-visit .btn.ig-book {
+  background: #f7f2ea;
+  color: #3d4a36;
+}
+
+.ig-visit .btn.ig-book:hover {
+  background: #fff;
+  color: #2a3226;
+}
+
 .ig-visit .social-row a {
   background: transparent;
   color: #f7f2ea;
@@ -802,11 +816,14 @@ body[data-theme='studio'] {
 }
 
 @media (max-width: 640px) {
-  .hub-grid,
   .ig-grid,
   .studio-gallery,
   .studio-service-grid {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .hub-grid {
+    grid-template-columns: 1fr;
   }
 
   .studio-service-grid article:nth-child(odd),
