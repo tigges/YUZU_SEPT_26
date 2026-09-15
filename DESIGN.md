@@ -45,7 +45,7 @@ Version 2 (`?v=instagram`) uses those downloaded posts, the wordmark, and the sa
 ## Other repos
 
 - **[YUZU_CLEAN](https://github.com/tigges/YUZU_CLEAN)** — Next.js wireframe, no photos, dummy address. Ported as **Gold** (`?v=gold`) with Dickens Yard facts and our gallery.
-- **[YUZU_V4_CURSOR](https://github.com/tigges/-YUZU_V4_CURSOR)** — `main` is empty; the real prototype is on `cursor/wordpress-git-integration-3576`. Ported as **Sanctuary** (`?v=sanctuary`) with its hero, salon photos, and hours strip.
+- **[YUZU_CUSROR_V7](https://github.com/tigges/YUZU_CUSROR_V7)** — empty scaffold (README only). No design or assets to port.
 
 The homepage is a version gallery. Earthy is `?v=earthy`.
 
