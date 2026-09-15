@@ -49,6 +49,15 @@ Version 2 (`?v=instagram`) uses those downloaded posts, the wordmark, and the sa
 
 The homepage is a version gallery. Earthy is `?v=earthy`.
 
+## Canonical URLs
+
+- Book: https://www.phorest.com/salon/yuzuhairandbeauty
+- Maps: https://maps.app.goo.gl/bhFS5wwkW3xxAdKd8
+- Instagram: https://www.instagram.com/yuzuhairandbeauty/
+- TikTok: https://www.tiktok.com/@yuzuhairandbeauty.est16
+
+See `AGENTS.md`. Do not replace these with search links or the old `phorest.com/book/salons/…` path.
+
 ## Stack
 
 Vite + React + TypeScript. Static files in `public/`. No CMS. Query-param versions so GitHub Pages and in-page `#gallery` anchors both work.

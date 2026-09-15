@@ -1,8 +1,6 @@
-export const BOOKING_URL = 'https://phorest.com/book/salons/yuzuhairandbeauty'
-export const GOOGLE_REVIEWS_URL =
-  'https://www.google.com/maps/search/?api=1&query=Yuzu%20Hair%205%20Dickens%20Yard%20Ealing'
-export const MAPS_DIRECTIONS_URL =
-  'https://www.google.com/maps/dir/?api=1&destination=5%20Dickens%20Yard%2C%20Longfield%20Avenue%2C%20London%20W5%202TD'
+export const BOOKING_URL = 'https://www.phorest.com/salon/yuzuhairandbeauty'
+export const GOOGLE_REVIEWS_URL = 'https://maps.app.goo.gl/bhFS5wwkW3xxAdKd8'
+export const MAPS_DIRECTIONS_URL = 'https://maps.app.goo.gl/bhFS5wwkW3xxAdKd8'
 export const MAPS_EMBED_URL =
   'https://www.openstreetmap.org/export/embed.html?bbox=-0.307%2C51.511%2C-0.297%2C51.5165&layer=mapnik&marker=51.5137%2C-0.302'
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path}`
@@ -11,6 +9,7 @@ export const PRICE_LIST_URL = asset('price-list.pdf')
 
 export const social = {
   instagram: 'https://www.instagram.com/yuzuhairandbeauty/',
+  tiktok: 'https://www.tiktok.com/@yuzuhairandbeauty.est16',
   facebook: 'https://www.facebook.com/YUZUHairandBeauty/',
   email: 'mailto:info@yuzuhairandbeauty.co.uk',
 }

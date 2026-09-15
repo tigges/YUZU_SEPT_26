@@ -182,10 +182,10 @@ export default function Sanctuary() {
             <a href={social.instagram} target="_blank" rel="noreferrer">
               Instagram
             </a>
-            <a href={contact.phoneHref}>{contact.phone}</a>
-            <a href="https://wa.me/442088402244" target="_blank" rel="noreferrer">
-              WhatsApp
+            <a href={social.tiktok} target="_blank" rel="noreferrer">
+              TikTok
             </a>
+            <a href={contact.phoneHref}>{contact.phone}</a>
             <a href={social.facebook} target="_blank" rel="noreferrer">
               Facebook
             </a>

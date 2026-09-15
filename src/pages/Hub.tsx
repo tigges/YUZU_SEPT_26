@@ -1,4 +1,4 @@
-import { BOOKING_URL } from '../data'
+import { BOOKING_URL, social } from '../data'
 import { versionUrl, versions } from '../versions'
 
 export default function Hub() {
@@ -40,7 +40,7 @@ export default function Hub() {
         <aside className="hub-note">
           <h2>From Instagram</h2>
           <p>
-            <a href="https://www.instagram.com/yuzuhairandbeauty/" target="_blank" rel="noreferrer">
+            <a href={social.instagram} target="_blank" rel="noreferrer">
               @yuzuhairandbeauty
             </a>{' '}
             is 2,952 followers and 776 posts, with highlights for Offers and Portfolio Hair. The

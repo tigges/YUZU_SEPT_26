@@ -10,6 +10,14 @@ function InstagramIcon() {
   )
 }
 
+function TikTokIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M14.2 3h2.3c.2 1.7 1.2 3.2 2.7 4.1 1 .6 2.1.9 3.2.9v2.4c-1.6 0-3.1-.5-4.4-1.3v6.6c0 3.4-2.7 6.2-6.2 6.3-3.4 0-6.2-2.8-6.2-6.3s2.8-6.2 6.2-6.2c.3 0 .6 0 .9.1v2.5c-.3-.1-.6-.2-.9-.2-2 0-3.6 1.6-3.6 3.7s1.6 3.7 3.6 3.7 3.6-1.6 3.6-3.7V3Z" />
+    </svg>
+  )
+}
+
 function FacebookIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -32,6 +40,9 @@ export function SocialLinks({ className = 'social-row' }: { className?: string }
     <div className={className}>
       <a href={social.instagram} target="_blank" rel="noreferrer" aria-label="Instagram">
         <InstagramIcon />
+      </a>
+      <a href={social.tiktok} target="_blank" rel="noreferrer" aria-label="TikTok">
+        <TikTokIcon />
       </a>
       <a href={social.facebook} target="_blank" rel="noreferrer" aria-label="Facebook">
         <FacebookIcon />

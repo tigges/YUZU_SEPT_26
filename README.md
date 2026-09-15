@@ -25,3 +25,5 @@ npm run build:pages
 ```
 
 GitHub Pages serves the compiled `index.html` and `assets/` from the `main` branch. Local development uses `dev.html`.
+
+Canonical links (see `AGENTS.md`): [Book](https://www.phorest.com/salon/yuzuhairandbeauty) · [Maps](https://maps.app.goo.gl/bhFS5wwkW3xxAdKd8) · [Instagram](https://www.instagram.com/yuzuhairandbeauty/) · [TikTok](https://www.tiktok.com/@yuzuhairandbeauty.est16)
