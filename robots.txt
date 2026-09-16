@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tigges.github.io/YUZU_SEPT_26/sitemap.xml

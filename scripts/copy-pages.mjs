@@ -43,4 +43,17 @@ copyFileSync(resolve(root, 'public/favicon.svg'), resolve(root, 'favicon.svg'))
 copyFileSync(resolve(root, 'public/price-list.pdf'), resolve(root, 'price-list.pdf'))
 copyFileSync(resolve(root, 'public/patch-testing.pdf'), resolve(root, 'patch-testing.pdf'))
 
-console.log('Wrote GitHub Pages files: index.html, assets/app.js, assets/app.css')
+for (const file of [
+  'robots.txt',
+  'sitemap.xml',
+  'llms.txt',
+  'soe.css',
+  'prices.html',
+  'services.html',
+  'contact.html',
+  'about.html',
+]) {
+  copyFileSync(resolve(root, 'public', file), resolve(root, file))
+}
+
+console.log('Wrote GitHub Pages files: index.html, assets/, robots.txt, sitemap.xml, llms.txt, prices/services/contact/about.html')

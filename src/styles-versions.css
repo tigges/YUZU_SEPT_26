@@ -2087,6 +2087,99 @@ body[data-theme='sanctuary'] {
   font-size: 0.9rem;
 }
 
+.clean-about,
+.clean-prices,
+.clean-faq {
+  background: #fff;
+  padding: 2.4rem 0 2.8rem;
+}
+
+.clean-about h2,
+.clean-prices h2,
+.clean-faq h2 {
+  margin: 0 0 1rem;
+  font-size: clamp(1.6rem, 2.6vw, 2.05rem);
+}
+
+.clean-about p,
+.clean-prices > .clean-inner > p,
+.clean-faq p {
+  margin: 0 0 1rem;
+  color: #4a4a4a;
+  line-height: 1.7;
+  max-width: 72ch;
+}
+
+.clean-about .clean-dark {
+  margin-top: 0.4rem;
+}
+
+.clean-price-group {
+  margin: 0 0 1.6rem;
+}
+
+.clean-price-group h3,
+.clean-prices h3 {
+  margin: 0 0 0.6rem;
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+.clean-prices table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.clean-prices .clean-inner {
+  overflow-x: auto;
+}
+
+.clean-prices th,
+.clean-prices td {
+  text-align: left;
+  padding: 0.45rem 0.6rem 0.45rem 0;
+  border-bottom: 1px solid #ececec;
+}
+
+.clean-prices th {
+  font-weight: 500;
+  color: #6a6a6a;
+}
+
+.clean-treatments {
+  list-style: none;
+  margin: 0 0 1.4rem;
+  padding: 0;
+  max-width: 40rem;
+}
+
+.clean-treatments li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid #ececec;
+  font-size: 0.9rem;
+}
+
+.clean-price-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.clean-faq article {
+  margin: 0 0 1.2rem;
+  max-width: 72ch;
+}
+
+.clean-faq h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
 .clean-visit {
   background: #fff;
   padding: 2.6rem 0 3.2rem;
@@ -2142,6 +2235,10 @@ body[data-theme='sanctuary'] {
 
 .clean-footer p {
   margin: 0;
+}
+
+.clean-footer a {
+  color: inherit;
 }
 
 @media (max-width: 900px) {
@@ -2220,6 +2317,10 @@ body[data-theme='sanctuary'] {
 .clean-round .clean-services li,
 .clean-round .clean-offers,
 .clean-round .clean-offers img,
+.clean-round .clean-about,
+.clean-round .clean-prices,
+.clean-round .clean-faq,
+.clean-round .clean-price-group,
 .clean-round .clean-visit-grid,
 .clean-round .clean-review-body a {
   border-radius: 22px;

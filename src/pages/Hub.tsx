@@ -43,7 +43,11 @@ export default function Hub() {
                     <span />
                   </div>
                 ) : (
-                  <img src={item.preview} alt={item.previewAlt} />
+                  <img
+                    src={item.preview}
+                    alt={item.previewAlt}
+                    fetchPriority={item.id === versions[0].id ? 'high' : undefined}
+                  />
                 )}
               </div>
               <div className="hub-card-body">
