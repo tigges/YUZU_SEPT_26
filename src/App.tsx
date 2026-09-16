@@ -15,11 +15,15 @@ import Simple from './pages/Simple'
 import Studio from './pages/Studio'
 import Wireframe from './pages/Wireframe'
 import Wix from './pages/Wix'
-import { readVersionParam } from './versions'
+import { applyDocumentSeo } from './seo'
+import { readVersionParam, versions } from './versions'
 
 export default function App() {
   const version = readVersionParam()
   document.body.dataset.theme = version ?? 'hub'
+  if (version === 'clean' || version === 'round') applyDocumentSeo('clean')
+  else if (!version) applyDocumentSeo('hub')
+  else applyDocumentSeo('other', versions.find((item) => item.id === version)?.name)
 
   if (version === 'earthy') return <Earthy />
   if (version === 'instagram') return <Instagram />
