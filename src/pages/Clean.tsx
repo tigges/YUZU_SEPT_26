@@ -14,17 +14,56 @@ import {
   treatments,
 } from '../data'
 import { VersionBar } from '../components/VersionBar'
-import { faqs } from '../seo'
+import { cleanSubpages, faqs, type CleanSubpage } from '../seo'
 
 const asset = (path: string) => `${import.meta.env.BASE_URL}assets/clean/${path}`
-const page = (path: string) => `${import.meta.env.BASE_URL}${path}`
+const pageHref = (path: string) => `${import.meta.env.BASE_URL}${path}`
 
-const nav = [
-  { href: '#gallery', label: 'Gallery' },
-  { href: '#services', label: 'Services' },
-  { href: page('prices.html'), label: 'Prices' },
-  { href: page('contact.html'), label: 'Contact' },
+const serviceCards = [
+  {
+    title: 'Cut & Styling',
+    copy: 'Precision cuts tailored to your hair and lifestyle.',
+    from: '£55',
+  },
+  {
+    title: 'Colour',
+    copy: 'Highlights, balayage, root retouch and tonal refresh.',
+    from: '£85',
+  },
+  {
+    title: 'Treatments',
+    copy: 'Hair-strengthening and conditioning rituals.',
+    from: '£35',
+  },
+  {
+    title: 'Blow Dry',
+    copy: 'Polished finishes for everyday or events.',
+    from: '£35',
+  },
 ]
+
+const offerCards = [
+  {
+    src: asset('offer-tuesdays.jpg'),
+    alt: 'Colour Tuesdays 50% off with senior stylist',
+    title: 'New Client Colour Welcome',
+    detail: 'Save on your first colour service this month.',
+  },
+  {
+    src: asset('offer-wednesdays.jpg'),
+    alt: 'Smooth Wednesdays 25% off smoothing treatments',
+    title: 'Cut + Blow Dry Bundle',
+    detail: 'Weekday package offer for selected stylists.',
+  },
+  {
+    src: asset('offer-thursdays.jpg'),
+    alt: 'Thursdays are the new Tuesdays, 50% off with stylist',
+    title: 'Treatment Add-On',
+    detail: 'Reduced rate when booked with cut or colour.',
+  },
+]
+
+const looks = [gallery[0], gallery[1], gallery[2], gallery[3], gallery[4], gallery[5]]
 
 function InstagramIcon() {
   return (
@@ -88,54 +127,120 @@ function CleanSocial() {
   )
 }
 
-const serviceCards = [
-  {
-    title: 'Cut & Styling',
-    copy: 'Precision cuts tailored to your hair and lifestyle.',
-    from: '£55',
-  },
-  {
-    title: 'Colour',
-    copy: 'Highlights, balayage, root retouch and tonal refresh.',
-    from: '£85',
-  },
-  {
-    title: 'Treatments',
-    copy: 'Hair-strengthening and conditioning rituals.',
-    from: '£35',
-  },
-  {
-    title: 'Blow Dry',
-    copy: 'Polished finishes for everyday or events.',
-    from: '£35',
-  },
-]
+function AboutBody() {
+  return (
+    <section className="clean-about" id="about">
+      <h1>{cleanSubpages.about.h1}</h1>
+      <p>
+        Yuzu Hair &amp; Beauty is a Japanese-inspired hair salon at 5 Dickens Yard, Longfield
+        Avenue, Ealing, London W5 2TD — a short walk from Ealing Broadway station. Stylists here
+        work with precision cuts, thoughtful colour, balayage, and formaldehyde-free Brazilian
+        blow-dry / Aura smoothing. Consultations are unhurried. Colour guests, including existing
+        clients, need a patch test at least 48 hours before the appointment.
+      </p>
+      <p>
+        Open Tuesday to Friday 10am–8pm and Saturday 9am–6pm (Monday and Sunday closed). Call{' '}
+        <a href={contact.phoneHref}>{contact.phone}</a> or book on Phorest. Guests describe the
+        salon as calm, expert and focused on detail. One Google review calls Jasmine “a brilliant
+        artist working in hair”.
+      </p>
+      <p>
+        Use the name Yuzu Hair &amp; Beauty everywhere — that distinguishes the Ealing salon from
+        YUZUHAIR in Hucknall, Nottingham. This is the Dickens Yard address, not the old High Street
+        or Mattock Lane listings.
+      </p>
+    </section>
+  )
+}
 
-const offerCards = [
-  {
-    src: asset('offer-tuesdays.jpg'),
-    alt: 'Colour Tuesdays 50% off with senior stylist',
-    title: 'New Client Colour Welcome',
-    detail: 'Save on your first colour service this month.',
-  },
-  {
-    src: asset('offer-wednesdays.jpg'),
-    alt: 'Smooth Wednesdays 25% off smoothing treatments',
-    title: 'Cut + Blow Dry Bundle',
-    detail: 'Weekday package offer for selected stylists.',
-  },
-  {
-    src: asset('offer-thursdays.jpg'),
-    alt: 'Thursdays are the new Tuesdays, 50% off with stylist',
-    title: 'Treatment Add-On',
-    detail: 'Reduced rate when booked with cut or colour.',
-  },
-]
+function QuestionsBody() {
+  return (
+    <section className="clean-faq" id="questions">
+      <h1>{cleanSubpages.questions.h1}</h1>
+      {faqs.map((item) => (
+        <article key={item.question}>
+          <h2>{item.question}</h2>
+          <p>{item.answer}</p>
+        </article>
+      ))}
+      <p>
+        <a href={PATCH_TEST_PDF_URL} target="_blank" rel="noreferrer">
+          Mandatory patch testing 2025
+        </a>
+        {' · '}
+        <a href={pageHref('prices.html')}>HTML price list</a>
+      </p>
+    </section>
+  )
+}
 
-const looks = [gallery[0], gallery[1], gallery[2], gallery[3], gallery[4], gallery[5]]
+function PricesBody() {
+  return (
+    <section className="clean-prices" id="prices">
+      <h1>{cleanSubpages.prices.h1}</h1>
+      <p>
+        Senior and stylist menus as HTML, so search and answer engines can quote them. The 2025 PDF
+        remains a download. Call {contact.phone} for a quote on long hair or colour correction.
+      </p>
+      {priceGroups.map((group) => (
+        <div className="clean-price-group" key={group.title}>
+          <h2>{group.title}</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Service</th>
+                <th>Senior</th>
+                <th>Stylist</th>
+              </tr>
+            </thead>
+            <tbody>
+              {group.rows.map((row) => (
+                <tr key={row.name}>
+                  <td>{row.name}</td>
+                  <td>{row.senior}</td>
+                  <td>{row.stylist}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ))}
+      <h2>Treatments</h2>
+      <ul className="clean-treatments">
+        {treatments.map((item) => (
+          <li key={item.name}>
+            <span>{item.name}</span>
+            <span>{item.price}</span>
+          </li>
+        ))}
+      </ul>
+      <div className="clean-price-links">
+        <a className="clean-dark" href={PRICE_LIST_URL} target="_blank" rel="noreferrer">
+          Download PDF
+        </a>
+      </div>
+    </section>
+  )
+}
 
-export default function Clean({ variant = 'clean' }: { variant?: 'clean' | 'round' }) {
+export default function Clean({
+  variant = 'clean',
+  page = 'home',
+}: {
+  variant?: 'clean' | 'round'
+  page?: 'home' | CleanSubpage
+}) {
   const [menuOpen, setMenuOpen] = useState(false)
+  const home = `${import.meta.env.BASE_URL}?v=${variant}`
+  const isHome = page === 'home'
+
+  const nav = [
+    { href: isHome ? '#gallery' : `${home}#gallery`, label: 'Gallery' },
+    { href: isHome ? '#services' : `${home}#services`, label: 'Services' },
+    { href: pageHref('about.html'), label: 'About' },
+    { href: pageHref('questions.html'), label: 'Questions' },
+    { href: pageHref('prices.html'), label: 'Prices' },
+  ]
 
   const goTo = (href: string) => (event: { preventDefault: () => void }) => {
     if (!href.startsWith('#')) return
@@ -151,12 +256,23 @@ export default function Clean({ variant = 'clean' }: { variant?: 'clean' | 'roun
       <VersionBar current={variant} />
       <header className={`clean-header${menuOpen ? ' open' : ''}`}>
         <div className="clean-inner clean-header-inner">
-          <a className="clean-logo" href="#top" onClick={goTo('#top')}>
+          <a className="clean-logo" href={isHome ? '#top' : home} onClick={isHome ? goTo('#top') : undefined}>
             <img src={asset('logo.png')} alt="Yuzu Hair & Beauty" />
           </a>
           <nav className="clean-nav" aria-label="Primary">
             {nav.map((item) => (
-              <a key={item.href} href={item.href} onClick={goTo(item.href)}>
+              <a
+                key={item.label}
+                href={item.href}
+                onClick={goTo(item.href)}
+                aria-current={
+                  (page === 'about' && item.label === 'About') ||
+                  (page === 'questions' && item.label === 'Questions') ||
+                  (page === 'prices' && item.label === 'Prices')
+                    ? 'page'
+                    : undefined
+                }
+              >
                 {item.label}
               </a>
             ))}
@@ -175,251 +291,200 @@ export default function Clean({ variant = 'clean' }: { variant?: 'clean' | 'roun
         </div>
       </header>
 
-      <main id="top">
-        <section className="clean-hero" aria-labelledby="clean-hero-heading">
-          <img
-            src={asset('hero.jpg')}
-            alt="Wavy brunette hair, photographed in salon at Yuzu Hair & Beauty, Ealing"
-            width={1920}
-            height={660}
-            fetchPriority="high"
-          />
-          <div className="clean-hero-copy">
-            <h1 id="clean-hero-heading">
-              Japanese hair salon London
-              <br />
-              hairdresser Ealing Broadway
-            </h1>
-            <p>
-              Specialist cuts, colour, and care in Ealing. Clean finishes, thoughtful
-              consultation, and results that suit your lifestyle.
-            </p>
-            <a className="clean-book" href={BOOKING_URL} target="_blank" rel="noreferrer">
-              Book your appointment
-            </a>
-          </div>
-        </section>
-
-        <section className="clean-about" id="about">
-          <div className="clean-inner">
-            <h2>About the team</h2>
-            <p>
-              Yuzu Hair & Beauty is a Japanese-inspired hair salon at 5 Dickens Yard, Longfield
-              Avenue, Ealing, London W5 2TD — a short walk from Ealing Broadway station. Stylists
-              here work with precision cuts, thoughtful colour, balayage, and formaldehyde-free
-              Brazilian blow-dry / Aura smoothing. Consultations are unhurried. Colour guests,
-              including existing clients, need a patch test at least 48 hours before the
-              appointment.
-            </p>
-            <p>
-              Open Tuesday to Friday 10am–8pm and Saturday 9am–6pm (Monday and Sunday closed). Call{' '}
-              <a href={contact.phoneHref}>{contact.phone}</a> or book on Phorest. The current site
-              is yuzuhairandbeauty.london; this Clean page is the Sept 2026 rebuild.
-            </p>
-            <a className="clean-dark" href={page('about.html')}>
-              Meet the stylists
-            </a>
-          </div>
-        </section>
-
-        <section className="clean-gallery" id="gallery">
-          <div className="clean-inner">
-            <h2>Gallery</h2>
-            <ul>
-              {looks.map((item) => (
-                <li key={item.src}>
-                  <img src={item.src} alt={item.alt} />
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
-        <div className="clean-inner">
-          <CleanSocial />
-        </div>
-
-        <section className="clean-reviews" id="reviews">
-          <div className="clean-inner">
-            <h2>What Clients Say</h2>
-            <div className="clean-review-grid">
-              {reviews.map((review) => (
-                <article key={review.name}>
-                  <img src={review.photo} alt={`${review.name}, Google reviewer at Yuzu Hair & Beauty`} />
-                  <div className="clean-review-body">
-                    <p className="clean-stars" aria-label="5 stars">
-                      ★★★★★
-                    </p>
-                    <h3>“{review.quote}”</h3>
-                    <p>{review.body}</p>
-                    <a href={GOOGLE_REVIEWS_URL} target="_blank" rel="noreferrer">
-                      {review.name} · Google review
-                    </a>
-                  </div>
-                </article>
-              ))}
-            </div>
-            <a className="clean-dark" href={GOOGLE_REVIEWS_URL} target="_blank" rel="noreferrer">
-              Read all Google Reviews
-            </a>
-          </div>
-        </section>
-
-        <section className="clean-services-band" id="services">
-          <div className="clean-inner">
-            <div className="clean-services">
-              <div className="clean-services-art">
-                <h2>Services</h2>
-                <img
-                  src={asset('portrait.png')}
-                  alt="Stylist portrait from Yuzu Hair & Beauty, the hair salon in Ealing"
-                />
-              </div>
-              <ul>
-                {serviceCards.map((service) => (
-                  <li key={service.title}>
-                    <h3>{service.title}</h3>
-                    <p>{service.copy}</p>
-                    <span>from {service.from}</span>
-                  </li>
-                ))}
-              </ul>
-              <a className="clean-dark" href={page('services.html')}>
-                View services
-              </a>
-            </div>
-          </div>
-        </section>
-
-        <section className="clean-prices" id="prices">
-          <div className="clean-inner">
-            <h2>Price list</h2>
-            <p>
-              Senior and stylist menus as HTML, so search and answer engines can quote them. The
-              2025 PDF remains a download.
-            </p>
-            {priceGroups.map((group) => (
-              <div className="clean-price-group" key={group.title}>
-                <h3>{group.title}</h3>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Service</th>
-                      <th>Senior</th>
-                      <th>Stylist</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {group.rows.map((row) => (
-                      <tr key={row.name}>
-                        <td>{row.name}</td>
-                        <td>{row.senior}</td>
-                        <td>{row.stylist}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            ))}
-            <h3>Treatments</h3>
-            <ul className="clean-treatments">
-              {treatments.map((item) => (
-                <li key={item.name}>
-                  <span>{item.name}</span>
-                  <span>{item.price}</span>
-                </li>
-              ))}
-            </ul>
-            <div className="clean-price-links">
-              <a className="clean-dark" href={page('prices.html')}>
-                Full price list
-              </a>
-              <a className="clean-dark" href={PRICE_LIST_URL} target="_blank" rel="noreferrer">
-                Download PDF
-              </a>
-            </div>
-          </div>
-        </section>
-
-        <section className="clean-offers-band" id="offers">
-          <div className="clean-inner">
-            <div className="clean-offers">
-              <h2>Current Offers</h2>
-              <ul>
-                {offerCards.map((item) => (
-                  <li key={item.src}>
-                    <a href={OFFERS_PAGE_URL} target="_blank" rel="noreferrer">
-                      <img src={item.src} alt={item.alt} />
-                      <h3>{item.title}</h3>
-                      <p>{item.detail}</p>
-                    </a>
-                  </li>
-                ))}
-              </ul>
-              <a className="clean-dark" href={OFFERS_PAGE_URL} target="_blank" rel="noreferrer">
-                View all offers
-              </a>
-            </div>
-          </div>
-        </section>
-
-        <section className="clean-faq" id="faq">
-          <div className="clean-inner">
-            <h2>Questions guests ask</h2>
-            {faqs.map((item) => (
-              <article key={item.question}>
-                <h3>{item.question}</h3>
-                <p>{item.answer}</p>
-              </article>
-            ))}
-            <p>
-              <a href={PATCH_TEST_PDF_URL} target="_blank" rel="noreferrer">
-                Mandatory patch testing 2025
-              </a>
-            </p>
-          </div>
-        </section>
-
-        <section className="clean-visit" id="contact">
-          <div className="clean-inner clean-visit-grid">
-            <div>
-              <h2>Address</h2>
-              <p>
-                {contact.addressLines[0]}
+      {isHome ? (
+        <main id="top">
+          <section className="clean-hero" aria-labelledby="clean-hero-heading">
+            <img
+              src={asset('hero.jpg')}
+              alt="Wavy brunette hair, photographed in salon at Yuzu Hair & Beauty, Ealing"
+              width={1920}
+              height={660}
+              fetchPriority="high"
+            />
+            <div className="clean-hero-copy">
+              <h1 id="clean-hero-heading">
+                Japanese hair salon London
                 <br />
-                {contact.addressLines[1]}, {contact.addressLines[2]}
-              </p>
+                hairdresser Ealing Broadway
+              </h1>
               <p>
-                <a href={contact.phoneHref}>{contact.phone}</a>
-                <br />
-                <a href={social.email}>{contact.email}</a>
+                Specialist cuts, colour, and care in Ealing. Clean finishes, thoughtful
+                consultation, and results that suit your lifestyle.
               </p>
-              <p>
-                <a href={MAPS_DIRECTIONS_URL} target="_blank" rel="noreferrer">
-                  Get directions
-                </a>
-              </p>
-            </div>
-            <div className="clean-visit-book">
-              <h2>Ready to book?</h2>
               <a className="clean-book" href={BOOKING_URL} target="_blank" rel="noreferrer">
                 Book your appointment
               </a>
-              <CleanSocial />
             </div>
-            <div>
-              <h2>Opening times</h2>
-              <p>
-                Tuesday – Friday: 10am to 8pm
-                <br />
-                Saturday: 9am to 6pm
-                <br />
-                Monday &amp; Sunday: Closed
-              </p>
+          </section>
+
+          <section className="clean-subpages" aria-label="About, questions and prices">
+            <div className="clean-inner">
+              <ul>
+                <li>
+                  <a href={pageHref('about.html')}>
+                    <h2>About</h2>
+                    <p>The stylists at 5 Dickens Yard, a short walk from Ealing Broadway station.</p>
+                  </a>
+                </li>
+                <li>
+                  <a href={pageHref('questions.html')}>
+                    <h2>Questions</h2>
+                    <p>How much is a haircut at Yuzu in Ealing? Patch tests, hours, and booking.</p>
+                  </a>
+                </li>
+                <li>
+                  <a href={pageHref('prices.html')}>
+                    <h2>Prices</h2>
+                    <p>Senior and stylist menus as HTML, from £29. The PDF remains a download.</p>
+                  </a>
+                </li>
+              </ul>
             </div>
+          </section>
+
+          <section className="clean-gallery" id="gallery">
+            <div className="clean-inner">
+              <h2>Gallery</h2>
+              <ul>
+                {looks.map((item) => (
+                  <li key={item.src}>
+                    <img src={item.src} alt={item.alt} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+
+          <div className="clean-inner">
+            <CleanSocial />
           </div>
-        </section>
-      </main>
+
+          <section className="clean-reviews" id="reviews">
+            <div className="clean-inner">
+              <h2>What Clients Say</h2>
+              <div className="clean-review-grid">
+                {reviews.map((review) => (
+                  <article key={review.name}>
+                    <img src={review.photo} alt={`${review.name}, Google reviewer at Yuzu Hair & Beauty`} />
+                    <div className="clean-review-body">
+                      <p className="clean-stars" aria-label="5 stars">
+                        ★★★★★
+                      </p>
+                      <h3>“{review.quote}”</h3>
+                      <p>{review.body}</p>
+                      <a href={GOOGLE_REVIEWS_URL} target="_blank" rel="noreferrer">
+                        {review.name} · Google review
+                      </a>
+                    </div>
+                  </article>
+                ))}
+              </div>
+              <a className="clean-dark" href={GOOGLE_REVIEWS_URL} target="_blank" rel="noreferrer">
+                Read all Google Reviews
+              </a>
+            </div>
+          </section>
+
+          <section className="clean-services-band" id="services">
+            <div className="clean-inner">
+              <div className="clean-services">
+                <div className="clean-services-art">
+                  <h2>Services</h2>
+                  <img
+                    src={asset('portrait.png')}
+                    alt="Stylist portrait from Yuzu Hair & Beauty, the hair salon in Ealing"
+                  />
+                </div>
+                <ul>
+                  {serviceCards.map((service) => (
+                    <li key={service.title}>
+                      <h3>{service.title}</h3>
+                      <p>{service.copy}</p>
+                      <span>from {service.from}</span>
+                    </li>
+                  ))}
+                </ul>
+                <a className="clean-dark" href={pageHref('prices.html')}>
+                  View prices
+                </a>
+              </div>
+            </div>
+          </section>
+
+          <section className="clean-offers-band" id="offers">
+            <div className="clean-inner">
+              <div className="clean-offers">
+                <h2>Current Offers</h2>
+                <ul>
+                  {offerCards.map((item) => (
+                    <li key={item.src}>
+                      <a href={OFFERS_PAGE_URL} target="_blank" rel="noreferrer">
+                        <img src={item.src} alt={item.alt} />
+                        <h3>{item.title}</h3>
+                        <p>{item.detail}</p>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+                <a className="clean-dark" href={OFFERS_PAGE_URL} target="_blank" rel="noreferrer">
+                  View all offers
+                </a>
+              </div>
+            </div>
+          </section>
+
+          <section className="clean-visit" id="contact">
+            <div className="clean-inner clean-visit-grid">
+              <div>
+                <h2>Address</h2>
+                <p>
+                  {contact.addressLines[0]}
+                  <br />
+                  {contact.addressLines[1]}, {contact.addressLines[2]}
+                </p>
+                <p>
+                  <a href={contact.phoneHref}>{contact.phone}</a>
+                  <br />
+                  <a href={social.email}>{contact.email}</a>
+                </p>
+                <p>
+                  <a href={MAPS_DIRECTIONS_URL} target="_blank" rel="noreferrer">
+                    Get directions
+                  </a>
+                </p>
+              </div>
+              <div className="clean-visit-book">
+                <h2>Ready to book?</h2>
+                <a className="clean-book" href={BOOKING_URL} target="_blank" rel="noreferrer">
+                  Book your appointment
+                </a>
+                <CleanSocial />
+              </div>
+              <div>
+                <h2>Opening times</h2>
+                <p>
+                  Tuesday – Friday: 10am to 8pm
+                  <br />
+                  Saturday: 9am to 6pm
+                  <br />
+                  Monday &amp; Sunday: Closed
+                </p>
+              </div>
+            </div>
+          </section>
+        </main>
+      ) : (
+        <main id="top" className="clean-sub">
+          <div className="clean-inner">
+            <p className="clean-back">
+              <a href={home}>← Clean home</a>
+            </p>
+            {page === 'about' ? <AboutBody /> : null}
+            {page === 'questions' ? <QuestionsBody /> : null}
+            {page === 'prices' ? <PricesBody /> : null}
+          </div>
+        </main>
+      )}
 
       <footer className="clean-footer">
         <div className="clean-inner">
@@ -427,13 +492,13 @@ export default function Clean({ variant = 'clean' }: { variant?: 'clean' | 'roun
             © Yuzu Hair &amp; Beauty · {contact.addressLines.join(', ')} · {contact.phone}
           </p>
           <p>
-            <a href={page('about.html')}>About</a>
+            <a href={pageHref('about.html')}>About</a>
             {' · '}
-            <a href={page('services.html')}>Services</a>
+            <a href={pageHref('questions.html')}>Questions</a>
             {' · '}
-            <a href={page('prices.html')}>Prices</a>
+            <a href={pageHref('prices.html')}>Prices</a>
             {' · '}
-            <a href={page('contact.html')}>Contact</a>
+            <a href={pageHref('contact.html')}>Contact</a>
           </p>
         </div>
       </footer>

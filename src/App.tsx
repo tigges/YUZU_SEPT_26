@@ -15,16 +15,19 @@ import Simple from './pages/Simple'
 import Studio from './pages/Studio'
 import Wireframe from './pages/Wireframe'
 import Wix from './pages/Wix'
-import { applyDocumentSeo } from './seo'
+import { applyDocumentSeo, readCleanSubpage } from './seo'
 import { readVersionParam, versions } from './versions'
 
 export default function App() {
   const version = readVersionParam()
-  document.body.dataset.theme = version ?? 'hub'
-  if (version === 'clean' || version === 'round') applyDocumentSeo('clean')
+  const subpage = readCleanSubpage()
+  document.body.dataset.theme = version ?? (subpage ? 'clean' : 'hub')
+  if (subpage) applyDocumentSeo(subpage)
+  else if (version === 'clean' || version === 'round') applyDocumentSeo('clean')
   else if (!version) applyDocumentSeo('hub')
   else applyDocumentSeo('other', versions.find((item) => item.id === version)?.name)
 
+  if (subpage) return <Clean page={subpage} variant={version === 'round' ? 'round' : 'clean'} />
   if (version === 'earthy') return <Earthy />
   if (version === 'instagram') return <Instagram />
   if (version === 'studio') return <Studio />
