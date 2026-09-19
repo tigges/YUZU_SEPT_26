@@ -2961,13 +2961,31 @@ body[data-theme='hairlust'] {
   text-decoration: none;
 }
 
+.hl .version-bar a {
+  color: #5c564e;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.hl .version-bar a:hover,
+.hl .version-bar a:focus-visible {
+  color: #2c271f;
+  background: #e8e0d4;
+}
+
+.hl .version-bar a[aria-current='page'] {
+  color: #fff;
+  background: #2c271f;
+  font-weight: 600;
+}
+
 .hl img {
   max-width: 100%;
   display: block;
 }
 
 .hl-container {
-  width: min(1440px, calc(100% - (var(--hl-pad) * 2)));
+  width: min(1120px, calc(100% - 48px));
   margin-inline: auto;
 }
 
@@ -3000,7 +3018,7 @@ body[data-theme='hairlust'] {
   justify-content: center;
   height: 52px;
   padding: 0 45px;
-  border: 1px solid;
+  border: 1px solid #111;
   border-radius: 16px;
   font-size: 0.75rem;
   font-weight: 600;
@@ -3008,7 +3026,8 @@ body[data-theme='hairlust'] {
   text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
-  background: none;
+  background: #fff;
+  color: #111;
   font-family: inherit;
   transition:
     border-color 0.175s,
@@ -3016,37 +3035,58 @@ body[data-theme='hairlust'] {
     color 0.175s;
 }
 
-.hl-cta-light {
-  border-color: #fff;
+.hl a.hl-cta,
+.hl button.hl-cta {
+  color: #111;
   background: #fff;
-  color: #000;
+  border-color: #111;
 }
 
-.hl-cta-light:hover {
-  background: transparent;
+.hl a.hl-cta:hover,
+.hl a.hl-cta:focus-visible,
+.hl a.hl-cta:active,
+.hl button.hl-cta:hover,
+.hl button.hl-cta:focus-visible,
+.hl button.hl-cta:active {
+  background: #111;
   color: #fff;
+  border-color: #111;
 }
 
-.hl-cta-dark {
-  border-color: #000;
-  background: #000;
+.hl a.hl-cta-dark,
+.hl button.hl-cta-dark {
+  background: #111;
   color: #fff;
+  border-color: #111;
 }
 
-.hl-cta-dark:hover {
+.hl a.hl-cta-dark:hover,
+.hl a.hl-cta-dark:focus-visible,
+.hl a.hl-cta-dark:active,
+.hl button.hl-cta-dark:hover,
+.hl button.hl-cta-dark:focus-visible,
+.hl button.hl-cta-dark:active {
+  background: #fff;
+  color: #111;
+  border-color: #111;
+}
+
+.hl a.hl-cta-stroke,
+.hl button.hl-cta-stroke {
   background: transparent;
-  color: #000;
+  color: #111;
+  border-color: #111;
 }
 
-.hl-cta-stroke {
-  border-color: #000;
-  background: transparent;
-  color: #000;
-}
-
-.hl-cta-stroke:hover {
-  background: #000;
+.hl a.hl-cta-stroke:hover,
+.hl a.hl-cta-stroke:focus-visible,
+.hl a.hl-cta-stroke:active,
+.hl button.hl-cta-stroke:hover,
+.hl button.hl-cta-stroke:focus-visible,
+.hl button.hl-cta-stroke:active {
+  background: #111;
   color: #fff;
+  border-color: #111;
 }
 
 .hl-cta-slim {
@@ -3174,7 +3214,9 @@ body[data-theme='hairlust'] {
 .hl-nav {
   display: flex;
   justify-content: center;
+  align-items: center;
   height: 100%;
+  gap: 4px;
   font-size: 0.9rem;
   font-weight: 600;
 }
@@ -3182,15 +3224,63 @@ body[data-theme='hairlust'] {
 .hl-nav a {
   display: flex;
   align-items: center;
-  padding: 0 22px;
+  padding: 0 16px;
+  height: 36px;
+  border-radius: 999px;
+  color: inherit;
+  opacity: 0.72;
 }
 
-.hl-nav:hover a {
-  opacity: 0.25;
-}
-
-.hl-nav a:hover {
+.hl-nav a:hover,
+.hl-nav a:focus-visible {
   opacity: 1;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.hl-header.solid .hl-nav a:hover,
+.hl-header.solid .hl-nav a:focus-visible,
+.hl-header.open .hl-nav a:hover,
+.hl-header.open .hl-nav a:focus-visible,
+.hl-header:hover .hl-nav a:hover,
+.hl-header:hover .hl-nav a:focus-visible {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.hl-nav a[aria-current='page'] {
+  opacity: 1;
+  background: #fff;
+  color: #111;
+}
+
+.hl-header.solid .hl-nav a[aria-current='page'],
+.hl-header.open .hl-nav a[aria-current='page'],
+.hl-header:hover .hl-nav a[aria-current='page'] {
+  background: #111;
+  color: #fff;
+}
+
+.hl-nav-book {
+  margin-left: 8px;
+  border: 1px solid currentColor;
+  opacity: 1 !important;
+}
+
+.hl-nav-book:hover,
+.hl-nav-book:focus-visible {
+  background: #fff;
+  color: #111;
+  border-color: #fff;
+}
+
+.hl-header.solid .hl-nav-book:hover,
+.hl-header.solid .hl-nav-book:focus-visible,
+.hl-header.open .hl-nav-book:hover,
+.hl-header.open .hl-nav-book:focus-visible,
+.hl-header:hover .hl-nav-book:hover,
+.hl-header:hover .hl-nav-book:focus-visible {
+  background: #111;
+  color: #fff;
+  border-color: #111;
 }
 
 .hl-tools {
@@ -3251,6 +3341,11 @@ body[data-theme='hairlust'] {
   cursor: pointer;
 }
 
+.hl-drawer a[aria-current='page'] {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
 .hl-hero {
   position: relative;
   color: #fff;
@@ -3274,20 +3369,18 @@ body[data-theme='hairlust'] {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.08) 55%, transparent);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.42) 70%);
 }
 
 .hl-hero-inner {
   position: relative;
   z-index: 1;
-  width: min(1440px, calc(100% - (var(--hl-pad) * 2)));
-  margin: auto 0 auto auto;
-  margin-left: var(--hl-pad);
   padding: 140px 0 72px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
+  text-align: center;
   animation: hl-slide-up 1s both;
 }
 
@@ -3297,12 +3390,7 @@ body[data-theme='hairlust'] {
 
 .hl-hero-inner p {
   max-width: 500px;
-  margin: 0 0 18px;
-  animation: hl-slide-up 1s 0.25s both;
-}
-
-.hl-hero-inner .hl-cta {
-  animation: hl-slide-up 1s 0.5s both;
+  margin: 0 auto 18px;
 }
 
 @keyframes hl-slide-up {
@@ -3331,7 +3419,6 @@ body[data-theme='hairlust'] {
   gap: 10px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  padding-inline: var(--hl-pad);
   scrollbar-width: none;
 }
 
@@ -3406,11 +3493,11 @@ body[data-theme='hairlust'] {
 }
 
 .hl-arrow-prev {
-  left: var(--hl-pad);
+  left: 0;
 }
 
 .hl-arrow-next {
-  right: var(--hl-pad);
+  right: 0;
 }
 
 .hl-range-wrap:not(:hover) .hl-arrow,
@@ -3457,18 +3544,27 @@ body[data-theme='hairlust'] {
   padding: 70px 0;
 }
 
-.hl-popular-inner,
-.hl-reviews-inner {
-  display: grid;
-  grid-template-columns: minmax(220px, 25%) 1fr;
-  gap: 24px;
-  align-items: start;
+.hl-section-head {
+  text-align: center;
+  max-width: 36rem;
+  margin: 0 auto 2rem;
 }
 
-.hl-popular-info p,
+.hl-section-head p {
+  margin: 12px auto 20px;
+}
+
+.hl-popular-inner,
+.hl-reviews-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.hl-section-head p,
 .hl-quiz-copy p,
 .hl-letter p {
-  margin: 12px 0 20px;
+  margin: 12px auto 20px;
   max-width: 36ch;
 }
 
@@ -3581,14 +3677,16 @@ body[data-theme='hairlust'] {
   display: grid;
   grid-template-columns: 1fr 1fr;
   min-height: 380px;
+  align-items: center;
 }
 
 .hl-quiz-copy {
-  padding: 50px;
+  padding: 50px 24px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
 .hl-quiz-media {
@@ -3616,7 +3714,7 @@ body[data-theme='hairlust'] {
   margin: 0 0 10px;
 }
 
-.hl-reviews-intro a {
+.hl-section-head a:not(.hl-cta) {
   text-decoration: underline;
   font-weight: 500;
 }
@@ -3708,12 +3806,22 @@ body[data-theme='hairlust'] {
   border-top: 1px solid var(--hl-border);
 }
 
+.hl-hero,
+.hl-popular,
+.hl-new,
+.hl-reviews,
+.hl-letter {
+  scroll-margin-top: 120px;
+}
+
 .hl-ig-head {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  gap: 24px;
   margin-bottom: 30px;
   font-size: 1.5rem;
+  text-align: center;
 }
 
 .hl-ig-head p {
@@ -3909,7 +4017,7 @@ body[data-theme='hairlust'] {
     grid-template-columns: 1fr 1fr;
   }
 
-  .hl-popular-info,
+  .hl-section-head,
   .hl-quiz-copy {
     text-align: center;
     align-items: center;
