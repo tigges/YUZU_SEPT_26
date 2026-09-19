@@ -3181,34 +3181,26 @@ body[data-theme='hairlust'] {
 
 .hl-logo {
   position: relative;
-  width: 60px;
-  height: 60px;
+  display: flex;
+  align-items: center;
   justify-self: start;
+  height: 40px;
 }
 
-.hl-mark {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  fill: currentColor;
-  transition: opacity 0.25s;
+.hl-logo img {
+  display: block;
+  height: 34px;
+  width: auto;
+  max-width: 160px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  transition: filter 0.25s;
 }
 
-.hl-mark.invert {
-  fill: #fff;
-}
-
-.hl-header.solid .hl-mark.invert,
-.hl-header.open .hl-mark.invert,
-.hl-header:hover .hl-mark.invert {
-  opacity: 0;
-}
-
-@media (min-width: 1025px) {
-  .hl-header:not(.solid):not(.open):not(:hover) .hl-mark:not(.invert) {
-    opacity: 0;
-  }
+.hl-header.solid .hl-logo img,
+.hl-header.open .hl-logo img,
+.hl-header:hover .hl-logo img {
+  filter: none;
 }
 
 .hl-nav {
@@ -3637,9 +3629,14 @@ body[data-theme='hairlust'] {
   overflow: hidden;
   color: #fff;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   text-align: center;
+}
+
+.hl a.hl-block,
+.hl a.hl-block h2 {
+  color: #fff;
 }
 
 .hl-block img {
@@ -3648,6 +3645,7 @@ body[data-theme='hairlust'] {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 20%;
   transition: transform 0.4s;
 }
 
@@ -3655,13 +3653,15 @@ body[data-theme='hairlust'] {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.28);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.12) 20%, rgba(0, 0, 0, 0.72) 100%);
 }
 
 .hl-block h2 {
   position: relative;
   z-index: 1;
-  padding: 0 16px;
+  padding: 0 16px 22px;
+  font-size: clamp(1.35rem, 2.4vw, 2rem);
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.45);
 }
 
 .hl-block:hover img {
@@ -3972,12 +3972,13 @@ body[data-theme='hairlust'] {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 40px;
-    height: 40px;
+    height: 28px;
   }
 
-  .hl-mark.invert {
-    opacity: 0;
+  .hl-logo img {
+    height: 26px;
+    max-width: 120px;
+    filter: none;
   }
 
   .hl-tool span:not(.hl-book-dot) {
