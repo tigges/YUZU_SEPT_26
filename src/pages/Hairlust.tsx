@@ -95,6 +95,7 @@ export default function Hairlust() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [solid, setSolid] = useState(false)
   const [sent, setSent] = useState(false)
+  const [current, setCurrent] = useState('top')
   const rangeRef = useRef<HTMLDivElement>(null)
   const popularRef = useRef<HTMLDivElement>(null)
 
@@ -103,6 +104,26 @@ export default function Hairlust() {
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  useEffect(() => {
+    const ids = ['top', 'services', 'offers', 'visit']
+    const observed = ids
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => Boolean(el))
+    if (!observed.length) return
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)
+        const id = visible[0]?.target.id
+        if (id) setCurrent(id)
+      },
+      { rootMargin: '-18% 0px -62% 0px', threshold: [0.1, 0.25, 0.5] },
+    )
+    observed.forEach((el) => observer.observe(el))
+    return () => observer.disconnect()
   }, [])
 
   useEffect(() => {
@@ -167,11 +188,16 @@ export default function Hairlust() {
           </a>
           <nav className="hl-nav" aria-label="Primary">
             {nav.map((item) => (
-              <a key={item.label} href={item.href} onClick={goTo(item.href)}>
+              <a
+                key={item.label}
+                href={item.href}
+                onClick={goTo(item.href)}
+                aria-current={current === item.href.slice(1) ? 'page' : undefined}
+              >
                 {item.label}
               </a>
             ))}
-            <a href={BOOKING_URL} target="_blank" rel="noreferrer">
+            <a className="hl-nav-book" href={BOOKING_URL} target="_blank" rel="noreferrer">
               Book
             </a>
           </nav>
@@ -196,7 +222,12 @@ export default function Hairlust() {
             </button>
           </div>
           {nav.map((item) => (
-            <a key={item.label} href={item.href} onClick={goTo(item.href)}>
+            <a
+              key={item.label}
+              href={item.href}
+              onClick={goTo(item.href)}
+              aria-current={current === item.href.slice(1) ? 'page' : undefined}
+            >
               {item.label}
             </a>
           ))}
@@ -215,12 +246,12 @@ export default function Hairlust() {
         </div>
       ) : null}
 
-      <main id="top">
-        <section className="hl-hero" aria-labelledby="hl-hero-title">
+      <main>
+        <section className="hl-hero" id="top" aria-labelledby="hl-hero-title">
           <figure className="hl-hero-image">
             <img src={v4Assets.hero} alt="Brunette waves, photographed at Yuzu Hair & Beauty" />
           </figure>
-          <div className="hl-hero-inner">
+          <div className="hl-container hl-hero-inner">
             <h1 id="hl-hero-title" className="hl-title-xl">
               Cut, colour or <span>Transform</span>
             </h1>
@@ -235,7 +266,7 @@ export default function Hairlust() {
         </section>
 
         <section className="hl-range" aria-label="Services">
-          <div className="hl-range-wrap">
+          <div className="hl-container hl-range-wrap">
             <button
               className="hl-arrow hl-arrow-prev"
               type="button"
@@ -289,7 +320,7 @@ export default function Hairlust() {
 
         <section className="hl-popular" id="services">
           <div className="hl-container hl-popular-inner">
-            <div className="hl-popular-info">
+            <div className="hl-section-head">
               <h2 className="hl-title">Popular services</h2>
               <p>A hand-picked selection from the Dickens Yard chair — cuts, colour, and treatments that guests rebook.</p>
               <a className="hl-cta hl-cta-stroke" href={PRICE_LIST_URL} target="_blank" rel="noreferrer">
@@ -345,7 +376,7 @@ export default function Hairlust() {
 
         <section className="hl-quiz" aria-labelledby="hl-quiz-title">
           <div className="hl-container hl-quiz-inner">
-            <div className="hl-quiz-copy">
+            <div className="hl-section-head hl-quiz-copy">
               <h2 id="hl-quiz-title" className="hl-title">
                 New to Yuzu?
               </h2>
@@ -365,7 +396,7 @@ export default function Hairlust() {
 
         <section className="hl-reviews" id="reviews">
           <div className="hl-container hl-reviews-inner">
-            <div className="hl-reviews-intro">
+            <div className="hl-section-head">
               <p className="hl-reviews-kicker">Trusted by you</p>
               <h2 className="hl-title">From the chair at Dickens Yard</h2>
               <a href={GOOGLE_REVIEWS_URL} target="_blank" rel="noreferrer">
@@ -389,7 +420,7 @@ export default function Hairlust() {
 
         <section className="hl-new" id="offers">
           <div className="hl-container hl-popular-inner">
-            <div className="hl-popular-info">
+            <div className="hl-section-head">
               <h2 className="hl-title">New in</h2>
               <p>Weekday colour and smoothing offers, plus refer-a-friend credit when they complete a first visit.</p>
               <a className="hl-cta hl-cta-stroke" href={OFFERS_PAGE_URL} target="_blank" rel="noreferrer">
