@@ -17,6 +17,8 @@ import {
 } from '../data'
 import { VersionBar } from '../components/VersionBar'
 
+const logo = `${import.meta.env.BASE_URL}assets/wix/logo.png`
+
 const nav = [
   { href: '#top', label: 'Home' },
   { href: '#services', label: 'Services' },
@@ -45,12 +47,12 @@ const popular = [
 ]
 
 const blocks = [
-  { href: '#services', title: 'Cut & styling', src: v4Assets.servicesMedia[1].src },
-  { href: '#services', title: 'Colour', src: v4Assets.servicesMedia[0].src },
+  { href: '#services', title: 'Cut & styling', src: gallery[5].src },
+  { href: '#services', title: 'Colour', src: gallery[4].src },
   { href: '#services', title: 'Highlights + balayage', src: gallery[0].src },
-  { href: '#services', title: 'Treatments', src: gallery[2].src },
-  { href: '#offers', title: 'Weekday offers', src: instagram.feed[1].src },
-  { href: '#visit', title: 'Dickens Yard', src: v4Assets.looks[2].src },
+  { href: '#services', title: 'Treatments', src: gallery[1].src },
+  { href: '#offers', title: 'Weekday offers', src: instagram.feed[0].src },
+  { href: '#visit', title: 'Dickens Yard', src: v4Assets.looks[4].src },
 ]
 
 function Arrow({ dir }: { dir: 'left' | 'right' }) {
@@ -69,14 +71,6 @@ function ArrowSmall() {
   return (
     <svg viewBox="0 0 12 12" aria-hidden="true">
       <path d="M3.429 12c-.172 0-.429-.086-.515-.257-.257-.257-.257-.772 0-1.114L7.63 6 2.914 1.286c-.257-.257-.257-.772 0-1.115s.772-.257 1.115 0l4.885 4.972c.515.514.515 1.2.086 1.714L4.029 11.83c-.172.085-.343.171-.6.171z" />
-    </svg>
-  )
-}
-
-function Mark({ invert }: { invert?: boolean }) {
-  return (
-    <svg className={`hl-mark${invert ? ' invert' : ''}`} viewBox="0 0 64 64" aria-hidden="true">
-      <path d="M12 8h12.4L32 28.6 39.6 8H52L34.8 40.2V56H29.2V40.2L12 8z" />
     </svg>
   )
 }
@@ -182,9 +176,8 @@ export default function Hairlust() {
             </span>
             <span>Menu</span>
           </button>
-          <a className="hl-logo" href="#top" onClick={goTo('#top')} aria-label="Yuzu Hair & Beauty">
-            <Mark invert />
-            <Mark />
+          <a className="hl-logo" href="#top" onClick={goTo('#top')}>
+            <img src={logo} alt="Yuzu Hair & Beauty" />
           </a>
           <nav className="hl-nav" aria-label="Primary">
             {nav.map((item) => (
