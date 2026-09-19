@@ -4,7 +4,7 @@ A version gallery for Yuzu Hair at Dickens Yard, Ealing.
 
 Live: https://tigges.github.io/YUZU_SEPT_26/
 
-- Home: version gallery (Earthy, Sanctuary, Clean, Round, Studio, then Wireframe, Wix, Hairlust, and the rest)
+- Home: version gallery (Earthy, Sanctuary, Clean, Round, Studio, then Wireframe, Wix, Hairlust, the rest, and HL clone at the end)
 - `?v=earthy` parchment / olive site
 - `?v=sanctuary` forest / gold “Sanctuary” prototype from [YUZU_V4_CURSOR](https://github.com/tigges/-YUZU_V4_CURSOR)
 - `?v=clean` clone of the Cloudways WordPress `/v1-clean/` preview (white header, photo hero, gallery, reviews, services, offers)
@@ -22,6 +22,7 @@ Live: https://tigges.github.io/YUZU_SEPT_26/
 - `?v=quiet` cream / sage from HAIR-CLONE v3
 - `?v=auto` warm landing from [YUZU_AUTO](https://github.com/tigges/YUZU_AUTO), with real Dickens Yard content
 - `?v=links` current site ([yuzuhairandbeauty.london](https://www.yuzuhairandbeauty.london/)), Phorest, Maps, Instagram, TikTok, Facebook, 2025 price list, patch-test PDF, T&Cs page. Offers are a webpage, not a PDF.
+- `?v=hlclone` clean clone of [hairlust.com](https://hairlust.com/) — original branding, products, and copy, as close to the live homepage as this gallery allows
 
 [YUZU_V3](https://github.com/tigges/YUZU_V3) and [YUZU_CUSROR_V7](https://github.com/tigges/YUZU_CUSROR_V7) are README-only and are not in the gallery.
 

@@ -143,6 +143,15 @@ export const versions = [
     preview: asset('assets/instagram/00.jpg'),
     previewAlt: 'Colour Tuesdays offer graphic from Instagram',
   },
+  {
+    id: 'hlclone',
+    name: 'HL clone',
+    kicker: 'Hairlust original',
+    summary:
+      'Clean clone of hairlust.com: original branding, products, and copy — layout, photography, and links as on the live site.',
+    preview: asset('assets/hlclone/hero.jpg'),
+    previewAlt: 'Hairlust homepage hero — color depositing masks campaign',
+  },
 ] as const
 
 export type VersionId = (typeof versions)[number]['id']
