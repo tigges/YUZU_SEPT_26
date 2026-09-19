@@ -20,7 +20,8 @@ export default function Hub() {
           <p>
             Earthy first, then Sanctuary, Clean, Round, and Studio. Wireframe is a layout sketch —
             drag the page order, or use → / ← to nest a section as a sub-page. Then the Wix
-            homepage clone, the rest of the looks, and a Links desk. The current site is{' '}
+            homepage clone, a Hairlust.com layout clone, the rest of the looks, and a Links desk.
+            The current site is{' '}
             <a href={LIVE_SITE_URL} target="_blank" rel="noreferrer">
               yuzuhairandbeauty.london
             </a>
