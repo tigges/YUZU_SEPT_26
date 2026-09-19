@@ -62,6 +62,15 @@ export const versions = [
     previewAlt: 'Tropical banana leaves used on the live Wix homepage',
   },
   {
+    id: 'hairlust',
+    name: 'Hairlust',
+    kicker: 'Hairlust clone',
+    summary:
+      'Clone of hairlust.com: full-bleed hero, range pills, popular services, category tiles, reviews, and a lilac press band — filled with Dickens Yard facts.',
+    preview: asset('assets/v4/hero.jpg'),
+    previewAlt: 'Brunette waves, photographed in salon',
+  },
+  {
     id: 'instagram',
     name: 'Instagram',
     kicker: 'Version 6',

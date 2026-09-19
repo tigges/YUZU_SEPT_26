@@ -4,6 +4,7 @@ import Convert from './pages/Convert'
 import Earthy from './pages/Earthy'
 import Editorial from './pages/Editorial'
 import Gold from './pages/Gold'
+import Hairlust from './pages/Hairlust'
 import Hub from './pages/Hub'
 import Instagram from './pages/Instagram'
 import Links from './pages/Links'
@@ -41,6 +42,7 @@ export default function App() {
   if (version === 'clean') return <Clean />
   if (version === 'round') return <Round />
   if (version === 'wix') return <Wix />
+  if (version === 'hairlust') return <Hairlust />
   if (version === 'auto') return <Auto />
   if (version === 'links') return <Links />
   if (version === 'wireframe') return <Wireframe />
